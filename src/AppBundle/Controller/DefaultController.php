@@ -63,6 +63,7 @@ class DefaultController extends Controller
         $message = \Swift_Message::newInstance($data["theme"]." / ". $data['subject'])
             ->setFrom(array($myappContactMail => "Message du site HopJob974"))
             ->setTo(array(
+                //ici mettre l'adressse mail que l'on souhaite
                 $myappContactMail => $myappContactMail
             ))
             ->setBody($data["message"].$data["nom"].$data["prenom"]."<br>Email :".$data["email"]);
