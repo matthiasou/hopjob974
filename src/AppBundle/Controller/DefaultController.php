@@ -54,22 +54,18 @@ class DefaultController extends Controller
 
     private function sendEmail($data){
         $myappContactMail = 'contact@hopjob974.fr';
-        $myappContactPassword = 'Code387400';
 
-        // If your service is another, then read the following article to know which smpt code to use and which port
-        // http://ourcodeworld.com/articles/read/14/swiftmailer-send-mails-from-php-easily-and-effortlessly
-        $transport = \Swift_SmtpTransport::newInstance('smtp.hopjob974.fr', 587,'ssl')
-            ->setUsername($myappContactMail)
-            ->setPassword($myappContactPassword);
+        // Mail() transport
+        $transport = \Swift_MailTransport::newInstance();
 
         $mailer = \Swift_Mailer::newInstance($transport);
 
-        $message = \Swift_Message::newInstance("Our Code World Contact Form ". $data["subject"])
-            ->setFrom(array($myappContactMail => "Message by ".$data["nom"]))
+        $message = \Swift_Message::newInstance($data["theme"]." / ". $data['subject'])
+            ->setFrom(array($myappContactMail => "Message du site HopJob974"))
             ->setTo(array(
                 $myappContactMail => $myappContactMail
             ))
-            ->setBody($data["message"]."<br>ContactMail :".$data["email"]);
+            ->setBody($data["message"].$data["nom"].$data["prenom"]."<br>Email :".$data["email"]);
 
         return $mailer->send($message);
     }
