@@ -30,6 +30,8 @@ class HTML2PDF
     public function generatePdf($template, $name){
         $this->pdf->writeHTML($template);
         return $this->pdf->Output($name.'.pdf');
+        //cette ligne permet de créer la facture sur le serveur et donc de la récupérer via la BDD ;)
+        //return $this->pdf->Output(__DIR__ . '/../../../web/facture/Facture.pdf');
     }
 
 }
