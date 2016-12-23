@@ -5,3 +5,7 @@ app:
 contact:
     path:     /contact
     defaults: { _controller: AppBundle:Default:contact }
+
+pdf:
+    path:     /pdf
+    defaults: { _controller: AppBundle:Default:pdf }
