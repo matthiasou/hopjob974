@@ -35,7 +35,7 @@
                     <div class="col-md-3 left_col">
                         <div class="left_col scroll-view">
                             <div class="navbar nav_title" style="border: 0;">
-                                <a href="index.html" class="site_title"><i class="fa fa-home"></i> <span><img height="55px" src="logo.png"></span></a>
+                                <a href="{{ path('admin') }}" class="site_title"><i class="fa fa-home"></i> <span><img height="55px" src="../../web/img/logo.png"></span></a>
                             </div>
 
                             <div class="clearfix"></div>
@@ -43,7 +43,7 @@
                             <!-- menu profile quick info -->
                             <div class="profile clearfix">
                                 <div class="profile_pic">
-                                    <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                                    <img src="../../web/img/img.jpg" alt="..." class="img-circle profile_img">
                                 </div>
                                 <div class="profile_info">
                                     <span>Bienvenue,</span>
@@ -59,15 +59,15 @@
                                 <div class="menu_section">
                                     <h3>General</h3>
                                     <ul class="nav side-menu">
-                                        <li><a href="index.html"><i class="fa fa-home"></i> Tableau de bord <span class="fa fa-chevron-down"></span></a>
+                                        <li><a href="{{ path('admin') }}"><i class="fa fa-home"></i> Tableau de bord <span class="fa fa-chevron-down"></span></a>
                                         </li>
-                                        <li><a href="messagerie.html"><i class="fa fa-envelope-o"></i> Messagerie <span class="fa fa-chevron-down"></span></a>
+                                        <li><a href="{{ path('messagerie') }}"><i class="fa fa-envelope-o"></i> Messagerie <span class="fa fa-chevron-down"></span></a>
                                         </li>
-                                        <li class="active"><a href="documents.html"><i class="fa fa-file-text-o"></i> Mes documents <span class="fa fa-chevron-down"></span></a>
+                                        <li class="active"><a href="{{ path('documents') }}.html"><i class="fa fa-file-text-o"></i> Mes documents<span class="fa fa-chevron-down"></span></a>
                                             <ul class="nav child_menu">
                                                 </li>
                                             </ul>
-                                        <li><a href="code.html"><i class="fa fa-credit-card"></i> Code | Paiement <span class="fa fa-chevron-down"></span></a>
+                                        <li><a href="{{ path('code') }}"><i class="fa fa-credit-card"></i> Code | Paiement <span class="fa fa-chevron-down"></span></a>
                                             <ul class="nav child_menu">
                                                 </li>
                                             </ul>
@@ -92,7 +92,7 @@
                                 <ul class="nav navbar-nav navbar-right">
                                     <li class="">
                                         <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                            <img src="images/img.jpg" alt="">Alexandra Pottier
+                                            <img src="../../web/img/img.jpg" alt="">Alexandra Pottier
                                             <span class=" fa fa-angle-down"></span>
                                         </a>
                                         <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -115,7 +115,7 @@
                                         <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                                             <li>
                                                 <a>
-                                                    <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                                    <span class="image"><img src="../../web/img/img.jpg" alt="Profile Image" /></span>
                                                     <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -127,7 +127,7 @@
                                             </li>
                                             <li>
                                                 <a>
-                                                    <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                                    <span class="image"><img src="../../web/img/img.jpg" alt="Profile Image" /></span>
                                                     <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -139,7 +139,7 @@
                                             </li>
                                             <li>
                                                 <a>
-                                                    <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                                    <span class="image"><img src="../../web/img/img.jpg" alt="Profile Image" /></span>
                                                     <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -151,7 +151,7 @@
                                             </li>
                                             <li>
                                                 <a>
-                                                    <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                                    <span class="image"><img src="../../web/img/img.jpg" alt="Profile Image" /></span>
                                                     <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -187,7 +187,7 @@
 
                                     <div class="row x_title">
                                         <div class="col-md-6">
-                                            <h3>Documents</h3>
+                                            <h3>Mes documents</h3>
                                         </div>
                                     </div>
 
