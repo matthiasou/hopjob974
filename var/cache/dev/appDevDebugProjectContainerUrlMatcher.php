@@ -129,6 +129,26 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::pdfAction',  '_route' => 'pdf',);
         }
 
+        // admin
+        if ($pathinfo === '/admin') {
+            return array (  '_controller' => 'AppBundle\\Controller\\AdminController::indexAction',  '_route' => 'admin',);
+        }
+
+        // messagerie
+        if ($pathinfo === '/messagerie') {
+            return array (  '_controller' => 'AppBundle\\Controller\\AdminController::messagerieAction',  '_route' => 'messagerie',);
+        }
+
+        // code
+        if ($pathinfo === '/code') {
+            return array (  '_controller' => 'AppBundle\\Controller\\AdminController::codeAction',  '_route' => 'code',);
+        }
+
+        // documents
+        if ($pathinfo === '/documents') {
+            return array (  '_controller' => 'AppBundle\\Controller\\AdminController::documentsAction',  '_route' => 'documents',);
+        }
+
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
     }
 }

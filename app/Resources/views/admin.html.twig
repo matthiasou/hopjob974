@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- Meta, title, CSS, favicons, etc. -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>{% block title %}HopJob974{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <!-- Bootstrap -->
+        <link href="../../vendor/espaceAdmin/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Font Awesome -->
+        <link href="../../vendor/espaceAdmin/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <!-- NProgress -->
+        <link href="../../vendor/espaceAdmin/nprogress/nprogress.css" rel="stylesheet">
+        <!-- iCheck -->
+        <link href="../../vendor/espaceAdmin/iCheck/skins/flat/green.css" rel="stylesheet">
+        <!-- bootstrap-progressbar -->
+        <link href="../../vendor/espaceAdmin/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+        <!-- JQVMap -->
+        <link href="../../vendor/espaceAdmin//jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+        <!-- bootstrap-daterangepicker -->
+        <link href="../../vendor/espaceAdmin/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+        <!-- Custom Theme Style -->
+        <link href="../../vendor/espaceAdmin/css/custom.min.css" rel="stylesheet">
+    </head>
+    <body class="nav-md">
+        {% block body %}
+            <div class="container body">
+                <div class="main_container">
+                    <div class="col-md-3 left_col">
+                        <div class="left_col scroll-view">
+                            <div class="navbar nav_title" style="border: 0;">
+                                <a href="{{ path('admin') }}" class="site_title"><i class="fa fa-home"></i> <span><img height="55px" src="../../web/img/logo.png"></span></a>
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                            <!-- menu profile quick info -->
+                            <div class="profile clearfix">
+                                <div class="profile_pic">
+                                    <img src="../../web/img/img.jpg" alt="..." class="img-circle profile_img">
+                                </div>
+                                <div class="profile_info">
+                                    <span>Bienvenue,</span>
+                                    <h2>Alexandra Pottier</h2>
+                                </div>
+                            </div>
+                            <!-- /menu profile quick info -->
+
+                            <br />
+
+                            <!-- sidebar menu -->
+                            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                                <div class="menu_section">
+                                    <h3>General</h3>
+                                    <ul class="nav side-menu">
+                                        <li class="active"><a href="{{ path('admin') }}"><i class="fa fa-home"></i> Tableau de bord <span class="fa fa-chevron-down"></span></a>
+                                        </li>
+                                        <li><a href="{{ path('messagerie') }}"><i class="fa fa-envelope-o"></i> Messagerie <span class="fa fa-chevron-down"></span></a>
+                                        </li>
+                                        <li><a href="{{ path('documents') }}"><i class="fa fa-file-text-o"></i> Mes documents <span class="fa fa-chevron-down"></span></a>
+                                            <ul class="nav child_menu">
+                                                </li>
+                                            </ul>
+                                        <li><a href="{{ path('code') }}"><i class="fa fa-credit-card"></i> Code | Paiement <span class="fa fa-chevron-down"></span></a>
+                                            <ul class="nav child_menu">
+                                                </li>
+                                            </ul>
+                                </div>
+                            </div>
+                            <!-- /sidebar menu -->
+
+                            <!-- /menu footer buttons -->
+
+                            <!-- /menu footer buttons -->
+                        </div>
+                    </div>
+
+                    <!-- top navigation -->
+                    <div class="top_nav">
+                        <div class="nav_menu">
+                            <nav>
+                                <div class="nav toggle">
+                                    <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                                </div>
+
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="">
+                                        <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                            <img src="../../web/img/img.jpg" alt="">Alexandra Pottier
+                                            <span class=" fa fa-angle-down"></span>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                            <li><a href="javascript:;"> Mon profil</a></li>
+                                            <li>
+                                                <a href="javascript:;">
+                                                    <span class="badge bg-red pull-right">50%</span>
+                                                    <span>Réglages</span>
+                                                </a>
+                                            </li>
+                                            <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Se déconnecter</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li role="presentation" class="dropdown">
+                                        <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                                            <i class="fa fa-envelope-o"></i>
+                                            <span class="badge bg-green">6</span>
+                                        </a>
+                                        <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                                            <li>
+                                                <a>
+                                                    <span class="image"><img src="../../web/img/img.jpg" alt="Profile Image" /></span>
+                                                    <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                                                    <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a>
+                                                    <span class="image"><img src="../../web/img/img.jpg" alt="Profile Image" /></span>
+                                                    <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                                                    <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a>
+                                                    <span class="image"><img src="../../web/img/img.jpg" alt="Profile Image" /></span>
+                                                    <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                                                    <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a>
+                                                    <span class="image"><img src="../../web/img/img.jpg" alt="Profile Image" /></span>
+                                                    <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                                                    <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <div class="text-center">
+                                                    <a>
+                                                        <strong>See All Alerts</strong>
+                                                        <i class="fa fa-angle-right"></i>
+                                                    </a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <!-- /top navigation -->
+
+                    <!-- page content -->
+                    <div class="right_col" role="main">
+                        <!-- top tiles -->
+                        <div class="row tile_count">
+                            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                                <span class="count_top"><i class="fa fa-user"></i> Travail effectué</span>
+                                <div class="count">0</div>
+                                <span class="count_bottom"><i class="green">4% </i> depuis le</span>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                                <span class="count_top"><i class="fa fa-user"></i> Argent récolté</span>
+                                <div class="count green">0</div>
+                                <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> depuis le</span>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                                <span class="count_top"><i class="fa fa-user"></i> Votre note globale</span>
+                                <div class="count">0</div>
+                                <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> depuis le</span>
+                            </div>
+                        </div>
+                        <!-- /top tiles -->
+
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="dashboard_graph">
+
+                                    <div class="row x_title">
+                                        <div class="col-md-6">
+                                            <h3>Notifications</h3>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="pull-right">
+                                                <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                                                <span>December 30, 2014 - January 28, 2015</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="">
+
+                                        <div class="x_content bs-example-popovers">
+
+                                            <div class="alert alert-success alert-dismissible fade in" role="alert">
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                                                </button>
+                                                <strong>Ici apparaitront les messages et notifications !</strong>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                <div class="x_panel">
+                                    <div class="x_title">
+                                        <h2>Prochaines Missions</h2>
+                                        <ul class="nav navbar-right panel_toolbox">
+                                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                            </li>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="x_content">
+                                        <article class="media event">
+                                            <a class="pull-left date">
+                                                <p class="month">April</p>
+                                                <p class="day">23</p>
+                                            </a>
+                                            <div class="media-body">
+                                                <a class="title" href="#">Item One Title</a>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                            </div>
+                                        </article>
+                                        <article class="media event">
+                                            <a class="pull-left date">
+                                                <p class="month">April</p>
+                                                <p class="day">23</p>
+                                            </a>
+                                            <div class="media-body">
+                                                <a class="title" href="#">Item Two Title</a>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                            </div>
+                                        </article>
+                                        <article class="media event">
+                                            <a class="pull-left date">
+                                                <p class="month">April</p>
+                                                <p class="day">23</p>
+                                            </a>
+                                            <div class="media-body">
+                                                <a class="title" href="#">Item Two Title</a>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                            </div>
+                                        </article>
+                                        <article class="media event">
+                                            <a class="pull-left date">
+                                                <p class="month">April</p>
+                                                <p class="day">23</p>
+                                            </a>
+                                            <div class="media-body">
+                                                <a class="title" href="#">Item Two Title</a>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                            </div>
+                                        </article>
+                                        <article class="media event">
+                                            <a class="pull-left date">
+                                                <p class="month">April</p>
+                                                <p class="day">23</p>
+                                            </a>
+                                            <div class="media-body">
+                                                <a class="title" href="#">Item Two Title</a>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                            </div>
+                                        </article>
+                                        <article class="media event">
+                                            <a class="pull-left date">
+                                                <p class="month">April</p>
+                                                <p class="day">23</p>
+                                            </a>
+                                            <div class="media-body">
+                                                <a class="title" href="#">Item Two Title</a>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                            </div>
+                                        </article>
+                                        <article class="media event">
+                                            <a class="pull-left date">
+                                                <p class="month">April</p>
+                                                <p class="day">23</p>
+                                            </a>
+                                            <div class="media-body">
+                                                <a class="title" href="#">Item Two Title</a>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                            </div>
+                                        </article>
+                                        <article class="media event">
+                                            <a class="pull-left date">
+                                                <p class="month">April</p>
+                                                <p class="day">23</p>
+                                            </a>
+                                            <div class="media-body">
+                                                <a class="title" href="#">Item Two Title</a>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                            </div>
+                                        </article>
+                                        <article class="media event">
+                                            <a class="pull-left date">
+                                                <p class="month">April</p>
+                                                <p class="day">23</p>
+                                            </a>
+                                            <div class="media-body">
+                                                <a class="title" href="#">Item Two Title</a>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                            </div>
+                                        </article>
+                                        <article class="media event">
+                                            <a class="pull-left date">
+                                                <p class="month">April</p>
+                                                <p class="day">23</p>
+                                            </a>
+                                            <div class="media-body">
+                                                <a class="title" href="#">Item Three Title</a>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                            </div>
+                                        </article>
+                                        <div style="text-align: right" id="">
+                                            ...
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-8 col-sm-8 col-xs-12">
+
+
+
+                                <div class="row">
+
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="x_panel">
+                                            <div class="x_title">
+                                                <h2>Vos Demandes</h2>
+                                                <ul class="nav navbar-right panel_toolbox">
+                                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                                    </li>
+                                                    <li class="dropdown">
+
+                                                    </li>
+                                                </ul>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <div class="x_content">
+                                                <ul class="list-unstyled top_profiles scroll-view">
+                                                    <li class="media event">
+                                                        <a class="pull-left border-aero profile_thumb">
+                                                            <i class="fa fa-user aero"></i>
+                                                        </a>
+                                                        <div class="media-body">
+                                                            <a class="title" href="#">Mme. Mary Jane</a>
+                                                            <p><strong>300 € </strong> Changer tapisserie </p>
+                                                            <a href=""<p> <small>plus...</small>
+                                                            </p></a>
+                                                        </div>
+                                                    </li>
+                                                    <li class="media event">
+                                                        <a class="pull-left border-green profile_thumb">
+                                                            <i class="fa fa-user green"></i>
+                                                        </a>
+                                                        <div class="media-body">
+                                                            <a class="title" href="#">Mr. Mickael Jane</a>
+                                                            <p><strong>200 € </strong> Tondre pelouse </p>
+                                                            <a href=""<p> <small>plus...</small>
+                                                            </p></a>
+                                                        </div>
+                                                    </li>
+                                                    <li class="media event">
+                                                        <a class="pull-left border-blue profile_thumb">
+                                                            <i class="fa fa-user blue"></i>
+                                                        </a>
+                                                        <div class="media-body">
+                                                            <a class="title" href="#">Ms. Mary Jane</a>
+                                                            <p><strong>$2300. </strong> Agent Avarage Sales </p>
+                                                            <a href=""<p> <small>plus...</small>
+                                                            </p></a>
+                                                        </div>
+                                                    </li>
+                                                    <li class="media event">
+                                                        <a class="pull-left border-aero profile_thumb">
+                                                            <i class="fa fa-user aero"></i>
+                                                        </a>
+                                                        <div class="media-body">
+                                                            <a class="title" href="#">Ms. Mary Jane</a>
+                                                            <p><strong>$2300. </strong> Agent Avarage Sales </p>
+                                                            <a href=""<p> <small>plus...</small>
+                                                            </p></a>
+                                                        </div>
+                                                    </li>
+                                                    <li class="media event">
+                                                        <a class="pull-left border-green profile_thumb">
+                                                            <i class="fa fa-user green"></i>
+                                                        </a>
+                                                        <div class="media-body">
+                                                            <a class="title" href="#">Ms. Mary Jane</a>
+                                                            <p><strong>$2300. </strong> Agent Avarage Sales </p>
+                                                            <a href=""<p> <small>plus...</small>
+                                                            </p></a>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="x_panel">
+                                            <div class="x_title">
+                                                <h2>Annonces susceptible de vous plaire</h2>
+                                                <ul class="nav navbar-right panel_toolbox">
+                                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                                    </li>
+                                                    <li class="dropdown">
+
+                                                    </li>
+                                                </ul>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <div class="x_content">
+                                                <ul class="list-unstyled timeline">
+                                                    <li>
+                                                        <div class="block">
+                                                            <div class="tags">
+                                                                <a href="" class="tag">
+                                                                    <span>Entertainment</span>
+                                                                </a>
+                                                            </div>
+                                                            <div class="block_content">
+                                                                <h2 class="title">
+                                                                    <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
+                                                                </h2>
+                                                                <div class="byline">
+                                                                    <span>13 hours ago</span> by <a>Jane Smith</a>
+                                                                </div>
+                                                                <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="block">
+                                                            <div class="tags">
+                                                                <a href="" class="tag">
+                                                                    <span>Entertainment</span>
+                                                                </a>
+                                                            </div>
+                                                            <div class="block_content">
+                                                                <h2 class="title">
+                                                                    <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
+                                                                </h2>
+                                                                <div class="byline">
+                                                                    <span>13 hours ago</span> by <a>Jane Smith</a>
+                                                                </div>
+                                                                <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="block">
+                                                            <div class="tags">
+                                                                <a href="" class="tag">
+                                                                    <span>Entertainment</span>
+                                                                </a>
+                                                            </div>
+                                                            <div class="block_content">
+                                                                <h2 class="title">
+                                                                    <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
+                                                                </h2>
+                                                                <div class="byline">
+                                                                    <span>13 hours ago</span> by <a>Jane Smith</a>
+                                                                </div>
+                                                                <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /page content -->
+
+                    <!-- footer content -->
+                    <footer>
+                        <div class="pull-right">
+                            HopJob974 - All rights reserved
+                        </div>
+                        <div class="clearfix"></div>
+                    </footer>
+                    <!-- /footer content -->
+                </div>
+            </div>
+        {% endblock %}
+        {% block javascripts %}
+            <script src="../../vendor/espaceAdmin/jquery/dist/jquery.min.js"></script>
+            <!-- Bootstrap -->
+            <script src="../../vendor/espaceAdmin/bootstrap/dist/js/bootstrap.min.js"></script>
+            <!-- FastClick -->
+            <script src="../../vendor/espaceAdmin/fastclick/lib/fastclick.js"></script>
+            <!-- NProgress -->
+            <script src="../../vendor/espaceAdmin/nprogress/nprogress.js"></script>
+            <!-- Chart.js -->
+            <script src="../../vendor/espaceAdmin/Chart.js/dist/Chart.min.js"></script>
+            <!-- gauge.js -->
+            <script src="../../vendor/espaceAdmin/gauge.js/dist/gauge.min.js"></script>
+            <!-- bootstrap-progressbar -->
+            <script src="../../vendor/espaceAdmin/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+            <!-- iCheck -->
+            <script src="../../vendor/espaceAdmin/iCheck/icheck.min.js"></script>
+            <!-- Skycons -->
+            <script src="../../vendor/espaceAdmin/skycons/skycons.js"></script>
+            <!-- Flot -->
+            <script src="../../vendor/espaceAdmin/Flot/jquery.flot.js"></script>
+            <script src="../../vendor/espaceAdmin/Flot/jquery.flot.pie.js"></script>
+            <script src="../../vendor/espaceAdmin/Flot/jquery.flot.time.js"></script>
+            <script src="../../vendor/espaceAdmin/Flot/jquery.flot.stack.js"></script>
+            <script src="../../vendor/espaceAdmin/Flot/jquery.flot.resize.js"></script>
+            <!-- Flot plugins -->
+            <script src="../../vendor/espaceAdmin/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+            <script src="../../vendor/espaceAdmin/flot-spline/js/jquery.flot.spline.min.js"></script>
+            <script src="../../vendor/espaceAdmin/flot.curvedlines/curvedLines.js"></script>
+            <!-- DateJS -->
+            <script src="../../vendor/espaceAdmin/DateJS/build/date.js"></script>
+            <!-- JQVMap -->
+            <script src="../../vendor/espaceAdmin/jqvmap/dist/jquery.vmap.js"></script>
+            <script src="../../vendor/espaceAdmin/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+            <script src="../../vendor/espaceAdmin/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+            <!-- bootstrap-daterangepicker -->
+            <script src="../../vendor/espaceAdmin/moment/min/moment.min.js"></script>
+            <script src="../../vendor/espaceAdmin/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+            <!-- Custom Theme Scripts -->
+            <script src="../../vendor/espaceAdmin/js/custom.min.js"></script>
+        {% endblock %}
+    </body>
+</html>
