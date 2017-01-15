@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %} Hopjob {% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />       
+
+        {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('js/bxslider/css/jquery.bxslider.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('css/global.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}"/>
+        
+        {% endblock %}
+
+        {% block javascripts %}
+            <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('js/bxslider/js/jquery.bxslider.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('js/global.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+        {% endblock %}
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    </head>
+    <body>
+
+        {% block body %}{% endblock %}
+
+    </body>
+</html>

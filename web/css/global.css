@@ -1,0 +1,23 @@
+html{font-family: "Somatic-Rounded";font-weight: 300}
+body{margin:0 auto;}
+@font-face {
+  font-family: "Somatic-Rounded";
+  src: "/CESI/hopjob974/web/font/Somatic-Rounded.otf"
+}
+.title-heading{text-align: center;margin: 20px auto}
+#header{;height:100vh;background-image: url(/CESI/hopjob974/web/img/header-bkg.jpg);height: 100vh;background-size:cover;background-repeat: no-repeat; }
+#logo{width: 200px;margin:40px 0 0 40px;float:left;}
+#authentication-container{text-align:center;float: right;margin: 40px 40px 0 0;color: #fff;font-family: "Somatic-Rounded";}
+#authentication-container .link{color: #fff;text-decoration: none;text-transform: uppercase;margin: 0 5px;}
+#authentication-container .link:hover{text-decoration: underline;}
+#authentication-container #service-btn{display:block;margin-top:5px;background-color:#073a86;padding: 9px 13px;color: #fff;text-transform: uppercase;text-decoration: none;}
+#nav-bar{clear: both;top: 350px;position: absolute;left: 0;right: 0;}
+#nav-bar #title{margin:0px;font-family: "Somatic-Rounded";font-size: 120px;text-align: center;color: #fff;text-shadow: black 0px 2px 15px;font-weight: 200;}
+/*#nav-bar #search-bar{display: block;margin: 0 auto;height: 30px; width:40%;border: none;box-shadow: 1px 1px 20px rgba(0,0,0,0.5);border-radius: 5px;}
+*/
+#text-ccm-l{color:#fff;background-color:#181f68;background-clip:content-box;padding: 15px 5px 15px 15px;}
+#text-ccm-r{color:#fff;background-color:#3a96c7;background-clip:content-box;padding: 15px 15px 15px 5px;}
+#text-ccm-l h2, #text-ccm-r h2{font-size: 70px}
+#text-ccm-l p, #text-ccm-r p{font-size: 35px;font-weight: 300;margin: 5px}
+#text-ccm-l p,  #text-ccm-l h2, #text-ccm-r p, #text-ccm-r h2{padding: 15px}
+.bx-wrapper{border: none!important;box-shadow: none}
