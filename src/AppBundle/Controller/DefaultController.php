@@ -13,9 +13,10 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
+        // récupération des données sur le REST
+        $domaines = $this->get("http")->performRequest("localhost/CESI/hopjob/rest/web/app_dev.php/attestations/1");
         return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+            'base_dir' => 'toto'.realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR, 'domaines' => $domaines
         ]);
     }
 

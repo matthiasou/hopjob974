@@ -1,10 +1,12 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %}
+    {% for domaine in domaines %}
+        {{ domaine.nom }}
+    {% endfor %}
     <div id="wrapper">
-
         <div id="header">
-            <img src="{{ asset("img/logo.png") }}" alt="hopjob" id="logo">
+            <a href="#"><img src="{{ asset("img/logo.png") }}" alt="hopjob" id="logo"></a>
             <div id="authentication-container">
                 <a id="sign-in" class="link" href="#">Connexion</a>
                 <span>•</span>
@@ -29,18 +31,18 @@
             <h1 class="title-heading">• nos services •</h1>
             <ul class="bxslider">
                 <li>
-                    <div class="col-sm-2 col-sm-offset-1"><a href="#"><img src="{{ asset('img/homepage/metier1.jpg') }}"/></a></div>
-                    <div class="col-sm-2"><a href="#"><img src="{{ asset('img/homepage/metier1.jpg') }}"/></a></div>
-                    <div class="col-sm-2"><a href="#"><img src="{{ asset('img/homepage/metier1.jpg') }}"/></a></div>
-                    <div class="col-sm-2"><a href="#"><img src="{{ asset('img/homepage/metier1.jpg') }}"/></a></div>
-                    <div class="col-sm-2"><a href="#"><img src="{{ asset('img/homepage/metier1.jpg') }}"/></a></div>
+                    <div class="col-sm-15"><a href="#"><img src="{{ asset('img/homepage/metier1.jpg') }}"/></a></div>
+                    <div class="col-sm-15"><a href="#"><img src="{{ asset('img/homepage/metier1.jpg') }}"/></a></div>
+                    <div class="col-sm-15"><a href="#"><img src="{{ asset('img/homepage/metier1.jpg') }}"/></a></div>
+                    <div class="col-sm-15"><a href="#"><img src="{{ asset('img/homepage/metier1.jpg') }}"/></a></div>
+                    <div class="col-sm-15"><a href="#"><img src="{{ asset('img/homepage/metier1.jpg') }}"/></a></div>
                 </li>
                 <li>
-                    <div class="col-sm-2 col-sm-offset-1"><a href="#"><img src="{{ asset('img/homepage/metier1.jpg') }}"/></a></div>
-                    <div class="col-sm-2"><a href="#"><img src="{{ asset('img/homepage/metier1.jpg') }}"/></a></div>
-                    <div class="col-sm-2"><a href="#"><img src="{{ asset('img/homepage/metier1.jpg') }}"/></a></div>
-                    <div class="col-sm-2"><a href="#"><img src="{{ asset('img/homepage/metier1.jpg') }}"/></a></div>
-                    <div class="col-sm-2"><a href="#"><img src="{{ asset('img/homepage/metier1.jpg') }}"/></a></div>
+                    <div class="col-sm-15"><a href="#"><img src="{{ asset('img/homepage/metier1.jpg') }}"/></a></div>
+                    <div class="col-sm-15"><a href="#"><img src="{{ asset('img/homepage/metier1.jpg') }}"/></a></div>
+                    <div class="col-sm-15"><a href="#"><img src="{{ asset('img/homepage/metier1.jpg') }}"/></a></div>
+                    <div class="col-sm-15"><a href="#"><img src="{{ asset('img/homepage/metier1.jpg') }}"/></a></div>
+                    <div class="col-sm-15"><a href="#"><img src="{{ asset('img/homepage/metier1.jpg') }}"/></a></div>
                 </li>
             </ul>
         </div>
