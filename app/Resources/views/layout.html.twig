@@ -4,18 +4,18 @@
         <title>{% block title %} Hopjob {% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />       
 
-        {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('js/bxslider/css/jquery.bxslider.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('css/global.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}"/>
-        
-        {% endblock %}
+        {% block stylesheet %}   
+                <link rel="stylesheet" href="{{ asset('bundles/app/bootstrap/css/bootstrap.css') }}" type="text/css" media="screen" />  
+                <link rel="stylesheet" href="{{ asset('bundles/app/bootstrap/css/bootstrap-theme.min.css') }}" type="text/css" media="screen" />  
+                <link rel="stylesheet" href="{{ asset('bundles/app/bxslider/css/jquery.bxslider.css') }}" type="text/css" media="screen" />  
+                <link rel="stylesheet" href="{{ asset('bundles/app/css/global.css') }}" type="text/css" media="screen" />  
+        {% endblock %}        
 
         {% block javascripts %}
-            <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('js/bxslider/js/jquery.bxslider.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('js/global.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('bundles/app/js/jquery.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('bundles/app/bootstrap/js/bootstrap.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('bundles/app/bxslider/js/jquery.bxslider.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('bundles/app/js/global.js') }}"></script>
         {% endblock %}
 
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
