@@ -27,7 +27,7 @@
         </div>
         <div id="services">
             <h1 class="title-heading">• nos services •</h1>
-            <ul class="bxslider">
+            <ul id="bxslider-desktop" class="hidden-xs hidden-sm">
 
                     {% for domaine in domaines %}
                         {% if loop.first or (loop.index - 1) % 5 == 0 %}
@@ -37,6 +37,38 @@
                                 <a href="#">{{ domaine.libelle }}</a>
                             </div>
                        {% if loop.last or (loop.index % 5) == 0 %}
+                            </li>
+                       {% endif %}
+                    {% endfor %}
+
+            </ul>
+
+           <ul id="bxslider-regular" class="hidden-xs hidden-md hidden-lg">
+
+                    {% for domaine in domaines %}
+                        {% if loop.first or (loop.index - 1) % 3 == 0 %}
+                            <li>
+                        {% endif %}
+                            <div class="col-sm-4 domaines" style="background: url({{ asset('bundles/app/img/homepage/' ~ domaine.idDomaine ~ '.jpg') }}) no-repeat content-box;">
+                                <a href="#">{{ domaine.libelle }}</a>
+                            </div>
+                       {% if loop.last or (loop.index % 3) == 0 %}
+                            </li>
+                       {% endif %}
+                    {% endfor %}
+
+            </ul>
+
+           <ul id="bxslider-mobile" class="hidden-xs hidden-md hidden-lg">
+
+                    {% for domaine in domaines %}
+                        {% if loop.first or (loop.index - 1) % 2 == 0 %}
+                            <li>
+                        {% endif %}
+                            <div class="col-sm-4 domaines" style="background: url({{ asset('bundles/app/img/homepage/' ~ domaine.idDomaine ~ '.jpg') }}) no-repeat content-box;">
+                                <a href="#">{{ domaine.libelle }}</a>
+                            </div>
+                       {% if loop.last or (loop.index % 2) == 0 %}
                             </li>
                        {% endif %}
                     {% endfor %}
