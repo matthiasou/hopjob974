@@ -2,10 +2,10 @@ html{font-family: "Somatic-Rounded";font-weight: 300}
 body{margin:0 auto;}
 @font-face {
   font-family: "Somatic-Rounded";
-  src: "/CESI/hopjob974/web/font/Somatic-Rounded.otf"
+  src: "/CESI/hopjob/hopjob974/web/font/Somatic-Rounded.otf"
 }
 .title-heading{text-align: center;margin: 20px auto}
-#header{;height:100vh;background-image: url(/CESI/hopjob974/web/img/header-bkg.jpg);height: 100vh;background-size:cover;background-repeat: no-repeat; }
+#header{;height:100vh;background-image: url(/CESI/hopjob/hopjob974/web/img/header-bkg.jpg);height: 100vh;background-size:cover;background-repeat: no-repeat; }
 #logo{width: 200px;margin:40px 0 0 40px;float:left;}
 #authentication-container{text-align:center;float: right;margin: 40px 40px 0 0;color: #fff;font-family: "Somatic-Rounded";}
 #authentication-container .link{color: #fff;text-decoration: none;text-transform: uppercase;margin: 0 5px;}
