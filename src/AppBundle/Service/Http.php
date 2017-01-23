@@ -4,8 +4,12 @@ namespace AppBundle\Service;
 
 class Http
 {    
-    public function performRequest($siteUrl)
+    public function performRequest($params)
     {
+    	
+    	$siteUrl = "localhost/CESI/hopjob/hopjobrest/web/app_dev.php/".$params; // dev
+    	// $siteUrl = "localhost/CESI/hopjob/rest/web/app_dev.php/".$params; // prod
+
     	//  Initiate curl
 		$ch = curl_init();
 		// Disable SSL verification
