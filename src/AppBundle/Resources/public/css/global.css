@@ -8,21 +8,129 @@
 }
 html{font-family: "Somatic-Rounded";font-weight: 300}
 body{margin:0 auto;}
+.spacer{margin-top: 20px}
 
 .title-heading{text-align: center;margin: 20px auto}
 #header{;height:100vh;height: 100vh;background-size:cover;background-repeat: no-repeat; }
-#logo{width: 200px;margin:40px 0 0 40px;float:left;}
-#authentication-container{text-align:center;float: right;margin: 40px 40px 0 0;color: #fff;font-family: "Somatic-Rounded";}
-#authentication-container .link{color: #fff;text-decoration: none;text-transform: uppercase;margin: 0 5px;}
+#authentication-container{text-align:center;float: right;color: #fff;font-family: "Somatic-Rounded";}
+#authentication-container .link{color: #fff;text-decoration: none;text-transform: uppercase;margin: 0 5px;text-shadow: 1px 1px 10px black}
 #authentication-container .link:hover{text-decoration: underline;}
 #authentication-container #service-btn{display:block;margin-top:5px;background-color:#073a86;padding: 9px 13px;color: #fff;text-transform: uppercase;text-decoration: none;}
 #nav-bar{clear: both;top: 350px;position: absolute;left: 0;right: 0;}
 #nav-bar #title{margin:0px;font-family: "Somatic-Rounded";font-size: 120px;text-align: center;color: #fff;text-shadow: black 0px 2px 15px;font-weight: 200;}
-#text-ccm-l{color:#fff;background-color:#181f68;background-clip:content-box;padding: 15px 5px 15px 15px;}
-#text-ccm-r{color:#fff;background-color:#3a96c7;background-clip:content-box;padding: 15px 15px 15px 5px;}
-#text-ccm-l h2, #text-ccm-r h2{font-size: 70px}
-#text-ccm-l p, #text-ccm-r p{font-size: 35px;font-weight: 300;margin: 5px}
+#text-ccm-l{color:#fff;background-color:#181f68;background-clip:content-box;}
+#text-ccm-r{color:#fff;background-color:#3a96c7;background-clip:content-box;}
 #text-ccm-l p,  #text-ccm-l h2, #text-ccm-r p, #text-ccm-r h2{padding: 15px}
+
+@media (max-width: 767px) {
+	#nav-bar{top:300px;}
+    #title{font-size: 70px!important}
+    #authentication-container{float: none}
+	#text-ccm-l h2, #text-ccm-r h2{font-size: 30px}
+	#text-ccm-l p, #text-ccm-r p{font-size: 20px}
+	#text-ccm-l, #text-ccm-r{background-size: 80px;height:330px;}
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+	#text-ccm-l h2, #text-ccm-r h2{font-size: 40px}
+	#text-ccm-l p, #text-ccm-r p{font-size: 20px}
+	#text-ccm-l, #text-ccm-r{height: 400px;background-size:80px}
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+	#text-ccm-l h2, #text-ccm-r h2{font-size: 40px}
+	#text-ccm-l p, #text-ccm-r p{font-size: 20px}
+	#text-ccm-l, #text-ccm-r{height: 550px;background-size:130px}
+}
+
+@media (min-width: 1200px) {
+	#text-ccm-l h2, #text-ccm-r h2{font-size: 50px}
+	#text-ccm-l p, #text-ccm-r p{font-size: 35px}
+	#text-ccm-l, #text-ccm-r{height: 550px;background-size:130px}
+}
+
+/* SLIDER BLOCK */
+
 .bx-wrapper{border: none!important;box-shadow: none}
 .domaines{display:table;height:581px;padding:5px;text-align:center}
 .domaines a{font-weight: 300;display:table-cell;vertical-align:middle;color:#fff;text-decoration:none;font-size:40px;text-shadow:1px 1px 5px #000;font-family: "Quicksand-Regular"}
+
+/* END SLIDER BLOCK */
+
+
+/* LOGIN BLOCK */
+
+#login-lightbox{display: none}
+
+/*
+    Note: It is best to use a less version of this file ( see http://css2less.cc
+    For the media queries use @screen-sm-min instead of 768px.
+    For .omb_spanOr use @body-bg instead of white.
+*/
+
+@media (min-width: 768px) {
+    .omb_row-sm-offset-3 div:first-child[class*="col-"] {
+        margin-left: 25%;
+    }
+}
+
+.omb_login .omb_authTitle {
+    text-align: center;
+	line-height: 300%;
+}
+	
+.omb_login .omb_socialButtons a {
+	color: white; // In yourUse @body-bg 
+	opacity:0.9;
+}
+.omb_login .omb_socialButtons a:hover {
+    color: white;
+	opacity:1;    	
+}
+.omb_login .omb_socialButtons .omb_btn-facebook {background: #3b5998;}
+.omb_login .omb_socialButtons .omb_btn-twitter {background: #00aced;}
+.omb_login .omb_socialButtons .omb_btn-google {background: #c32f10;}
+
+
+.omb_login .omb_loginOr {
+	position: relative;
+	font-size: 1.5em;
+	color: #aaa;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+.omb_login .omb_loginOr .omb_hrOr {
+	background-color: #cdcdcd;
+	height: 1px;
+	margin-top: 0px !important;
+	margin-bottom: 0px !important;
+}
+.omb_login .omb_loginOr .omb_spanOr {
+	display: block;
+	position: absolute;
+	left: 50%;
+	top: -0.6em;
+	margin-left: -1.5em;
+	background-color: white;
+	width: 3em;
+	text-align: center;
+}			
+
+.omb_login .omb_loginForm .input-group.i {
+	width: 2em;
+}
+.omb_login .omb_loginForm  .help-block {
+    color: red;
+}
+
+	
+@media (min-width: 768px) {
+    .omb_login .omb_forgotPwd {
+        text-align: right;
+		margin-top:10px;
+ 	}		
+}
+
+/* END LOGIN BLOCK */

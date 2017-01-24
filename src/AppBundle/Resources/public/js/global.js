@@ -2,21 +2,23 @@ $(document).ready(function(){
 
 	var width = $(window).width();
 
-	if (width <= 768) {
+	if (width < 768) {
 		$('#bxslider-mobile').bxSlider({
-			controls:false
+			controls: false
 		});
 	}
 
-	if (width > 768 && width < 1240) {
+	if (width >= 768 && width < 1200) {
 		$('#bxslider-regular').bxSlider({
-			controls:false
+			controls: false
 		});
 	}
 
-	if (width > 1240) {
+	if (width >= 1200) {
 		$('#bxslider-desktop').bxSlider({
-			controls:false
+			controls: false,
+			infiniteLoop: true,
+			speed: 100
 		});
 	}
 
