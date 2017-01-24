@@ -3,17 +3,98 @@
 {% block body %}
 
     <div id="wrapper">
-        <div id="header" style="background-image: url({{ asset('bundles/app/img/header-bkg.jpg') }})">
-            <a href="#"><img src="{{ asset("bundles/app/img/logo.png") }}" alt="hopjob" id="logo"></a>
-            <div id="authentication-container">
-                <a id="sign-in" class="link" href="#">Connexion</a>
-                <span>•</span>
-                <a id="sign-up" class="link" href="#">Inscription</a><br>
-                <a id="service-btn" href="#">Proposer mes services</a>
+        <div id="header" style="background-image: url({{ asset('bundles/app/img/header-bkg.jpg') }});">
+            <div>
+                <div class="col-xs-12 col-md-2 col-sm-4 text-xs-center spacer">
+                    <a href="#" class="col-xs-8 col-xs-offset-2 col-sm-12 col-sm-offset-0">
+                        <img src="{{ asset("bundles/app/img/logo.png") }}" alt="hopjob" class="img-responsive" id="logo">
+                    </a> 
+                </div>
+                <div class="col-xs-12 hidden-sm hidden-md hidden-lg spacer"></div>
+                <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-8 col-md-10 spacer">
+                    <div id="authentication-container" class="col-xs-12 col-sm-6 col-md-3">
+                        <a id="sign-in" class="link" data-fancybox data-src="#login-lightbox" href="javascript:;">Connexion</a>
+                            
+                        {# LOGIN BOX #}
+                        <div style="display:none" id="login-lightbox">
+                            <div class="container">
+                                <div class="omb_login">
+                                    <h3 class="omb_authTitle">Login or <a href="#">Sign up</a></h3>
+                                    <div class="row omb_row-sm-offset-3 omb_socialButtons">
+                                        <div class="col-xs-4 col-sm-2">
+                                            <a href="#" class="btn btn-lg btn-block omb_btn-facebook">
+                                                <i class="fa fa-facebook visible-xs"></i>
+                                                <span class="hidden-xs">Facebook</span>
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-4 col-sm-2">
+                                            <a href="#" class="btn btn-lg btn-block omb_btn-twitter">
+                                                <i class="fa fa-twitter visible-xs"></i>
+                                                <span class="hidden-xs">Twitter</span>
+                                            </a>
+                                        </div>  
+                                        <div class="col-xs-4 col-sm-2">
+                                            <a href="#" class="btn btn-lg btn-block omb_btn-google">
+                                                <i class="fa fa-google-plus visible-xs"></i>
+                                                <span class="hidden-xs">Google+</span>
+                                            </a>
+                                        </div>  
+                                    </div>
+
+                                    <div class="row omb_row-sm-offset-3 omb_loginOr">
+                                        <div class="col-xs-12 col-sm-6">
+                                            <hr class="omb_hrOr">
+                                            <span class="omb_spanOr">or</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row omb_row-sm-offset-3">
+                                        <div class="col-xs-12 col-sm-6">    
+                                            <form class="omb_loginForm" action="" autocomplete="off" method="POST">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                    <input type="text" class="form-control" name="username" placeholder="email address">
+                                                </div>
+                                                <span class="help-block"></span>
+                                                                    
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                                    <input  type="password" class="form-control" name="password" placeholder="Password">
+                                                </div>
+                                                <span class="help-block">Password error</span>
+
+                                                <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="row omb_row-sm-offset-3">
+                                        <div class="col-xs-12 col-sm-3">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="remember-me">Remember Me
+                                            </label>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-3">
+                                            <p class="omb_forgotPwd">
+                                                <a href="#">Forgot password?</a>
+                                            </p>
+                                        </div>
+                                    </div>          
+                                </div>
+                             </div>
+                        </div>
+
+                        {# END LOGIN BOX #}
+
+                        <span>•</span>
+                        <a id="sign-up" class="link" href="#">Inscription</a><br>
+                        <a id="service-btn" href="#">Proposer mes services</a>
+                    </div>
+                </div>
             </div>
+            
             <div id="nav-bar" class="col-xs-12">
                 <h3 id="title">Je cherche</h3>
-                <div class="col-sm-6 col-sm-offset-3">
+                <div class="col-xs-12 col-sm-12 col-sm-offset-0 col-md-6 col-md-offset-3">
                   <form class="navbar-form" role="search">
                     <div class="input-group add-on" style="width:100%">
                       <input class="form-control" placeholder="Search" style="height:35px" name="srch-term" id="srch-term" type="text">
@@ -33,7 +114,7 @@
                         {% if loop.first or (loop.index - 1) % 5 == 0 %}
                             <li>
                         {% endif %}
-                            <div class="col-sm-15 domaines" style="background: url({{ asset('bundles/app/img/homepage/' ~ domaine.idDomaine ~ '.jpg') }}) no-repeat content-box;">
+                            <div class="col-md-15 domaines" style="background: url({{ asset('bundles/app/img/homepage/' ~ domaine.idDomaine ~ '.jpg') }}) no-repeat content-box;">
                                 <a href="#">{{ domaine.libelle }}</a>
                             </div>
                        {% if loop.last or (loop.index % 5) == 0 %}
@@ -46,26 +127,10 @@
            <ul id="bxslider-regular" class="hidden-xs hidden-md hidden-lg">
 
                     {% for domaine in domaines %}
-                        {% if loop.first or (loop.index - 1) % 3 == 0 %}
-                            <li>
-                        {% endif %}
-                            <div class="col-sm-4 domaines" style="background: url({{ asset('bundles/app/img/homepage/' ~ domaine.idDomaine ~ '.jpg') }}) no-repeat content-box;">
-                                <a href="#">{{ domaine.libelle }}</a>
-                            </div>
-                       {% if loop.last or (loop.index % 3) == 0 %}
-                            </li>
-                       {% endif %}
-                    {% endfor %}
-
-            </ul>
-
-           <ul id="bxslider-mobile" class="hidden-xs hidden-md hidden-lg">
-
-                    {% for domaine in domaines %}
                         {% if loop.first or (loop.index - 1) % 2 == 0 %}
                             <li>
                         {% endif %}
-                            <div class="col-sm-4 domaines" style="background: url({{ asset('bundles/app/img/homepage/' ~ domaine.idDomaine ~ '.jpg') }}) no-repeat content-box;">
+                            <div class="col-sm-6 domaines" style="background: url({{ asset('bundles/app/img/homepage/' ~ domaine.idDomaine ~ '.jpg') }}) no-repeat content-box;">
                                 <a href="#">{{ domaine.libelle }}</a>
                             </div>
                        {% if loop.last or (loop.index % 2) == 0 %}
@@ -74,14 +139,25 @@
                     {% endfor %}
 
             </ul>
+
+           <ul id="bxslider-mobile" class="hidden-sm hidden-md hidden-lg">
+                {% for domaine in domaines %}
+                    <li>
+                        <div class="col-xs-12 domaines" style="background: url({{ asset('bundles/app/img/homepage/' ~ domaine.idDomaine ~ '.jpg') }}) no-repeat content-box;">
+                            <a href="#">{{ domaine.libelle }}</a>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
         </div>
-        <div class="col-sm-6 text-right" id="text-ccm-l" style="background-image:url({{ asset('bundles/app/img/homepage/ccm-1.png') }});background-repeat: no-repeat;background-position: left 40px bottom 40px;height: 550px;background-size:130px">
+        <div class="col-sm-6 text-right col-xs-12" id="text-ccm-l" style="background-image:url({{ asset('bundles/app/img/homepage/ccm-1.png') }});background-repeat: no-repeat;background-position: left 40px bottom 40px;">
             <h2>Comment ça marche ?</h2>
             <p>- Déposer une <strong>annonce</strong><br>
             - Recevez des <strong>candidatures</strong><br>
             - <strong>Choisissez</strong></p>
         </div>
-        <div class="col-sm-6 text-left" id="text-ccm-r" style="background-image:url({{ asset('bundles/app/img/homepage/ccm-2.png') }});background-repeat: no-repeat;background-position: right 40px bottom 40px;height: 550px;background-size:130px">
+        <div class=" hidden-sm hidden-md hidden-lg spacer col-xs-12"></div>
+        <div class="col-sm-6 text-left col-xs-12" id="text-ccm-r" style="background-image:url({{ asset('bundles/app/img/homepage/ccm-2.png') }});background-repeat: no-repeat;background-position: right 40px bottom 40px;">
             <h2>On s'occupe de tout !</h2>
             <p>- Paiement <strong>sécurisé</strong><br>
             - Recevez des <strong>candidatures</strong><br>
