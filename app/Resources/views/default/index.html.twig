@@ -108,13 +108,13 @@
         </div>
         <div id="services">
             <h1 class="title-heading">• nos services •</h1>
-            <ul id="bxslider-desktop" class="hidden-xs hidden-sm">
+            <ul id="bxslider-desktop">
 
                     {% for domaine in domaines %}
                         {% if loop.first or (loop.index - 1) % 5 == 0 %}
                             <li>
                         {% endif %}
-                            <div class="col-md-15 domaines" style="background: url({{ asset('bundles/app/img/homepage/' ~ domaine.idDomaine ~ '.jpg') }}) no-repeat content-box;">
+                            <div class="col-md-15 domaines" style="background-image: url({{ asset('bundles/app/img/homepage/' ~ domaine.idDomaine ~ '.jpg') }})">
                                 <a href="#">{{ domaine.libelle }}</a>
                             </div>
                        {% if loop.last or (loop.index % 5) == 0 %}
@@ -124,13 +124,13 @@
 
             </ul>
 
-           <ul id="bxslider-regular" class="hidden-xs hidden-md hidden-lg">
+           <ul id="bxslider-tablette">
 
                     {% for domaine in domaines %}
                         {% if loop.first or (loop.index - 1) % 2 == 0 %}
                             <li>
                         {% endif %}
-                            <div class="col-sm-6 domaines" style="background: url({{ asset('bundles/app/img/homepage/' ~ domaine.idDomaine ~ '.jpg') }}) no-repeat content-box;">
+                            <div class="col-sm-6 domaines" style="background-image: url({{ asset('bundles/app/img/homepage/' ~ domaine.idDomaine ~ '.jpg') }})">
                                 <a href="#">{{ domaine.libelle }}</a>
                             </div>
                        {% if loop.last or (loop.index % 2) == 0 %}
@@ -140,24 +140,24 @@
 
             </ul>
 
-           <ul id="bxslider-mobile" class="hidden-sm hidden-md hidden-lg">
+           <ul id="bxslider-mobile">
                 {% for domaine in domaines %}
                     <li>
-                        <div class="col-xs-12 domaines" style="background: url({{ asset('bundles/app/img/homepage/' ~ domaine.idDomaine ~ '.jpg') }}) no-repeat content-box;">
+                        <div class="col-xs-12 domaines" style="background-image: url({{ asset('bundles/app/img/homepage/' ~ domaine.idDomaine ~ '.jpg') }})">
                             <a href="#">{{ domaine.libelle }}</a>
                         </div>
                     </li>
                 {% endfor %}
             </ul>
         </div>
-        <div class="col-sm-6 text-right col-xs-12" id="text-ccm-l" style="background-image:url({{ asset('bundles/app/img/homepage/ccm-1.png') }});background-repeat: no-repeat;background-position: left 40px bottom 40px;">
+        <div class="col-sm-6 text-right col-xs-12" id="text-ccm-l" style="background-image:url({{ asset('bundles/app/img/homepage/ccm-1.png') }});background-repeat: no-repeat;">
             <h2>Comment ça marche ?</h2>
             <p>- Déposer une <strong>annonce</strong><br>
             - Recevez des <strong>candidatures</strong><br>
             - <strong>Choisissez</strong></p>
         </div>
         <div class=" hidden-sm hidden-md hidden-lg spacer col-xs-12"></div>
-        <div class="col-sm-6 text-left col-xs-12" id="text-ccm-r" style="background-image:url({{ asset('bundles/app/img/homepage/ccm-2.png') }});background-repeat: no-repeat;background-position: right 40px bottom 40px;">
+        <div class="col-sm-6 text-left col-xs-12" id="text-ccm-r" style="background-image:url({{ asset('bundles/app/img/homepage/ccm-2.png') }});background-repeat: no-repeat;">
             <h2>On s'occupe de tout !</h2>
             <p>- Paiement <strong>sécurisé</strong><br>
             - Recevez des <strong>candidatures</strong><br>

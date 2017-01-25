@@ -1,25 +1,42 @@
 $(document).ready(function(){
 
-	var width = $(window).width();
+// HOMEPAGE
 
-	if (width < 768) {
-		$('#bxslider-mobile').bxSlider({
-			controls: false
-		});
-	}
+	loadSlider();
 
-	if (width >= 768 && width < 1200) {
-		$('#bxslider-regular').bxSlider({
-			controls: false
-		});
-	}
-
-	if (width >= 1200) {
-		$('#bxslider-desktop').bxSlider({
-			controls: false,
-			infiniteLoop: true,
-			speed: 100
-		});
-	}
+// ENDHOMEPAGE
 
 });
+
+function loadSlider(){
+
+	$('#bxslider-mobile').bxSlider({
+		controls: false,
+		auto: true,
+		speed: 300,
+		onSliderLoad: function(params) {
+			$('ul#bxslider-mobile').parent().parent('.bx-wrapper').addClass('hidden-sm hidden-md hidden-lg');
+		}
+	});
+
+	$('#bxslider-tablette').bxSlider({
+		controls: false,
+		auto: true,
+		speed: 300,
+		onSliderLoad: function(params) {
+			$('ul#bxslider-tablette').parent().parent('.bx-wrapper').addClass('hidden-xs hidden-lg');
+		}
+	});
+
+	$('#bxslider-desktop').bxSlider({
+		controls: false,
+		auto: true,
+		speed: 300,
+		onSliderLoad: function(params) {
+			$('ul#bxslider-desktop').parent().parent('.bx-wrapper').addClass('hidden-xs hidden-sm hidden-md');
+		}
+	});
+
+}
+
+
