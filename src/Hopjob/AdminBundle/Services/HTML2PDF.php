@@ -6,7 +6,7 @@
  * Time: 00:36
  */
 
-namespace AppBundle\Service;
+namespace Hopjob\FrontBundle\Services;
 
 
 class HTML2PDF

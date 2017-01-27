@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace Hopjob\FrontBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -15,16 +15,21 @@ class DefaultController extends Controller
     {
         // récupération des données sur le REST
         $domaines = $this->get("http")->performRequest("domaines");
-        return $this->render('default/index.html.twig', [
+
+        return $this->render('FrontBundle::default/index.html.twig', [
             'base_dir' => 'toto'.realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR, 'domaines' => $domaines
         ]);
     }
 
+    /**
+     * @Route("/contact", name="contact")
+     */
     public function contactAction(Request $request)
     {
+
         // Create the form according to the FormType created previously.
         // And give the proper parameters
-        $form = $this->createForm('AppBundle\Form\ContactType',null,array(
+        $form = $this->createForm('Hopjob\FrontBundle\Form\ContactType',null,array(
             // To set the action use $this->generateUrl('route_identifier')
             'action' => $this->generateUrl('contact'),
             'method' => 'POST'
@@ -48,7 +53,7 @@ class DefaultController extends Controller
             }
         }
 
-        return $this->render('contact.html.twig', array(
+        return $this->render('FrontBundle::contact.html.twig', array(
             'form' => $form->createView()
         ));
     }

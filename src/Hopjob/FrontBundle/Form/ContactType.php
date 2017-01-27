@@ -6,7 +6,7 @@
  * Time: 23:27
  */
 
-namespace AppBundle\Form;
+namespace Hopjob\FrontBundle\Form;
 
 
 use Symfony\Component\Form\AbstractType;

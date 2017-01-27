@@ -2,6 +2,8 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: "@FrontBundle/Resources/config/services.yml" }
+    - { resource: "@AdminBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -72,7 +74,3 @@ swiftmailer:
     #auth_mode: "%mailer_auth_mode%"
     #port:      "%mailer_port%"
     spool:     { type: memory }
-
-services:
-    http:
-        class: AppBundle\Service\Http

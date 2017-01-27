@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Service;
+namespace Hopjob\FrontBundle\Services;
 
 class Http
 {    

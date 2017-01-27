@@ -11,22 +11,22 @@
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <!-- Bootstrap -->
-        <link href="../../vendor/espaceAdmin/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../vendor/espaceAdmin/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
         <!-- Font Awesome -->
-        <link href="../../vendor/espaceAdmin/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../vendor/espaceAdmin/font-awesome/css/font-awesome.min.css" rel="stylesheet">
         <!-- NProgress -->
-        <link href="../../vendor/espaceAdmin/nprogress/nprogress.css" rel="stylesheet">
+        <link href="../../../vendor/espaceAdmin/nprogress/nprogress.css" rel="stylesheet">
         <!-- iCheck -->
-        <link href="../../vendor/espaceAdmin/iCheck/skins/flat/green.css" rel="stylesheet">
+        <link href="../../../vendor/espaceAdmin/iCheck/skins/flat/green.css" rel="stylesheet">
         <!-- bootstrap-progressbar -->
-        <link href="../../vendor/espaceAdmin/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+        <link href="../../../vendor/espaceAdmin/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
         <!-- JQVMap -->
-        <link href="../../vendor/espaceAdmin//jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+        <link href="../../../vendor/espaceAdmin//jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
         <!-- bootstrap-daterangepicker -->
-        <link href="../../vendor/espaceAdmin/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+        <link href="../../../vendor/espaceAdmin/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
         <!-- Custom Theme Style -->
-        <link href="../../vendor/espaceAdmin/css/custom.min.css" rel="stylesheet">
+        <link href="../../../vendor/espaceAdmin/css/custom.min.css" rel="stylesheet">
     </head>
     <body class="nav-md">
         {% block body %}
@@ -35,7 +35,7 @@
                     <div class="col-md-3 left_col">
                         <div class="left_col scroll-view">
                             <div class="navbar nav_title" style="border: 0;">
-                                <a href="{{ path('admin') }}" class="site_title"><i class="fa fa-home"></i> <span><img height="55px" src="../../web/img/admin/logo.png"></span></a>
+                                <a href="{{ path('admin') }}" class="site_title"><i class="fa fa-home"></i> <span><img height="55px" src="{{ asset('bundles/admin/img/logo.png') }}"></span></a>
                             </div>
 
                             <div class="clearfix"></div>
@@ -43,7 +43,7 @@
                             <!-- menu profile quick info -->
                             <div class="profile clearfix">
                                 <div class="profile_pic">
-                                    <img src="../../web/img/admin/img.jpg" alt="..." class="img-circle profile_img">
+                                    <img src="{{ asset('bundles/admin/img/img.jpg') }}" alt="..." class="img-circle profile_img">
                                 </div>
                                 <div class="profile_info">
                                     <span>Bienvenue,</span>
@@ -92,7 +92,7 @@
                                 <ul class="nav navbar-nav navbar-right">
                                     <li class="">
                                         <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                            <img src="../../web/img/admin/img.jpg" alt="">Alexandra Pottier
+                                            <img src="{{ asset('bundles/admin/img/img.jpg') }}" alt="">Alexandra Pottier
                                             <span class=" fa fa-angle-down"></span>
                                         </a>
                                         <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -115,7 +115,7 @@
                                         <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                                             <li>
                                                 <a>
-                                                    <span class="image"><img src="../../web/img/admin/img.jpg" alt="Profile Image" /></span>
+                                                    <span class="image"><img src="{{ asset('bundles/admin/img/img.jpg') }}" alt="Profile Image" /></span>
                                                     <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -127,7 +127,7 @@
                                             </li>
                                             <li>
                                                 <a>
-                                                    <span class="image"><img src="../../web/img/admin/img.jpg" alt="Profile Image" /></span>
+                                                    <span class="image"><img src="{{ asset('bundles/admin/img/img.jpg') }}" alt="Profile Image" /></span>
                                                     <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -139,7 +139,7 @@
                                             </li>
                                             <li>
                                                 <a>
-                                                    <span class="image"><img src="../../web/img/admin/img.jpg" alt="Profile Image" /></span>
+                                                    <span class="image"><img src="{{ asset('bundles/admin/img/img.jpg') }}" alt="Profile Image" /></span>
                                                     <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -151,7 +151,7 @@
                                             </li>
                                             <li>
                                                 <a>
-                                                    <span class="image"><img src="../../web/img/admin/img.jpg" alt="Profile Image" /></span>
+                                                    <span class="image"><img src="{{ asset('bundles/admin/img/img.jpg') }}" alt="Profile Image" /></span>
                                                     <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -538,45 +538,45 @@
             </div>
         {% endblock %}
         {% block javascripts %}
-            <script src="../../vendor/espaceAdmin/jquery/dist/jquery.min.js"></script>
+            <script src="../../../vendor/espaceAdmin/jquery/dist/jquery.min.js"></script>
             <!-- Bootstrap -->
-            <script src="../../vendor/espaceAdmin/bootstrap/dist/js/bootstrap.min.js"></script>
+            <script src="../../../vendor/espaceAdmin/bootstrap/dist/js/bootstrap.min.js"></script>
             <!-- FastClick -->
-            <script src="../../vendor/espaceAdmin/fastclick/lib/fastclick.js"></script>
+            <script src="../../../vendor/espaceAdmin/fastclick/lib/fastclick.js"></script>
             <!-- NProgress -->
-            <script src="../../vendor/espaceAdmin/nprogress/nprogress.js"></script>
+            <script src="../../../vendor/espaceAdmin/nprogress/nprogress.js"></script>
             <!-- Chart.js -->
-            <script src="../../vendor/espaceAdmin/Chart.js/dist/Chart.min.js"></script>
+            <script src="../../../vendor/espaceAdmin/Chart.js/dist/Chart.min.js"></script>
             <!-- gauge.js -->
-            <script src="../../vendor/espaceAdmin/gauge.js/dist/gauge.min.js"></script>
+            <script src="../../../vendor/espaceAdmin/gauge.js/dist/gauge.min.js"></script>
             <!-- bootstrap-progressbar -->
-            <script src="../../vendor/espaceAdmin/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+            <script src="../../../vendor/espaceAdmin/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
             <!-- iCheck -->
-            <script src="../../vendor/espaceAdmin/iCheck/icheck.min.js"></script>
+            <script src="../../../vendor/espaceAdmin/iCheck/icheck.min.js"></script>
             <!-- Skycons -->
-            <script src="../../vendor/espaceAdmin/skycons/skycons.js"></script>
+            <script src="../../../vendor/espaceAdmin/skycons/skycons.js"></script>
             <!-- Flot -->
-            <script src="../../vendor/espaceAdmin/Flot/jquery.flot.js"></script>
-            <script src="../../vendor/espaceAdmin/Flot/jquery.flot.pie.js"></script>
-            <script src="../../vendor/espaceAdmin/Flot/jquery.flot.time.js"></script>
-            <script src="../../vendor/espaceAdmin/Flot/jquery.flot.stack.js"></script>
-            <script src="../../vendor/espaceAdmin/Flot/jquery.flot.resize.js"></script>
+            <script src="../../../vendor/espaceAdmin/Flot/jquery.flot.js"></script>
+            <script src="../../../vendor/espaceAdmin/Flot/jquery.flot.pie.js"></script>
+            <script src="../../../vendor/espaceAdmin/Flot/jquery.flot.time.js"></script>
+            <script src="../../../vendor/espaceAdmin/Flot/jquery.flot.stack.js"></script>
+            <script src="../../../vendor/espaceAdmin/Flot/jquery.flot.resize.js"></script>
             <!-- Flot plugins -->
-            <script src="../../vendor/espaceAdmin/flot.orderbars/js/jquery.flot.orderBars.js"></script>
-            <script src="../../vendor/espaceAdmin/flot-spline/js/jquery.flot.spline.min.js"></script>
-            <script src="../../vendor/espaceAdmin/flot.curvedlines/curvedLines.js"></script>
+            <script src="../../../vendor/espaceAdmin/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+            <script src="../../../vendor/espaceAdmin/flot-spline/js/jquery.flot.spline.min.js"></script>
+            <script src="../../../vendor/espaceAdmin/flot.curvedlines/curvedLines.js"></script>
             <!-- DateJS -->
-            <script src="../../vendor/espaceAdmin/DateJS/build/date.js"></script>
+            <script src="../../../vendor/espaceAdmin/DateJS/build/date.js"></script>
             <!-- JQVMap -->
-            <script src="../../vendor/espaceAdmin/jqvmap/dist/jquery.vmap.js"></script>
-            <script src="../../vendor/espaceAdmin/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-            <script src="../../vendor/espaceAdmin/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+            <script src="../../../vendor/espaceAdmin/jqvmap/dist/jquery.vmap.js"></script>
+            <script src="../../../vendor/espaceAdmin/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+            <script src="../../../vendor/espaceAdmin/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
             <!-- bootstrap-daterangepicker -->
-            <script src="../../vendor/espaceAdmin/moment/min/moment.min.js"></script>
-            <script src="../../vendor/espaceAdmin/bootstrap-daterangepicker/daterangepicker.js"></script>
+            <script src="../../../vendor/espaceAdmin/moment/min/moment.min.js"></script>
+            <script src="../../../vendor/espaceAdmin/bootstrap-daterangepicker/daterangepicker.js"></script>
 
             <!-- Custom Theme Scripts -->
-            <script src="../../vendor/espaceAdmin/js/custom.min.js"></script>
+            <script src="../../../vendor/espaceAdmin/js/custom.min.js"></script>
         {% endblock %}
     </body>
 </html>

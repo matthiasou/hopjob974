@@ -1,0 +1,12 @@
+index:
+    path:     /
+    defaults: { _controller: FrontBundle:Default:index }
+
+contact:
+    path:     /contact
+    defaults: { _controller: FrontBundle:Default:contact }
+
+pdf:
+    path:     /pdf
+    defaults: { _controller: FrontBundle:Default:pdf }
+
