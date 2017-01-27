@@ -1,0 +1,16 @@
+admin:
+    path:     /
+    defaults: { _controller: AdminBundle:Default:admin }
+
+messagerie:
+    path:     /messagerie
+    defaults: { _controller: AdminBundle:Default:messagerie }
+
+code:
+    path:     /code
+    defaults: { _controller: AdminBundle:Default:code }
+
+
+documents:
+    path:     /documents
+    defaults: { _controller: AdminBundle:Default:documents }
