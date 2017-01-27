@@ -16,9 +16,12 @@ class DefaultController extends Controller
         // récupération des données sur le REST
         $domaines = $this->get("http")->performRequest("domaines");
 
-        return $this->render('FrontBundle::default/index.html.twig', [
-            'base_dir' => 'toto'.realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR, 'domaines' => $domaines
-        ]);
+        if ($domaines['status'] == 'succes') {
+            $params['domaines'] = $domaines['data'];
+        }
+        $params['base_dir'] = 'toto'.realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR;
+
+        return $this->render('FrontBundle::default/index.html.twig', $params);
     }
 
     /**
@@ -26,7 +29,6 @@ class DefaultController extends Controller
      */
     public function contactAction(Request $request)
     {
-
         // Create the form according to the FormType created previously.
         // And give the proper parameters
         $form = $this->createForm('Hopjob\FrontBundle\Form\ContactType',null,array(
@@ -86,7 +88,5 @@ class DefaultController extends Controller
         $html2pdf->create('P','A4','fr',true,'UTF-8', array(10,15,10,15));
         return $html2pdf->generatePdf($template, "facture");
     }
-
-
 
 }
