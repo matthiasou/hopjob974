@@ -1,0 +1,5 @@
+services:
+    http:
+        class: Hopjob\FrontBundle\Services\Http
+    HTML2PDF:
+        class: Hopjob\FrontBundle\Services\HTML2PDF

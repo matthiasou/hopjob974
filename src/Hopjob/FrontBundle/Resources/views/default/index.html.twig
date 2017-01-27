@@ -1,12 +1,13 @@
+{% extends 'FrontBundle::layout.html.twig' %}
 
 {% block body %}
 
     <div id="wrapper">
-        <div id="header" style="background-image: url({{ asset('bundles/app/img/header-bkg.jpg') }});">
+        <div id="header" style="background-image: url({{ asset('bundles/front/img/header-bkg.jpg') }});">
             <div>
                 <div class="col-xs-12 col-md-2 col-sm-4 text-xs-center spacer">
                     <a href="#" class="col-xs-8 col-xs-offset-2 col-sm-12 col-sm-offset-0">
-                        <img src="{{ asset("bundles/app/img/logo.png") }}" alt="hopjob" class="img-responsive" id="logo">
+                        <img src="{{ asset("bundles/front/img/logo.png") }}" alt="hopjob" class="img-responsive" id="logo">
                     </a> 
                 </div>
                 <div class="col-xs-12 hidden-sm hidden-md hidden-lg spacer"></div>
@@ -113,7 +114,7 @@
                         {% if loop.first or (loop.index - 1) % 5 == 0 %}
                             <li>
                         {% endif %}
-                            <div class="col-md-15 domaines" style="background-image: url({{ asset('bundles/app/img/homepage/' ~ domaine.idDomaine ~ '.jpg') }})">
+                            <div class="col-md-15 domaines" style="background-image: url({{ asset('bundles/front/img/homepage/' ~ domaine.idDomaine ~ '.jpg') }})">
                                 <a href="#">{{ domaine.libelle }}</a>
                             </div>
                        {% if loop.last or (loop.index % 5) == 0 %}
@@ -129,7 +130,7 @@
                         {% if loop.first or (loop.index - 1) % 2 == 0 %}
                             <li>
                         {% endif %}
-                            <div class="col-sm-6 domaines" style="background-image: url({{ asset('bundles/app/img/homepage/' ~ domaine.idDomaine ~ '.jpg') }})">
+                            <div class="col-sm-6 domaines" style="background-image: url({{ asset('bundles/front/img/homepage/' ~ domaine.idDomaine ~ '.jpg') }})">
                                 <a href="#">{{ domaine.libelle }}</a>
                             </div>
                        {% if loop.last or (loop.index % 2) == 0 %}
@@ -142,21 +143,21 @@
            <ul id="bxslider-mobile">
                 {% for domaine in domaines %}
                     <li>
-                        <div class="col-xs-12 domaines" style="background-image: url({{ asset('bundles/app/img/homepage/' ~ domaine.idDomaine ~ '.jpg') }})">
+                        <div class="col-xs-12 domaines" style="background-image: url({{ asset('bundles/front/img/homepage/' ~ domaine.idDomaine ~ '.jpg') }})">
                             <a href="#">{{ domaine.libelle }}</a>
                         </div>
                     </li>
                 {% endfor %}
             </ul>
         </div>
-        <div class="col-sm-6 text-right col-xs-12" id="text-ccm-l" style="background-image:url({{ asset('bundles/app/img/homepage/ccm-1.png') }});background-repeat: no-repeat;">
+        <div class="col-sm-6 text-right col-xs-12" id="text-ccm-l" style="background-image:url({{ asset('bundles/front/img/homepage/ccm-1.png') }});background-repeat: no-repeat;">
             <h2>Comment ça marche ?</h2>
             <p>- Déposer une <strong>annonce</strong><br>
             - Recevez des <strong>candidatures</strong><br>
             - <strong>Choisissez</strong></p>
         </div>
         <div class=" hidden-sm hidden-md hidden-lg spacer col-xs-12"></div>
-        <div class="col-sm-6 text-left col-xs-12" id="text-ccm-r" style="background-image:url({{ asset('bundles/app/img/homepage/ccm-2.png') }});background-repeat: no-repeat;">
+        <div class="col-sm-6 text-left col-xs-12" id="text-ccm-r" style="background-image:url({{ asset('bundles/front/img/homepage/ccm-2.png') }});background-repeat: no-repeat;">
             <h2>On s'occupe de tout !</h2>
             <p>- Paiement <strong>sécurisé</strong><br>
             - Recevez des <strong>candidatures</strong><br>
