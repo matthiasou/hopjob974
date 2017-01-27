@@ -6,7 +6,6 @@ class Http
 {    
     public function performRequest($params)
     {
-    	
     	$siteUrl = "localhost/CESI/hopjob/hopjobrest/web/app_dev.php/".$params; // dev
     	// $siteUrl = "localhost/CESI/hopjob/rest/web/app_dev.php/".$params; // prod
 
@@ -22,7 +21,19 @@ class Http
 		$result=curl_exec($ch);
 		// Closing
 		curl_close($ch);
+		
+		if ($this->isJson($result)) {
+			return array('status' => 'succes', 'data' => json_decode($result, true));	
+		}else{
+			return array('status' => 'error', 'data' => 'Response is not Json');
+		}
 
-		return json_decode($result, true);
+		
+    }
+
+    public function isJson($string){
+
+		return is_string($string) && is_array(json_decode($string, true)) && (json_last_error() == JSON_ERROR_NONE) ? true : false;
+
     }
 }

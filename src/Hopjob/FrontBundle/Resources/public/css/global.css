@@ -18,8 +18,8 @@ body{margin:0 auto;}
 #authentication-container #service-btn{display:block;margin-top:5px;background-color:#073a86;padding: 9px 13px;color: #fff;text-transform: uppercase;text-decoration: none;}
 #nav-bar{clear: both;top: 350px;position: absolute;left: 0;right: 0;}
 #nav-bar #title{margin:0px;font-family: "Somatic-Rounded";font-size: 120px;text-align: center;color: #fff;text-shadow: black 0px 2px 15px;font-weight: 200;}
-#text-ccm-l{color:#fff;background-color:#181f68;background-clip:content-box;background-position: left 40px bottom 40px;}
-#text-ccm-r{color:#fff;background-color:#3a96c7;background-clip:content-box;background-position: right 40px bottom 40px;}
+#text-ccm-l{color:#fff;background-color:#181f68;background-clip:content-box;background-position: left 100px bottom 100px;padding: 50px}
+#text-ccm-r{color:#fff;background-color:#3a96c7;background-clip:content-box;background-position: right 100px bottom 100px;padding: 50px}
 
 
 /* SMARTPHONES */
@@ -52,9 +52,9 @@ body{margin:0 auto;}
 
 /* LARGE DESKTOP */
 @media (min-width: 1200px) {
-	#text-ccm-l h2, #text-ccm-r h2{font-size: 50px;padding:35px;}
-	#text-ccm-l p, #text-ccm-r p{font-size: 35px;padding:35px;}
-	#text-ccm-l, #text-ccm-r{background-size:130px}
+	#text-ccm-l h2, #text-ccm-r h2{font-size: 30px;padding:35px;}
+	#text-ccm-l p, #text-ccm-r p{font-size: 25px;padding:35px;}
+	#text-ccm-l, #text-ccm-r{background-size:120px}
 }
 
 /* SLIDER BLOCK */
