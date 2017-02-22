@@ -5,6 +5,8 @@ namespace Hopjob\FrontBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Hopjob\FrontBundle\Entity\Domaine;
+
 
 class DefaultController extends Controller
 {
@@ -13,12 +15,25 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // récupération des données sur le REST
-        $domaines = $this->get("http")->performRequest("domaines");
+        
 
-        if ($domaines['status'] == 'succes') {
-            $params['domaines'] = $domaines['data'];
+        // récupération des données sur le REST
+        $domaines = $this->get('doctrine.orm.entity_manager')
+                ->getRepository('FrontBundle:Domaine')
+                ->findAll();
+
+        if (empty($domaines)) {
+            $params['domaines'] = null;
         }
+
+        $formated = [];
+        foreach ($domaines as $domaine) {
+            $formatted[] = [
+               'id' => $domaine->getId(),
+               'libelle' => $domaine->getLibelle(),       
+            ];
+        }
+        $params['domaines'] = $formatted;
         $params['base_dir'] = 'toto'.realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR;
 
         return $this->render('FrontBundle::default/index.html.twig', $params);
