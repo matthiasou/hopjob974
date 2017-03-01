@@ -1,12 +1,12 @@
-# This file is auto-generated during the composer install 
+# This file is auto-generated during the composer install
 parameters:
     database_host: 127.0.0.1
     database_port: 8889
     database_name: hopjob
     database_user: root
-    database_password: 
+    database_password: null
     mailer_transport: smtp
     mailer_host: 127.0.0.1
-    mailer_user: null
+    mailer_user: bmagne@me.com
     mailer_password: null
     secret: 1b7f3c541c8e1b20ab72346ebe4ecc8a84932fba
