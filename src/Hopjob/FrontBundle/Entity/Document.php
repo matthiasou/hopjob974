@@ -49,7 +49,7 @@ class Document
     private $typeDocument;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\Utilisateur", inversedBy="id")
+    * @ORM\ManyToOne(targetEntity="Hopjob\UserBundle\Entity\User", inversedBy="id")
     * @ORM\JoinColumn(nullable=false)
     */
     private $utilisateur;
@@ -164,11 +164,11 @@ class Document
     /**
      * Set utilisateur
      *
-     * @param \Hopjob\FrontBundle\Entity\Utilisateur $utilisateur
+     * @param \Hopjob\UserBundle\Entity\User $utilisateur
      *
      * @return Document
      */
-    public function setUtilisateur(\Hopjob\FrontBundle\Entity\Utilisateur $utilisateur)
+    public function setUtilisateur(\Hopjob\UserBundle\Entity\User $utilisateur)
     {
         $this->utilisateur = $utilisateur;
 
@@ -178,7 +178,7 @@ class Document
     /**
      * Get utilisateur
      *
-     * @return \Hopjob\FrontBundle\Entity\Utilisateur
+     * @return \Hopjob\UserBundle\Entity\User
      */
     public function getUtilisateur()
     {

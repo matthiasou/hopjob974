@@ -36,13 +36,13 @@ class Message
     private $date;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\Utilisateur", inversedBy="id")
+    * @ORM\ManyToOne(targetEntity="Hopjob\UserBundle\Entity\User", inversedBy="id")
     * @ORM\JoinColumn(nullable=false)
     */
     private $utilisateur;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\Utilisateur", inversedBy="id")
+    * @ORM\ManyToOne(targetEntity="Hopjob\UserBundle\Entity\User", inversedBy="id")
     * @ORM\JoinColumn(nullable=false)
     */
     private $utilisateur1;
@@ -109,11 +109,11 @@ class Message
     /**
      * Set utilisateur
      *
-     * @param \Hopjob\FrontBundle\Entity\Utilisateur $utilisateur
+     * @param \Hopjob\UserBundle\Entity\User $utilisateur
      *
      * @return Message
      */
-    public function setUtilisateur(\Hopjob\FrontBundle\Entity\Utilisateur $utilisateur)
+    public function setUtilisateur(\Hopjob\UserBundle\Entity\User $utilisateur)
     {
         $this->utilisateur = $utilisateur;
 
@@ -123,7 +123,7 @@ class Message
     /**
      * Get utilisateur
      *
-     * @return \Hopjob\FrontBundle\Entity\Utilisateur
+     * @return \Hopjob\UserBundle\Entity\User
      */
     public function getUtilisateur()
     {
@@ -133,11 +133,11 @@ class Message
     /**
      * Set utilisateur1
      *
-     * @param \Hopjob\FrontBundle\Entity\Utilisateur $utilisateur1
+     * @param \Hopjob\UserBundle\Entity\User $utilisateur1
      *
      * @return Message
      */
-    public function setUtilisateur1(\Hopjob\FrontBundle\Entity\Utilisateur $utilisateur1)
+    public function setUtilisateur1(\Hopjob\UserBundle\Entity\User $utilisateur1)
     {
         $this->utilisateur1 = $utilisateur1;
 
@@ -147,7 +147,7 @@ class Message
     /**
      * Get utilisateur1
      *
-     * @return \Hopjob\FrontBundle\Entity\Utilisateur
+     * @return \Hopjob\UserBundle\Entity\User
      */
     public function getUtilisateur1()
     {
