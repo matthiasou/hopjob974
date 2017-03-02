@@ -17,7 +17,6 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Hopjob\FrontBundle\FrontBundle(),
             new Hopjob\AdminBundle\AdminBundle(),
-            new Hopjob\UserBundle\UserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
         ];
 

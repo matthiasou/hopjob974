@@ -22,13 +22,13 @@ class ReponseAnnonce
     private $id;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Hopjob\UserBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\User")
      * @ORM\JoinColumn(nullable=false)
      */
     private $utilisateur;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Hopjob\UserBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\User")
      * @ORM\JoinColumn(nullable=false)
      */
     private $utilisateur1;
@@ -201,11 +201,11 @@ class ReponseAnnonce
     /**
      * Set utilisateur
      *
-     * @param \Hopjob\UserBundle\Entity\User $utilisateur
+     * @param \Hopjob\FrontBundle\Entity\User $utilisateur
      *
      * @return ReponseAnnonce
      */
-    public function setUtilisateur(\Hopjob\UserBundle\Entity\User $utilisateur)
+    public function setUtilisateur(\Hopjob\FrontBundle\Entity\User $utilisateur)
     {
         $this->utilisateur = $utilisateur;
 
@@ -215,7 +215,7 @@ class ReponseAnnonce
     /**
      * Get utilisateur
      *
-     * @return \Hopjob\UserBundle\Entity\User
+     * @return \Hopjob\FrontBundle\Entity\User
      */
     public function getUtilisateur()
     {
@@ -225,11 +225,11 @@ class ReponseAnnonce
     /**
      * Set utilisateur1
      *
-     * @param \Hopjob\UserBundle\Entity\User $utilisateur1
+     * @param \Hopjob\FrontBundle\Entity\User $utilisateur1
      *
      * @return ReponseAnnonce
      */
-    public function setUtilisateur1(\Hopjob\UserBundle\Entity\User $utilisateur1)
+    public function setUtilisateur1(\Hopjob\FrontBundle\Entity\User $utilisateur1)
     {
         $this->utilisateur1 = $utilisateur1;
 
@@ -239,7 +239,7 @@ class ReponseAnnonce
     /**
      * Get utilisateur1
      *
-     * @return \Hopjob\UserBundle\Entity\User
+     * @return \Hopjob\FrontBundle\Entity\User
      */
     public function getUtilisateur1()
     {

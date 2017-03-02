@@ -92,7 +92,7 @@ class Annonce
     private $typeVehicule;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Hopjob\UserBundle\Entity\User", inversedBy="id")
+    * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\User", inversedBy="id")
     * @ORM\JoinColumn(nullable=false)
     */
     private $utilisateur;
@@ -361,7 +361,7 @@ class Annonce
      *
      * @return Annonce
      */
-    public function setUtilisateur(\Hopjob\UserBundle\Entity\User $utilisateur)
+    public function setUtilisateur(\Hopjob\FrontBundle\Entity\User $utilisateur)
     {
         $this->utilisateur = $utilisateur;
 

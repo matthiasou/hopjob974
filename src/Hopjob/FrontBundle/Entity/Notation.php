@@ -36,7 +36,7 @@ class Notation
     private $note;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Hopjob\UserBundle\Entity\User", inversedBy="id")
+    * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\User", inversedBy="id")
     * @ORM\JoinColumn(nullable=false)
     */
     private $utilisateur;
@@ -103,11 +103,11 @@ class Notation
     /**
      * Set utilisateur
      *
-     * @param \Hopjob\UserBundle\Entity\User $utilisateur
+     * @param \Hopjob\FrontBundle\Entity\User $utilisateur
      *
      * @return Notation
      */
-    public function setUtilisateur(\Hopjob\UserBundle\Entity\User $utilisateur)
+    public function setUtilisateur(\Hopjob\FrontBundle\Entity\User $utilisateur)
     {
         $this->utilisateur = $utilisateur;
 
@@ -117,7 +117,7 @@ class Notation
     /**
      * Get utilisateur
      *
-     * @return \Hopjob\UserBundle\Entity\User
+     * @return \Hopjob\FrontBundle\Entity\User
      */
     public function getUtilisateur()
     {
