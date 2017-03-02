@@ -84,10 +84,11 @@ class User extends BaseUser
      * @ORM\JoinColumn(nullable=false)
      */
     private $domaine;
-
+   
     /**
-     * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\Metier", inversedBy="id")
-     * @ORM\JoinColumn(nullable=false)
+     * @var string
+     *
+     * @ORM\Column(name="metier", type="string", length=255)
      */
     private $metier;
 
@@ -303,30 +304,6 @@ class User extends BaseUser
     }
 
     /**
-     * Set metier
-     *
-     * @param \Hopjob\FrontBundle\Entity\Metier $metier
-     *
-     * @return User
-     */
-    public function setMetier(\Hopjob\FrontBundle\Entity\Metier $metier)
-    {
-        $this->metier = $metier;
-
-        return $this;
-    }
-
-    /**
-     * Get metier
-     *
-     * @return \Hopjob\FrontBundle\Entity\Metier
-     */
-    public function getMetier()
-    {
-        return $this->metier;
-    }
-
-    /**
      * Set typeUtilisateur
      *
      * @param \Hopjob\FrontBundle\Entity\TypeUtilisateur $typeUtilisateur
@@ -372,5 +349,29 @@ class User extends BaseUser
     public function getVille()
     {
         return $this->ville;
+    }
+
+    /**
+     * Set metier
+     *
+     * @param string $metier
+     *
+     * @return User
+     */
+    public function setMetier($metier)
+    {
+        $this->metier = $metier;
+
+        return $this;
+    }
+
+    /**
+     * Get metier
+     *
+     * @return string
+     */
+    public function getMetier()
+    {
+        return $this->metier;
     }
 }

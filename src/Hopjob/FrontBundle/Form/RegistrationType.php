@@ -5,6 +5,8 @@ namespace Hopjob\FrontBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+
 
 class RegistrationType extends AbstractType
 {
@@ -14,14 +16,30 @@ class RegistrationType extends AbstractType
         $builder->add('prenom');
         $builder->add('dateNaissance');
         $builder->add('adresse');
-        $builder->add('ville');
         $builder->add('description');
-        $builder->add('civilite');
-    
+        $builder->add('typeUtilisateur', EntityType::class, array(
+            'class' => 'FrontBundle:TypeUtilisateur',
+            'choice_label' => 'libelle',
+        ));
         $builder->add('domaine', EntityType::class, array(
             'class' => 'FrontBundle:Domaine',
             'choice_label' => 'libelle',
+        ));  
+        $builder->add('metier');
+        $builder->add('ville', EntityType::class, array(
+            'class' => 'FrontBundle:Ville',
+            'choice_label' => 'nom',
+        ));    
+        $builder->add('civilite', EntityType::class, array(
+            'class' => 'FrontBundle:Civilite',
+            'choice_label' => 'libelle',
+            'multiple' => false,
+            'expanded' => true
+        ));   
+        $builder->add('moyenneNotation', HiddenType::class, array(
+            'data' => 0,
         ));
+
     }
 
     public function getParent()
