@@ -69,7 +69,7 @@ class DemandeService
     private $annonce;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\Utilisateur", inversedBy="id")
+    * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\User", inversedBy="id")
     * @ORM\JoinColumn(nullable=false)
     */
     private $utilisateur;
@@ -256,11 +256,11 @@ class DemandeService
     /**
      * Set utilisateur
      *
-     * @param \Hopjob\FrontBundle\Entity\Utilisateur $utilisateur
+     * @param \Hopjob\FrontBundle\Entity\User $utilisateur
      *
      * @return DemandeService
      */
-    public function setUtilisateur(\Hopjob\FrontBundle\Entity\Utilisateur $utilisateur)
+    public function setUtilisateur(\Hopjob\FrontBundle\Entity\User $utilisateur)
     {
         $this->utilisateur = $utilisateur;
 
@@ -270,7 +270,7 @@ class DemandeService
     /**
      * Get utilisateur
      *
-     * @return \Hopjob\FrontBundle\Entity\Utilisateur
+     * @return \Hopjob\FrontBundle\Entity\User
      */
     public function getUtilisateur()
     {
