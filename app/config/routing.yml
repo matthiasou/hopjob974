@@ -1,6 +1,6 @@
 admin:
     resource: "@AdminBundle/Resources/config/routing.yml"
-    prefix:   /admin
+    prefix:   /admin/
 
 front:
     resource: "@FrontBundle/Resources/config/routing.yml"
