@@ -355,13 +355,13 @@ class Annonce
     }
 
     /**
-     * Set utilisateur
+     * Set user
      *
-     * @param \Hopjob\UserBudle\Entity\User $utilisateur
+     * @param \Hopjob\FrontBundle\Entity\User $utilisateur
      *
      * @return Annonce
      */
-    public function setUtilisateur(\Hopjob\FrontBundle\Entity\User $utilisateur)
+    public function setUser(\Hopjob\FrontBundle\Entity\User $utilisateur)
     {
         $this->utilisateur = $utilisateur;
 
@@ -369,11 +369,11 @@ class Annonce
     }
 
     /**
-     * Get utilisateur
+     * Get user
      *
-     * @return \Hopjob\UserBudle\Entity\User
+     * @return \Hopjob\FrontBundle\Entity\User
      */
-    public function getUtilisateur()
+    public function getUser()
     {
         return $this->utilisateur;
     }

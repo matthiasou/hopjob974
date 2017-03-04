@@ -18,7 +18,7 @@ class TypeUtilisateur
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\OneToMany(targetEntity="Hopjob\FrontBundle\Entity\Utilisateur", mappedBy="typeUtilisateur")
+     * @ORM\OneToMany(targetEntity="Hopjob\FrontBundle\entity\User", mappedBy="typeUtilisateur")
      */
     private $id;
 

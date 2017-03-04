@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace Hopjob\FrontBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -20,7 +20,7 @@ class ReponseAnnonce
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    
+
     /**
      * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\User")
      * @ORM\JoinColumn(nullable=false)
@@ -48,7 +48,7 @@ class ReponseAnnonce
     private $commentaire;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Annonce")
+     * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\Annonce")
      * @ORM\JoinColumn(nullable=false)
      */
     private $annonce;
@@ -249,11 +249,11 @@ class ReponseAnnonce
     /**
      * Set annonce
      *
-     * @param \AppBundle\Entity\Annonce $annonce
+     * @param \Hopjob\FrontBundle\Entity\Annonce $annonce
      *
      * @return ReponseAnnonce
      */
-    public function setAnnonce(\AppBundle\Entity\Annonce $annonce)
+    public function setAnnonce(\Hopjob\FrontBundle\Entity\Annonce $annonce)
     {
         $this->annonce = $annonce;
 
@@ -263,7 +263,7 @@ class ReponseAnnonce
     /**
      * Get annonce
      *
-     * @return \AppBundle\Entity\Annonce
+     * @return \Hopjob\FrontBundle\Entity\Annonce
      */
     public function getAnnonce()
     {

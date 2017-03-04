@@ -19,7 +19,7 @@ class Domaine
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\OneToMany(targetEntity="Hopjob\FrontBundle\Entity\SousDomaine", mappedBy="domaine")
-     * @ORM\OneToMany(targetEntity="Hopjob\FrontBundle\Entity\Utilisateur", mappedBy="domaine")
+     * @ORM\OneToMany(targetEntity="Hopjob\FrontBundle\Entity\User", mappedBy="domaine")
      */
     private $id;
 

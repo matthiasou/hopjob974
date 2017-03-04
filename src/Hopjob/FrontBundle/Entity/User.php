@@ -43,7 +43,11 @@ class User extends BaseUser
      *
      * @ORM\Column(name="prenom", type="string", length=255)
      */
+
     private $prenom;
+
+
+
 
     /**
      * @var \DateTime
@@ -72,6 +76,24 @@ class User extends BaseUser
      * @ORM\Column(name="moyenne_notation", type="float")
      */
     private $moyenneNotation;
+
+
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="revenu", type="float")
+     */
+    private $revenu;
+
+
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nb_job", type="integer")
+     */
+    private $nbJob;
 
     /**
      * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\Civilite", inversedBy="id")
@@ -111,6 +133,7 @@ class User extends BaseUser
         // your own logic
     }
 
+
     /**
      * Set nom
      *
@@ -124,6 +147,8 @@ class User extends BaseUser
 
         return $this;
     }
+
+
 
     /**
      * Get nom
@@ -374,4 +399,55 @@ class User extends BaseUser
     {
         return $this->metier;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getNbJob()
+    {
+        return $this->nbJob;
+    }
+
+    /**
+     * @param mixed $nbJob
+     */
+    public function setNbJob($nbJob)
+    {
+        $this->nbJob = $nbJob;
+    }
+
+
+    /**
+     * @return float
+     */
+    public function getRevenu()
+    {
+        return $this->revenu;
+    }
+
+    /**
+     * @param float $revenu
+     */
+    public function setRevenu($revenu)
+    {
+        $this->revenu = $revenu;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+
 }
