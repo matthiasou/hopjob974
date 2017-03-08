@@ -239,106 +239,55 @@
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
+                            {% for reponse in reponses %}
                             <article class="media event">
                                 <a class="pull-left date">
-                                    <p class="month">April</p>
-                                    <p class="day">23</p>
+                                    <p class="month">
+                                        {% if (reponse.annonce.dateLimite|date("m") == 1) %}
+                                            {{ "Janvier" }}
+                                        {% endif %}
+                                        {% if (reponse.annonce.dateLimite|date("m") == 2) %}
+                                            {{ "Février" }}
+                                        {% endif %}
+                                        {% if (reponse.annonce.dateLimite|date("m") == 3) %}
+                                            {{ "Mars" }}
+                                        {% endif %}
+                                        {% if (reponse.annonce.dateLimite|date("m") == 4) %}
+                                            {{ "Avril" }}
+                                        {% endif %}
+                                        {% if (reponse.annonce.dateLimite|date("m") == 5) %}
+                                            {{ "Mail" }}
+                                        {% endif %}
+                                        {% if (reponse.annonce.dateLimite|date("m") == 6) %}
+                                            {{ "Juin" }}
+                                        {% endif %}
+                                        {% if (reponse.annonce.dateLimite|date("m") == 7) %}
+                                            {{ "Juillet" }}
+                                        {% endif %}
+                                        {% if (reponse.annonce.dateLimite|date("m") == 8) %}
+                                            {{ "Aout" }}
+                                        {% endif %}
+                                        {% if (reponse.annonce.dateLimite|date("m") == 9) %}
+                                            {{ "Septembre" }}
+                                        {% endif %}
+                                        {% if (reponse.annonce.dateLimite|date("m") == 10) %}
+                                            {{ "Octobre" }}
+                                        {% endif %}
+                                        {% if (reponse.annonce.dateLimite|date("m") == 11) %}
+                                            {{ "Novembre" }}
+                                        {% endif %}
+                                        {% if (reponse.annonce.dateLimite|date("m") == 12) %}
+                                            {{ "Décembre" }}
+                                        {% endif %}
+                                    </p>
+                                    <p class="day">{{ reponse.annonce.dateLimite|date("d") }}</p>
                                 </a>
                                 <div class="media-body">
-                                    <a class="title" href="#">Item One Title</a>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                    <a class="title" href="#">{{ reponse.annonce.titre }}</a>
+                                    <p>{{ reponse.annonce.description }}</p>
                                 </div>
                             </article>
-                            <article class="media event">
-                                <a class="pull-left date">
-                                    <p class="month">April</p>
-                                    <p class="day">23</p>
-                                </a>
-                                <div class="media-body">
-                                    <a class="title" href="#">Item Two Title</a>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                </div>
-                            </article>
-                            <article class="media event">
-                                <a class="pull-left date">
-                                    <p class="month">April</p>
-                                    <p class="day">23</p>
-                                </a>
-                                <div class="media-body">
-                                    <a class="title" href="#">Item Two Title</a>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                </div>
-                            </article>
-                            <article class="media event">
-                                <a class="pull-left date">
-                                    <p class="month">April</p>
-                                    <p class="day">23</p>
-                                </a>
-                                <div class="media-body">
-                                    <a class="title" href="#">Item Two Title</a>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                </div>
-                            </article>
-                            <article class="media event">
-                                <a class="pull-left date">
-                                    <p class="month">April</p>
-                                    <p class="day">23</p>
-                                </a>
-                                <div class="media-body">
-                                    <a class="title" href="#">Item Two Title</a>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                </div>
-                            </article>
-                            <article class="media event">
-                                <a class="pull-left date">
-                                    <p class="month">April</p>
-                                    <p class="day">23</p>
-                                </a>
-                                <div class="media-body">
-                                    <a class="title" href="#">Item Two Title</a>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                </div>
-                            </article>
-                            <article class="media event">
-                                <a class="pull-left date">
-                                    <p class="month">April</p>
-                                    <p class="day">23</p>
-                                </a>
-                                <div class="media-body">
-                                    <a class="title" href="#">Item Two Title</a>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                </div>
-                            </article>
-                            <article class="media event">
-                                <a class="pull-left date">
-                                    <p class="month">April</p>
-                                    <p class="day">23</p>
-                                </a>
-                                <div class="media-body">
-                                    <a class="title" href="#">Item Two Title</a>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                </div>
-                            </article>
-                            <article class="media event">
-                                <a class="pull-left date">
-                                    <p class="month">April</p>
-                                    <p class="day">23</p>
-                                </a>
-                                <div class="media-body">
-                                    <a class="title" href="#">Item Two Title</a>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                </div>
-                            </article>
-                            <article class="media event">
-                                <a class="pull-left date">
-                                    <p class="month">April</p>
-                                    <p class="day">23</p>
-                                </a>
-                                <div class="media-body">
-                                    <a class="title" href="#">Item Three Title</a>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                </div>
-                            </article>
+                            {% endfor %}
                             <div style="text-align: right" id="">
                                 ...
                             </div>
@@ -368,61 +317,19 @@
                                 </div>
                                 <div class="x_content">
                                     <ul class="list-unstyled top_profiles scroll-view">
-                                        <li class="media event">
-                                            <a class="pull-left border-aero profile_thumb">
-                                                <i class="fa fa-user aero"></i>
-                                            </a>
-                                            <div class="media-body">
-                                                <a class="title" href="#">Mme. Mary Jane</a>
-                                                <p><strong>300 € </strong> Changer tapisserie </p>
-                                                <a href=""<p> <small>plus...</small>
-                                                </p></a>
-                                            </div>
-                                        </li>
+                                        {% for demande in demandes %}
                                         <li class="media event">
                                             <a class="pull-left border-green profile_thumb">
                                                 <i class="fa fa-user green"></i>
                                             </a>
                                             <div class="media-body">
-                                                <a class="title" href="#">Mr. Mickael Jane</a>
-                                                <p><strong>200 € </strong> Tondre pelouse </p>
+                                                <a class="title" href="#">  {{ demande.annonce.user.civilite.libelle }}. {{ demande.annonce.user.nom }}</a>
+                                                <p><strong>{{ demande.annonce.prixTotal }} € </strong> {{ demande.annonce.titre }} </p>
                                                 <a href=""<p> <small>plus...</small>
                                                 </p></a>
                                             </div>
                                         </li>
-                                        <li class="media event">
-                                            <a class="pull-left border-blue profile_thumb">
-                                                <i class="fa fa-user blue"></i>
-                                            </a>
-                                            <div class="media-body">
-                                                <a class="title" href="#">Ms. Mary Jane</a>
-                                                <p><strong>$2300. </strong> Agent Avarage Sales </p>
-                                                <a href=""<p> <small>plus...</small>
-                                                </p></a>
-                                            </div>
-                                        </li>
-                                        <li class="media event">
-                                            <a class="pull-left border-aero profile_thumb">
-                                                <i class="fa fa-user aero"></i>
-                                            </a>
-                                            <div class="media-body">
-                                                <a class="title" href="#">Ms. Mary Jane</a>
-                                                <p><strong>$2300. </strong> Agent Avarage Sales </p>
-                                                <a href=""<p> <small>plus...</small>
-                                                </p></a>
-                                            </div>
-                                        </li>
-                                        <li class="media event">
-                                            <a class="pull-left border-green profile_thumb">
-                                                <i class="fa fa-user green"></i>
-                                            </a>
-                                            <div class="media-body">
-                                                <a class="title" href="#">Ms. Mary Jane</a>
-                                                <p><strong>$2300. </strong> Agent Avarage Sales </p>
-                                                <a href=""<p> <small>plus...</small>
-                                                </p></a>
-                                            </div>
-                                        </li>
+                                        {% endfor %}
                                     </ul>
                                 </div>
                             </div>
@@ -445,63 +352,27 @@
                                 </div>
                                 <div class="x_content">
                                     <ul class="list-unstyled timeline">
+                                        {% for annoncesSucc in annoncesSucc %}
                                         <li>
                                             <div class="block">
                                                 <div class="tags">
                                                     <a href="" class="tag">
-                                                        <span>Entertainment</span>
+                                                        <span>{{ annoncesSucc.demandeService.activite.sousDomaine.domaine.libelle }}</span>
                                                     </a>
                                                 </div>
                                                 <div class="block_content">
                                                     <h2 class="title">
-                                                        <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
+                                                        <a href="#">{{ annoncesSucc.titre }}</a>
                                                     </h2>
                                                     <div class="byline">
-                                                        <span>13 hours ago</span> by <a>Jane Smith</a>
+                                                        Le <span>{{ annoncesSucc.dateCreation|date("d/m/y") }}</span> par <a>{{ annoncesSucc.user.prenom }}</a>
                                                     </div>
-                                                    <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
+                                                    <p class="excerpt">{{ annoncesSucc.description }}<a href="#"> Lire plus</a>
                                                     </p>
                                                 </div>
                                             </div>
                                         </li>
-                                        <li>
-                                            <div class="block">
-                                                <div class="tags">
-                                                    <a href="" class="tag">
-                                                        <span>Entertainment</span>
-                                                    </a>
-                                                </div>
-                                                <div class="block_content">
-                                                    <h2 class="title">
-                                                        <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
-                                                    </h2>
-                                                    <div class="byline">
-                                                        <span>13 hours ago</span> by <a>Jane Smith</a>
-                                                    </div>
-                                                    <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="block">
-                                                <div class="tags">
-                                                    <a href="" class="tag">
-                                                        <span>Entertainment</span>
-                                                    </a>
-                                                </div>
-                                                <div class="block_content">
-                                                    <h2 class="title">
-                                                        <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
-                                                    </h2>
-                                                    <div class="byline">
-                                                        <span>13 hours ago</span> by <a>Jane Smith</a>
-                                                    </div>
-                                                    <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </li>
+                                        {% endfor %}
                                     </ul>
                                 </div>
                             </div>

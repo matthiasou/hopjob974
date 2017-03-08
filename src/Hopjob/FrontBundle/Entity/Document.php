@@ -54,6 +54,12 @@ class Document
     */
     private $utilisateur;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\ReponseAnnonce", inversedBy="id")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $reponseAnnonce;
+
 
     /**
      * Get id
@@ -183,5 +189,21 @@ class Document
     public function getUtilisateur()
     {
         return $this->utilisateur;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getReponseAnnonce()
+    {
+        return $this->reponseAnnonce;
+    }
+
+    /**
+     * @param mixed $reponseAnnonce
+     */
+    public function setReponseAnnonce($reponseAnnonce)
+    {
+        $this->reponseAnnonce = $reponseAnnonce;
     }
 }

@@ -31,6 +31,12 @@ class Annonce
     private $titre;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\DemandeService", inversedBy="id")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $demandeService;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="nb_personnes", type="integer")
@@ -57,6 +63,14 @@ class Annonce
      * @ORM\Column(name="date_limite", type="datetimetz", nullable=true)
      */
     private $dateLimite;
+
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_creation", type="datetimetz", nullable=true)
+     */
+    private $dateCreation;
 
     /**
      * @var float
@@ -400,5 +414,37 @@ class Annonce
     public function getVille()
     {
         return $this->ville;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateCreation()
+    {
+        return $this->dateCreation;
+    }
+
+    /**
+     * @param \DateTime $dateCreation
+     */
+    public function setDateCreation($dateCreation)
+    {
+        $this->dateCreation = $dateCreation;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDemandeService()
+    {
+        return $this->demandeService;
+    }
+
+    /**
+     * @param mixed $demandeService
+     */
+    public function setDemandeService($demandeService)
+    {
+        $this->demandeService = $demandeService;
     }
 }

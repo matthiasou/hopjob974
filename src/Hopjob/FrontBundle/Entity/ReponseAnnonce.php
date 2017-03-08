@@ -40,6 +40,15 @@ class ReponseAnnonce
      */
     private $code;
 
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="prix", type="integer")
+     */
+    private $prix;
+
+
     /**
      * @var string
      *
@@ -268,5 +277,21 @@ class ReponseAnnonce
     public function getAnnonce()
     {
         return $this->annonce;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPrix()
+    {
+        return $this->prix;
+    }
+
+    /**
+     * @param int $prix
+     */
+    public function setPrix($prix)
+    {
+        $this->prix = $prix;
     }
 }

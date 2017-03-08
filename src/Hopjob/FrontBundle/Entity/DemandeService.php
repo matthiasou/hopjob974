@@ -62,11 +62,7 @@ class DemandeService
     */
     private $activite;
 
-    /**
-    * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\Annonce", inversedBy="id")
-    * @ORM\JoinColumn(nullable=false)
-    */
-    private $annonce;
+
 
     /**
     * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\User", inversedBy="id")
@@ -227,30 +223,6 @@ class DemandeService
     public function getActivite()
     {
         return $this->activite;
-    }
-
-    /**
-     * Set annonce
-     *
-     * @param \Hopjob\FrontBundle\Entity\Annonce $annonce
-     *
-     * @return DemandeService
-     */
-    public function setAnnonce(\Hopjob\FrontBundle\Entity\Annonce $annonce)
-    {
-        $this->annonce = $annonce;
-
-        return $this;
-    }
-
-    /**
-     * Get annonce
-     *
-     * @return \Hopjob\FrontBundle\Entity\Annonce
-     */
-    public function getAnnonce()
-    {
-        return $this->annonce;
     }
 
     /**

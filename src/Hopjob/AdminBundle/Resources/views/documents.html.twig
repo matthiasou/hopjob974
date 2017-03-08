@@ -1,48 +1,48 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <!-- Meta, title, CSS, favicons, etc. -->
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{% block title %}HopJob974{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-        <!-- Bootstrap -->
-        <link href="../../../vendor/espaceAdmin/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Font Awesome -->
-        <link href="../../../vendor/espaceAdmin/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-        <!-- Custom Theme Style -->
-        <link href="../../../vendor/espaceAdmin/css/custom.min.css" rel="stylesheet">
-    </head>
-    <body class="nav-md">
-        {% block body %}
-            <div class="container body">
-                <div class="main_container">
-                    <div class="col-md-3 left_col">
-                        <div class="left_col scroll-view">
-                            <div class="navbar nav_title" style="border: 0;">
-                                <a href="{{ path('admin') }}" class="site_title"><i class="fa fa-home"></i> <span><img height="55px" src="{{ asset('bundles/admin/img/logo.png') }}"></span></a>
-                            </div>
+    <title>{% block title %}HopJob974{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <!-- Bootstrap -->
+    <link href="../../../vendor/espaceAdmin/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../../../vendor/espaceAdmin/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="../../../vendor/espaceAdmin/css/custom.min.css" rel="stylesheet">
+</head>
+<body class="nav-md">
+{% block body %}
+    {% for utilisateur in utilisateurs %}
 
-                            <div class="clearfix"></div>
+        <div class="container body">
+        <div class="main_container">
+        <div class="col-md-3 left_col">
+            <div class="left_col scroll-view">
+                <div class="navbar nav_title" style="border: 0;">
+                    <a href="{{ path('admin') }}" class="site_title"><i class="fa fa-home"></i> <span><img height="55px" src="{{ asset('bundles/admin/img/logo.png') }}"></span></a>
+                </div>
 
-                            <!-- menu profile quick info -->
-                            <div class="profile clearfix">
-                                <div class="profile_pic">
-                                    <img src="{{ asset('bundles/admin/img/img.jpg') }}" alt="..." class="img-circle profile_img">
-                                </div>
-                                <div class="profile_info">
-                                    <span>Bienvenue,</span>
-                                    <h2>Alexandra Pottier</h2>
-                                </div>
-                            </div>
-                            <!-- /menu profile quick info -->
+                <div class="clearfix"></div>
 
-                            <br />
-
+                <!-- menu profile quick info -->
+                <div class="profile clearfix">
+                    <div class="profile_pic">
+                        <img src="{{ asset('bundles/admin/img/img.jpg') }}" alt="..." class="img-circle profile_img">
+                    </div>
+                    <div class="profile_info">
+                        <span>Bienvenue,</span>
+                        <h2>{{ utilisateur.prenom }} {{ utilisateur.nom }}</h2>
+                    </div>
+                </div>
+                <br>
+                <!-- /menu profile quick info -->
                             <!-- sidebar menu -->
                             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                                 <div class="menu_section">
@@ -81,7 +81,7 @@
                                 <ul class="nav navbar-nav navbar-right">
                                     <li class="">
                                         <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                            <img src="{{ asset('bundles/admin/img/img.jpg') }}" alt="">Alexandra Pottier
+                                            <img src="{{ asset('bundles/admin/img/img.jpg') }}" alt="">{{ utilisateur.prenom }} {{ utilisateur.nom }}
                                             <span class=" fa fa-angle-down"></span>
                                         </a>
                                         <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -201,32 +201,74 @@
                                                         <th>N°</th>
                                                         <th>Date</th>
                                                         <th>Mission</th>
+                                                        <th>Par</th>
                                                         <th>Prix</th>
                                                         <th>Action</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
+                                                    {% for facture in factures %}
                                                     <tr>
-                                                        <th scope="row">1</th>
-                                                        <td>Lili Ventura</td>
-                                                        <td>Tondre pelouse</td>
-                                                        <td>198 €</td>
-                                                        <td><a href="#"<i class="fa fa-file-pdf-o"></i> </a> <a href="{{ asset('bundles/admin/img/img.jpg') }}" <i class="fa fa-download"></i></a>  </td>
+                                                        <th scope="row">{{ facture.id }}</th>
+                                                        <td>{{ facture.date|date("d/m/y") }}</td>
+                                                        <td>{{ facture.reponseannonce.annonce.titre }}</td>
+                                                        <td>{{ facture.reponseannonce.utilisateur1.nom }} {{ facture.reponseannonce.utilisateur1.prenom  }}</td>
+
+                                                        <td>{{ facture.reponseannonce.prix }} €</td>
+                                                        <td> &nbsp &nbsp  <a href="{{ asset('bundles/admin/img/img.jpg') }}" <i class="fa fa-download"></i></a>  </td>
                                                     </tr>
+                                                    {% endfor %}
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                                <div class="dashboard_graph">
+
+
+
+                                    <div class="">
+                                        <div class="x_panel">
+                                            <div class="x_title">
+                                                <h2>Bulletin de paie</h2>
+                                                <ul class="nav navbar-right panel_toolbox">
+                                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                                    </li>
+
+                                                    </li>
+                                                </ul>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <div class="x_content">
+
+                                                <table class="table table-striped">
+                                                    <thead>
                                                     <tr>
-                                                        <th scope="row">2</th>
-                                                        <td>Marco de la radrigue</td>
-                                                        <td>Arracher tapisserie</td>
-                                                        <td>240 €</td>
-                                                        <td><a href="#"<i class="fa fa-file-pdf-o"></i></a> <a href="#" <i class="fa fa-download"</i></a> </td>
+                                                        <th>N°</th>
+                                                        <th>Date</th>
+                                                        <th>Mission</th>
+                                                        <th>Pour</th>
+                                                        <th>Prix</th>
+                                                        <th>Action</th>
                                                     </tr>
-                                                    <tr>
-                                                        <th scope="row">3</th>
-                                                        <td>Zizou Dane</td>
-                                                        <td>Porte 2 battants</td>
-                                                        <td>119 €</td>
-                                                        <td><a href="#"<i class="fa fa-file-pdf-o"></i></a> <a href="#" <i class="fa fa-download"></i></a> </td>
-                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    {% for bulletin in bulletins %}
+                                                        <tr>
+                                                            <th scope="row">{{ bulletin.id }}</th>
+                                                            <td>{{ bulletin.date|date("d/m/y") }}</td>
+                                                            <td>{{ bulletin.reponseannonce.annonce.titre }}</td>
+                                                            <td>{{ bulletin.reponseannonce.utilisateur.nom }} {{ bulletin.reponseannonce.utilisateur.prenom  }}</td>
+
+                                                            <td>{{ bulletin.reponseannonce.prix }} €</td>
+                                                            <td> &nbsp &nbsp  <a href="{{ asset('bundles/admin/img/img.jpg') }}" <i class="fa fa-download"></i></a>  </td>
+                                                        </tr>
+                                                    {% endfor %}
                                                     </tbody>
                                                 </table>
 
@@ -249,6 +291,7 @@
                         </div>
                         <div class="clearfix"></div>
                     </footer>
+                    {% endfor %}
                     <!-- /footer content -->
                 </div>
             </div>
