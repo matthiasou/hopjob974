@@ -305,30 +305,6 @@ class User extends BaseUser
     }
 
     /**
-     * Set domaine
-     *
-     * @param \Hopjob\FrontBundle\Entity\Domaine $domaine
-     *
-     * @return User
-     */
-    public function setDomaine(\Hopjob\FrontBundle\Entity\Domaine $domaine)
-    {
-        $this->domaine = $domaine;
-
-        return $this;
-    }
-
-    /**
-     * Get domaine
-     *
-     * @return \Hopjob\FrontBundle\Entity\Domaine
-     */
-    public function getDomaine()
-    {
-        return $this->domaine;
-    }
-
-    /**
      * Set typeUtilisateur
      *
      * @param \Hopjob\FrontBundle\Entity\TypeUtilisateur $typeUtilisateur
@@ -448,8 +424,6 @@ class User extends BaseUser
     {
         $this->id = $id;
     }
-
-
 
     /**
      * Add domaine
