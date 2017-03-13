@@ -1,0 +1,5 @@
+    Domaine : {{domaines}}
+    {% for sousdomaine in sousdomaines %}
+        Sous-domaines : <a href="{{app.request.getUri}}/{{sousdomaine.libelle}}">{{ sousdomaine.libelle }} </a>
+    {% endfor %}
+

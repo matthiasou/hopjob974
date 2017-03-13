@@ -1,0 +1,7 @@
+    Sous Domaine : {{ sousdomaines }}
+        {% for activite in activites %}
+            {{ activite.libelle }}
+           	<input type="button" name ="{{activite.id}}"value="Poster une annonce"
+           class="btn btn-default pull-right" onclick="{{app.request.getUri}}/createannonce/{{activite.libelle}}" />
+        {% endfor %}
+
