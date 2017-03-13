@@ -450,4 +450,38 @@ class User extends BaseUser
     }
 
 
+
+    /**
+     * Add domaine
+     *
+     * @param \Hopjob\FrontBundle\Entity\Domaine $domaine
+     *
+     * @return User
+     */
+    public function addDomaine(\Hopjob\FrontBundle\Entity\Domaine $domaine)
+    {
+        $this->domaines[] = $domaine;
+
+        return $this;
+    }
+
+    /**
+     * Remove domaine
+     *
+     * @param \Hopjob\FrontBundle\Entity\Domaine $domaine
+     */
+    public function removeDomaine(\Hopjob\FrontBundle\Entity\Domaine $domaine)
+    {
+        $this->domaines->removeElement($domaine);
+    }
+
+    /**
+     * Get domaines
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDomaines()
+    {
+        return $this->domaines;
+    }
 }
