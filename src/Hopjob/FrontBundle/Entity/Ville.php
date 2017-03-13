@@ -622,4 +622,9 @@ class Ville
     {
         return $this->zmin;
     }
+
+    public function __toString()
+    {
+        return $this->nom;
+    }
 }

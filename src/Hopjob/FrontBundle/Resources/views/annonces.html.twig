@@ -1,0 +1,34 @@
+{% extends 'FrontBundle::layout.html.twig' %}
+
+{% block body %}
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="col-md-4 col-md-push-8">
+			<div class="bloc-recherche">
+				{{ form_start(form) }}
+				{{ form_end(form) }}
+			</div>
+			<div class="bloc-divers">AJOUTER ICI BLOC DIVERS</div>
+		</div>
+		<div class="col-md-8 col-md-pull-4">    
+
+			{% for annonce in annonces %}
+				<div class="row">
+					<span class="annonce-title"><a href="{{app.request.getUri}}/detail_annonce/{{annonce.id}}">{{ annonce.titre }}</a></span>
+					<span class="annonce-prix">    {{ annonce.prixTotal }}€</span>
+					<span class="annonce-description"> {{ annonce.description }}</span>
+					<span class="annonce-ville">{{ annonce.ville }}</span>
+					<span class="annonce-demandeur">  Posté par :   {{ annonce.utilisateur }}</span>
+				</div>
+		    {% endfor %}
+		    {% if liste_annonces %}
+			    {% for lannonce in liste_annonces %}
+					test
+				{% else %}
+					<p>Désolé il n'y a, pour le moment, aucune annonce correspondant à votre recherche.</p>
+				{% endfor %}
+		    {% endif %}
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{{ annonce.titre }}
+{{ annonce.nbPersonnes }}
+{{ annonce.vehicule }}
+{{ annonce.dateFixe }}
+{{ annonce.dateLimite | date('Y-m-d') }} 
+{{ annonce.prixTotal }}
+{{ annonce.telephone }}
+{{ annonce.description }}
+{{ annonce.horaire.libelle }}
+{{ annonce.typeVehicule.libelle }}
+{{ annonce.utilisateur.nom}}
+{{ annonce.ville.nom }}
+	<input type="button" name ="{{annonce.id}}"value="Proposer mes services"
+           class="btn btn-default pull-right" onclick="" />

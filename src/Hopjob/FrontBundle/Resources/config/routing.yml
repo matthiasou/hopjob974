@@ -6,7 +6,26 @@ contact:
     path:     /contact
     defaults: { _controller: FrontBundle:Default:contact }
 
+annonces:
+    path:     /annonces
+    defaults: { _controller: FrontBundle:Default:annonces }
+
 pdf:
     path:     /pdf
     defaults: { _controller: FrontBundle:Default:pdf }
 
+domaines:
+    path:     /domaines/{domaines}
+    defaults: { _controller: FrontBundle:Annonce:domaines }
+
+sousdomaines:
+    path:     /domaines/{domaines}/{sousdomaines}
+    defaults: { _controller: FrontBundle:Annonce:sousdomaines }
+
+createannonce:
+    path:     /domaines/{domaine}/{sousdomaines}/createannonce/{activite}
+    defaults: { _controller: FrontBundle:Annonce:createannonce }
+
+detail_annonce:
+    path:     /annonces/detail_annonce/{id}
+    defaults: { _controller: FrontBundle:Default:detailannonce }

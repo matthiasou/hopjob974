@@ -17,7 +17,71 @@ use Symfony\Component\HttpFoundation\Response;
 class AnnonceController extends Controller
 {
 
+  public function domainesAction(Request $request, $domaines)
+  {
+  // Create the form according to the FormType created previously.
+        // And give the proper parameters
+        $em = $this->getDoctrine()->getManager();
+        $domaine =  $em->getRepository("FrontBundle:Domaine")->findOneBy(array('libelle' => $domaines));
+        $sousdomaines = $em->getRepository("FrontBundle:SousDomaine")->findBy(array('domaine' => $domaine),array('libelle' => "ASC"));
+        
 
+        if ($request->isMethod('POST')) {
+            // Refill the fields in case the form is not valid.
+             $form->handleRequest($request);
+        }
+
+        return $this->render('FrontBundle::domaines.html.twig', array(
+            'domaines' => $domaines,
+            'sousdomaines' => $sousdomaines
+            ));
+  }
+  public function sousdomainesAction(Request $request,$domaines, $sousdomaines)
+  {
+  // Create the form according to the FormType created previously.
+        // And give the proper parameters
+        $em = $this->getDoctrine()->getManager();
+        $domaine =  $em->getRepository("FrontBundle:Domaine")->findOneBy(array('libelle' => $domaines));
+        $sousdomaine = $em->getRepository("FrontBundle:SousDomaine")->findBy(array('libelle' => $sousdomaines));
+        $activites = $em->getRepository("FrontBundle:Activite")->findBy(array('sousDomaine' => $sousdomaine),array('libelle' => "ASC"));
+
+        return $this->render('FrontBundle::sousdomaines.html.twig', array(
+            'domaine' => $domaine,
+            'sousdomaines' => $sousdomaines,
+            'activites' => $activites
+        ));
+      }
+
+      public function createannonceAction(Request $request, $sousdomaines, $domaine, $activites)
+      {
+         $em = $this->getDoctrine()->getManager();
+         $activite = $em->getRepository("FrontBundle:Activite")->findBy(array('libelle' => $activites),array('libelle' => "ASC"));
+         $form = $this->createForm("Hopjob\FrontBundle\Form\.$activite.",null,array(
+            // To set the action use $this->generateUrl('route_identifier')
+            'method' => 'POST'
+            ));
+         if ($request->isMethod('POST')) {
+            // Refill the fields in case the form is not valid.
+            $form->handleRequest($request);
+            if($form->isValid())
+            {
+              //On récupère les données entrées dans le formulaire par l'utilisateur
+              $data = $this->getRequest()->request->get('Hopjob_frontbundle_rechercheannonces');
+              //On va récupérer la méthode dans le repository afin de trouver toutes les annonces filtrées par les paramètres du formulaire
+              $liste_annonces = $em->getRepository('hopjob:Annonce')->findAnnonceByParametres($data);
+              //Puis on redirige vers la page de visualisation de cette liste d'annonces
+              return $this->render('Hopjpb:Annonce:annonces.html.twig', array('liste_annonces' => $liste_annonces));
+            }
+        }
+        return $this->render('FrontBundle::createannonce.html.twig', array(
+            'form' => $form->createView(),
+            'domaine' => $domaine,
+            'sousdomaines' => $sousdomaines,
+            'activites' => $activites,
+            'activite' => $activite
+            
+        ));
+      }
 	 /**
      * Récupère l'ensemble des annonces
      * @Route("/annonces", name="annonces_list")
@@ -28,11 +92,15 @@ class AnnonceController extends Controller
 		$annonces = $this->get('doctrine.orm.entity_manager')
                 ->getRepository('AppBundle:Annonce')
                 ->findAll();
+                 $form = $this->createForm("Hopjob\FrontBundle\Form\AnnonceSearchType",null,array(
+            // To set the action use $this->generateUrl('route_identifier')
+            'method' => 'POST'
+            ));
 
         if (empty($annonces)) {
             return new JsonResponse(['message' => 'Annonces not found'], Response::HTTP_NOT_FOUND);
         }
-
+/*
         $formatted = [];
         foreach ($annonces as $annonce) {
             $formatted[] = [
@@ -45,12 +113,13 @@ class AnnonceController extends Controller
                'prixTotal' => $annonce->getPrixTotal(),
                'telephone' => $annonce->getTelephone(),
                'ville' => $annonce->getVille()->getId(),
-               'utilisateur' => $annonce->getUtilisateur()->getId(),
+               'utilisateur' => $annonce->getUtilisateur()->getNom(),
                'typeVehicule' => $annonce->getTypeVehicule()->getId(),
                'horaire' => $annonce->getHoraire()->getId(),        
             ];
         }
         return new JsonResponse($formatted);
+        */
     }
 
      /**

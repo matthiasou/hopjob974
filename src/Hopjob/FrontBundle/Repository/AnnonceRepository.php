@@ -10,4 +10,24 @@ namespace Hopjob\FrontBundle\Repository;
  */
 class AnnonceRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function findAnnonceByParametres($data)
+	{
+		$query = $this->createQueryBuilder('a');
+		$query->setParameters(array(
+		'domaine' => $data['domaine'],
+		'ville' => $data['ville']));
+		// Si la recherche porte sur tous les domaines
+		if($data['domaine'] != '')
+		{
+			$query->andWhere('a.domaine = :domaine')
+			->setParameter('domaine', $data['domaine']);
+		}
+		// Si la recherche porte sur toutes les villes
+		if($data['ville'] != '')
+		{
+			$query->andWhere('a.ville = :ville')
+			->setParameter('ville', $data['ville']);
+		}
+		return $query->getQuery()->getResult();
+	}
 }

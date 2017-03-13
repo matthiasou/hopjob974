@@ -111,6 +111,7 @@
             </div>
         </div>
         <div id="services">
+            <form>
             <h1 class="title-heading">• nos services •</h1>
             <ul id="bxslider-desktop">
 
@@ -119,13 +120,13 @@
                             <li>
                         {% endif %}
                             <div class="col-md-15 domaines" style="background-image: url({{ asset('bundles/front/img/homepage/' ~ domaine.id ~ '.jpg') }})">
-                                <a href="#">{{ domaine.libelle }}</a>
+                                <a href="{{app.request.getUri}}domaines/{{domaine.libelle}}">{{ domaine.libelle }}</a>
                             </div>
                        {% if loop.last or (loop.index % 5) == 0 %}
                             </li>
                        {% endif %}
                     {% endfor %}
-
+            </form>
             </ul>
 
            <ul id="bxslider-tablette">
