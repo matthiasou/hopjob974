@@ -14,9 +14,7 @@
                 <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-8 col-md-10 spacer">
                     <div id="authentication-container" class="col-xs-12 col-sm-6 col-md-3">
                         {% if app.user %}
-                            <a href="#" class="link">{{ app.user.prenom ~ ' ' ~ app.user.nom}}</a>
-                            <span>•</span>
-                            <a href="#" class="link">Tableau de bord</a>
+                            <a href="{{ path('admin') }}" class="link">{{ app.user.prenom ~ ' ' ~ app.user.nom}}</a>
                             <span>•</span>
                             <a href="{{ path('fos_user_security_logout') }}" class="link"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
                         {% else %}

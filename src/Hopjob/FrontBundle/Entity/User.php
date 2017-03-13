@@ -102,10 +102,10 @@ class User extends BaseUser
     private $civilite;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\Domaine", inversedBy="id")
+     * @ORM\ManyToMany(targetEntity="Hopjob\FrontBundle\Entity\Domaine", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
-    private $domaine;
+    private $domaines;
    
     /**
      * @var string
