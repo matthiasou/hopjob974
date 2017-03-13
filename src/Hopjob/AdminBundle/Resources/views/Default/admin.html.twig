@@ -11,11 +11,11 @@
     {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     <!-- Bootstrap -->
-    <link href="../../../vendor/espaceAdmin/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('bundles/admin/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="../../../vendor/espaceAdmin/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{ asset('bundles/admin/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- Custom Theme Style -->
-    <link href="../../../vendor/espaceAdmin/css/custom.min.css" rel="stylesheet">
+    <link href="{{ asset('bundles/admin/css/custom.min.css') }}" rel="stylesheet">
 </head>
 <body class="nav-md">
 {% block body %}
