@@ -5,12 +5,14 @@ namespace Hopjob\FrontBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use FOS\MessageBundle\Model\ParticipantInterface;
+
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="utilisateur")
  */
-class User extends BaseUser
+class User extends BaseUser implements ParticipantInterface
 {
     /**
      * @var int
