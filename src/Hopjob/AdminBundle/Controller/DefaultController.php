@@ -53,8 +53,14 @@ class DefaultController extends Controller
         // Annonces succeptible de lui plaire
         $em3 = $this->getDoctrine()->getManager();
 
-        $domaine = $em3->getRepository("FrontBundle:Domaine")->findBy(array('id' => $user->getDomaine()->getId()));
-        $sous_domaine = $em3->getRepository("FrontBundle:SousDomaine")->findBy(array('domaine' => $domaine));
+        $userDomaines = array();
+        foreach ( $user->getDomaines() as $domaine) {
+        $userDomaines[] = $domaine;
+      }
+
+
+
+        $sous_domaine = $em3->getRepository("FrontBundle:SousDomaine")->findBy(array('domaine' => $userDomaines));
         $activite = $em3->getRepository("FrontBundle:Activite")->findBy(array('sousDomaine' => $sous_domaine));
         $demande_service = $em3->getRepository("FrontBundle:DemandeService")->findBy(array('activite' => $activite));
         $annonces2 = $em3->getRepository("FrontBundle:Annonce")->findBy(array('demandeService' => $demande_service));
@@ -80,7 +86,42 @@ class DefaultController extends Controller
     public function messagerieAction()
     {
 
-        return $this->render('AdminBundle::messagerie.html.twig');
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        // Récupération des informations de l'utilisateur qui est connecté
+
+        if (empty($user)) {
+            $params['utilisateurs'] = null;
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $reponse = $em->getRepository("FrontBundle:ReponseAnnonce")->findBy(array('validation' => 1, 'statutPaiement' => 0, 'utilisateur1' => $user->getId()));
+
+        if (empty($reponse)) {
+            $params['reponses'] = null;
+        }
+
+        $em1 = $this->getDoctrine()->getManager();
+        $reponse1 = $em1->getRepository("FrontBundle:ReponseAnnonce")->findBy(array('validation' => 1, 'statutPaiement' => 0, 'utilisateur' => $user->getId()));
+
+        if (empty($reponse1)) {
+            $params['reponses1'] = null;
+        }
+
+
+        $params['reponses'] = $reponse;
+        $params['reponses2'] = $reponse1;
+
+        $sender = $this->get('security.token_storage')->getToken()->getUser();
+        $threadBuilder = $this->get('fos_message.composer')->newThread();
+        $threadBuilder
+            ->addRecipient($sender) // Retrieved from your backend, your user manager or ...
+            ->setSender($sender)
+            ->setSubject('Stof commented on your pull request #456789')
+            ->setBody('You have a typo, : mondo instead of mongo. Also for coding standards ...');
+        $sender = $this->get('fos_message.sender');
+        $sender->send($threadBuilder->getMessage());
+
+        return $this->render('AdminBundle::messagerie.html.twig',$params);
     }
 
     /**
