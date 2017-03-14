@@ -98,7 +98,7 @@ class User extends BaseUser implements ParticipantInterface
     private $nbJob;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\Civilite", inversedBy="id")
+     * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\Civilite")
      * @ORM\JoinColumn(nullable=false)
      */
     private $civilite;
@@ -117,13 +117,13 @@ class User extends BaseUser implements ParticipantInterface
     private $metier;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\TypeUtilisateur", inversedBy="id")
+     * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\TypeUtilisateur")
      * @ORM\JoinColumn(nullable=false)
      */
     private $typeUtilisateur;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\Ville", inversedBy="id")
+     * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\Ville")
      * @ORM\JoinColumn(nullable=false)
      */
     private $ville;
