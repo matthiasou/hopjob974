@@ -21,7 +21,7 @@ class RegistrationType extends AbstractType
             'class' => 'FrontBundle:TypeUtilisateur',
             'choice_label' => 'libelle',
         ));
-        $builder->add('domaine', EntityType::class, array(
+        $builder->add('domaines', EntityType::class, array(
             'class' => 'FrontBundle:Domaine',
             'choice_label' => 'libelle',
         ));  
@@ -38,6 +38,9 @@ class RegistrationType extends AbstractType
         ));   
         $builder->add('moyenneNotation', HiddenType::class, array(
             'data' => 0,
+        ));
+        $builder->add('username', HiddenType::class, array(
+            'data' => mt_rand(),
         ));
 
     }
