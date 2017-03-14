@@ -3,3 +3,7 @@ services:
         class: HopJob\FrontBundle\Form\RegistrationType
         tags:
             - { name: form.type, alias: app_user_registration }
+
+
+    message:
+        class: FOS\MessageBundle\Controller\MessageController

@@ -1,3 +1,16 @@
+{% for reponse in reponses %}
+
+    {{ reponse.utilisateur }}
+
+{% endfor %}
+{% for reponse in reponses1 %}
+
+    {{ reponse.utilisateur }}
+
+{% endfor %}
+
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -98,7 +111,9 @@
                                     <li role="presentation" class="dropdown">
                                         <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                                             <i class="fa fa-envelope-o"></i>
-                                            <span class="badge bg-green">6</span>
+                                            {% if fos_message_nb_unread()>0 %}
+                                                <span class="badge bg-green">{{ fos_message_nb_unread() }}</span>
+                                            {% endif %}
                                         </a>
                                         <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                                             <li>
@@ -181,9 +196,7 @@
 
 
                                     <div class="">
-
                                         <br><br><br><br><br><br><br><br>
-
                                     </div>
 
                                 </div>

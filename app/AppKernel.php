@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new Hopjob\FrontBundle\FrontBundle(),
             new Hopjob\AdminBundle\AdminBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new FOS\MessageBundle\FOSMessageBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
