@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 
 class RegistrationType extends AbstractType
@@ -14,8 +15,13 @@ class RegistrationType extends AbstractType
     {
         $builder->add('nom');
         $builder->add('prenom');
-        $builder->add('dateNaissance');
-        $builder->add('adresse');
+        $builder->add('dateNaissance', DateType::class, array(
+            'widget' => 'single_text',
+        ));        
+        $builder->add('adresse', EntityType::class, array(
+            'class' => 'FrontBundle:Adresse',
+            'choice_label' => 'libelle',
+        ));
         $builder->add('description');
         $builder->add('typeUtilisateur', EntityType::class, array(
             'class' => 'FrontBundle:TypeUtilisateur',
