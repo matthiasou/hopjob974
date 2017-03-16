@@ -9,71 +9,181 @@ use FOS\MessageBundle\Entity\Message as BaseMessage;
 /**
  * @ORM\Entity
  */
-class Message extends BaseMessage
+class Message
 {
     /**
      * @ORM\Id
-     * @ORM\Column(type="integer")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    private $id;
+
 
     /**
-     * @ORM\ManyToOne(
-     *   targetEntity="\Hopjob\AdminBundle\Entity\Thread",
-     *   inversedBy="messages"
-     * )
-     * @var \FOS\MessageBundle\Model\ThreadInterface
-     */
-    protected $thread;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="\Hopjob\FrontBundle\Entity\User")
-     * @var \FOS\MessageBundle\Model\ParticipantInterface
-     */
-    protected $sender;
-
-    /**
-     * @ORM\OneToMany(
-     *   targetEntity="\Hopjob\AdminBundle\Entity\MessageMetadata",
-     *   mappedBy="message",
-     *   cascade={"all"}
-     * )
-     * @var MessageMetadata[]|Collection
-     */
-    protected $metadata;
-
-    /**
-     * Add metadatum
+     * @var string
      *
-     * @param \Hopjob\AdminBundle\Entity\MessageMetadata $metadatum
+     * @ORM\Column(name="contenu", type="text")
+     */
+      private $contenu;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $utilisateur;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Hopjob\AdminBundle\Entity\Conversation", inversedBy="id")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $conversation;
+
+
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="is_read", type="boolean")
+     */
+    private $isRead;
+
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetimetz", nullable=true)
+     */
+    private $date;
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set contenu
+     *
+     * @param string $contenu
      *
      * @return Message
      */
-    public function addMetadatum(\Hopjob\AdminBundle\Entity\MessageMetadata $metadatum)
+    public function setContenu($contenu)
     {
-        $this->metadata[] = $metadatum;
+        $this->contenu = $contenu;
 
         return $this;
     }
 
     /**
-     * Remove metadatum
+     * Get contenu
      *
-     * @param \Hopjob\AdminBundle\Entity\MessageMetadata $metadatum
+     * @return string
      */
-    public function removeMetadatum(\Hopjob\AdminBundle\Entity\MessageMetadata $metadatum)
+    public function getContenu()
     {
-        $this->metadata->removeElement($metadatum);
+        return $this->contenu;
     }
 
     /**
-     * Get metadata
+     * Set isRead
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @param boolean $isRead
+     *
+     * @return Message
      */
-    public function getMetadata()
+    public function setIsRead($isRead)
     {
-        return $this->metadata;
+        $this->isRead = $isRead;
+
+        return $this;
+    }
+
+    /**
+     * Get isRead
+     *
+     * @return boolean
+     */
+    public function getIsRead()
+    {
+        return $this->isRead;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Message
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set conversation
+     *
+     * @param \Hopjob\AdminBundle\Entity\Conversation $conversation
+     *
+     * @return Message
+     */
+    public function setConversation(\Hopjob\AdminBundle\Entity\Conversation $conversation)
+    {
+        $this->conversation = $conversation;
+
+        return $this;
+    }
+
+    /**
+     * Get conversation
+     *
+     * @return \Hopjob\AdminBundle\Entity\Conversation
+     */
+    public function getConversation()
+    {
+        return $this->conversation;
+    }
+
+    /**
+     * Set utilisateur
+     *
+     * @param \Hopjob\FrontBundle\Entity\User $utilisateur
+     *
+     * @return Message
+     */
+    public function setUtilisateur(\Hopjob\FrontBundle\Entity\User $utilisateur)
+    {
+        $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+
+    /**
+     * Get utilisateur
+     *
+     * @return \Hopjob\FrontBundle\Entity\User
+     */
+    public function getUtilisateur()
+    {
+        return $this->utilisateur;
     }
 }

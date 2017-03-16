@@ -99,8 +99,8 @@
                                     <li role="presentation" class="dropdown">
                                         <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                                             <i class="fa fa-envelope-o"></i>
-                                            {% if fos_message_nb_unread()>0 %}
-                                                <span class="badge bg-green">{{ fos_message_nb_unread() }}</span>
+                                            {% if nbUnRead != 0 %}
+                                                <span class="badge bg-green">{{ nbUnRead }}</span>
                                             {% endif %}
                                         </a>
                                         <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
@@ -206,11 +206,9 @@
             </div>
         {% endblock %}
         {% block javascripts %}
-            <script src="../../../vendor/espaceAdmin/jquery/dist/jquery.min.js"></script>
-            <!-- Bootstrap -->
-            <script src="../../../vendor/espaceAdmin/bootstrap/dist/js/bootstrap.min.js"></script>
-            <!-- Custom Theme Scripts -->
-            <script src="../../../vendor/espaceAdmin/js/custom.min.js"></script>
+            <script type="text/javascript" src="{{ asset('bundles/admin/jquery/dist/jquery.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('bundles/admin/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('bundles/admin/js/custom.min.js') }}"></script>
         {% endblock %}
     </body>
 </html>
