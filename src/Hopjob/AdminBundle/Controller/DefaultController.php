@@ -331,7 +331,111 @@ class DefaultController extends Controller
      */
     public function codeAction()
     {
-        return $this->render('AdminBundle::code.html.twig');
+        /*$characts    = 'abcdefghijklmnopqrstuvwxyz';
+        $characts   .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $characts   .= '1234567890';
+        $code_aleatoire      = '';
+
+        for($i=0;$i < 5;$i++)    //10 est le nombre de caractères
+        {
+            $code_aleatoire .= substr($characts,rand()%(strlen($characts)),1);
+        } */
+
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        // Récupération des informations de l'utilisateur qui est connecté
+
+        if (empty($user)) {
+            $params['utilisateurs'] = null;
+        }
+
+        // Affichage des informations de l'utilisateur connecté
+        $formatted[] = [
+            'id' => $user->getId(),
+            'nom' => $user->getNom(),
+            'prenom' => $user->getPrenom(),
+            'moyenne_notation' => $user->getMoyenneNotation(),
+            'revenu' => $user->getRevenu(),
+            'nb_job' => $user->getNbJob(),
+        ];
+
+        $em = $this->getDoctrine()->getManager();
+        $conversation2 = $em->getRepository("AdminBundle:Conversation")->findBy(array('utilisateur' => $user ));
+        // $messages2= $em->getRepository("AdminBundle:Message")->findBy(array('conversation' => $conversation2,'utilisateur' => $user, 'isRead' => false  ));
+
+        $messages2= $em->createQuery('SELECT m FROM AdminBundle:Conversation c
+                  JOIN AdminBundle:Message m
+                  WHERE
+                    m.conversation=:conversation
+                  AND m.utilisateur!=:utili
+                  AND m.isRead=FALSE ')
+            ->setParameter('conversation', $conversation2)
+            ->setParameter('utili', $user)
+            ->getResult();
+
+
+        $conversation3 = $em->getRepository("AdminBundle:Conversation")->findBy(array('utilisateur1' => $user ));
+        //$messages3= $em->getRepository("AdminBundle:Message")->findBy(array('conversation' => $conversation3, 'utilisateur' => $user, 'isRead' => false ));
+        $messages3= $em->createQuery('SELECT m FROM AdminBundle:Conversation c
+                  JOIN AdminBundle:Message m
+                  WHERE
+                    m.conversation=:conversation
+                  AND m.utilisateur!=:utili
+                  AND m.isRead=FALSE ')
+            ->setParameter('conversation', $conversation3)
+            ->setParameter('utili', $user)
+            ->getResult();
+
+        $nbUnread = count($messages3) + count($messages2);
+
+
+        $utilisateurs = $em->getRepository("FrontBundle:User")->findAll();
+        $annonces = $em->getRepository("FrontBundle:Annonce")->findBy(array());
+        $reponseAnnonce = $em->getRepository("FrontBundle:ReponseAnnonce")->findBy(array('annonce'=>$annonces, 'utilisateur1'=>$utilisateurs, 'utilisateur' => $user, 'validation' => 1, 'statutPaiement' => false ));
+
+
+
+
+        $params['nbUnRead'] = $nbUnread;
+        $params['reponseAnnonce'] = $reponseAnnonce;
+        $params['utilisateurs'] = $formatted;
+        $params['js'] = "";
+
+        if (isset($_POST['code'])) {
+
+            $repAnn = $em->getRepository("FrontBundle:ReponseAnnonce")->findOneBy(array('id' => $_POST['id']));
+            $code = $repAnn->getCode();
+            $codedecrypt = md5($_POST['code']);
+            if($code == $codedecrypt){
+                $repAnn->setStatutPaiement(true);
+                $em->flush();
+                $js = '<script  type="text/javascript">'.'swal({ 
+  title: "Code Validé !",
+   text: "Le travailleur va reçevoir son paiement",
+    type: "success" 
+  },
+  function(){
+    window.location.href = "code";
+});'.
+                    '</script>';
+                $params['js'] = $js;
+
+
+
+
+            }
+            else {
+                $js = '<script  type="text/javascript">'.'swal("Oops!", "Le code semble incorrect !", "error");'.
+                    '</script>';
+                $params['js'] = $js;
+
+            }
+
+        }
+
+
+
+
+        return $this->render('AdminBundle::code.html.twig', $params);
     }
 
     /**

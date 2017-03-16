@@ -1,214 +1,243 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <!-- Meta, title, CSS, favicons, etc. -->
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{% block title %}HopJob974{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-        <!-- Bootstrap -->
-        <link href="{{ asset('bundles/admin/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
-        <!-- Font Awesome -->
-        <link href="{{ asset('bundles/admin/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-        <!-- Custom Theme Style -->
-        <link href="{{ asset('bundles/admin/css/custom.min.css') }}" rel="stylesheet">
-    </head>
-    <body class="nav-md">
-        {% block body %}
-            <div class="container body">
-                <div class="main_container">
-                    <div class="col-md-3 left_col">
-                        <div class="left_col scroll-view">
-                            <div class="navbar nav_title" style="border: 0;">
-                                <a href="{{ path('admin') }}" class="site_title"><i class="fa fa-home"></i> <span><img height="55px" src="{{ asset('bundles/admin/img/logo.png') }}"></span></a>
-                            </div>
+    <title>{% block title %}HopJob974{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <!-- Bootstrap -->
+    <link href="{{ asset('bundles/admin/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{{ asset('bundles/admin/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="{{ asset('bundles/admin/css/custom.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/admin/css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/admin/css/sweetalert.css') }}" rel="stylesheet">
+    <script type="text/javascript" src="{{ asset('bundles/admin/js/sweetalert.min.js') }}"></script>
 
-                            <div class="clearfix"></div>
 
-                            <!-- menu profile quick info -->
-                            <div class="profile clearfix">
-                                <div class="profile_pic">
-                                    <img src="{{ asset('bundles/admin/img/img.jpg') }}" alt="..." class="img-circle profile_img">
-                                </div>
-                                <div class="profile_info">
-                                    <span>Bienvenue,</span>
-                                    <h2>Alexandra Pottier</h2>
-                                </div>
-                            </div>
-                            <!-- /menu profile quick info -->
+</head>
+<body class="nav-md">
+{% block body %}
+    {% for utilisateur in utilisateurs %}
 
-                            <br />
+        <div class="container body">
+        <div class="main_container">
+        <div class="col-md-3 left_col">
+            <div class="left_col scroll-view">
+                <div class="navbar nav_title" style="border: 0;">
+                    <a href="{{ path('admin') }}" class="site_title"><i class="fa fa-home"></i> <span><img height="55px" src="{{ asset('bundles/admin/img/logo.png') }}"></span></a>
+                </div>
 
-                            <!-- sidebar menu -->
-                            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-                                <div class="menu_section">
-                                    <h3>General</h3>
-                                    <ul class="nav side-menu">
-                                        <li><a href="{{ path('admin') }}"><i class="fa fa-home"></i> Tableau de bord <span class="fa fa-chevron-down"></span></a>
-                                        </li>
-                                        <li><a href="{{ path('messagerie') }}"><i class="fa fa-envelope-o"></i> Messagerie <span class="fa fa-chevron-down"></span></a>
-                                        </li>
-                                        <li><a href="{{ path('documents') }}"><i class="fa fa-file-text-o"></i> Mes documents <span class="fa fa-chevron-down"></span></a>
-                                            <ul class="nav child_menu">
-                                                </li>
-                                            </ul>
-                                        <li class="active"><a href="{{ path('code') }}"><i class="fa fa-credit-card"></i> Code | Paiement <span class="fa fa-chevron-down"></span></a>
-                                            <ul class="nav child_menu">
-                                                </li>
-                                            </ul>
-                                </div>
-                            </div>
-                            <!-- /sidebar menu -->
+                <div class="clearfix"></div>
 
-                            <!-- /menu footer buttons -->
-
-                            <!-- /menu footer buttons -->
-                        </div>
+                <!-- menu profile quick info -->
+                <div class="profile clearfix">
+                    <div class="profile_pic">
+                        <img src="{{ asset('bundles/admin/img/img.jpg') }}" alt="..." class="img-circle profile_img">
                     </div>
-
-                    <!-- top navigation -->
-                    <div class="top_nav">
-                        <div class="nav_menu">
-                            <nav>
-                                <div class="nav toggle">
-                                    <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                                </div>
-
-                                <ul class="nav navbar-nav navbar-right">
-                                    <li class="">
-                                        <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                            <img src="{{ asset('bundles/admin/img/img.jpg') }}" alt="">Alexandra Pottier
-                                            <span class=" fa fa-angle-down"></span>
-                                        </a>
-                                        <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                            <li><a href="javascript:;"> Mon profil</a></li>
-                                            <li>
-                                                <a href="javascript:;">
-                                                    <span class="badge bg-red pull-right">50%</span>
-                                                    <span>Réglages</span>
-                                                </a>
-                                            </li>
-                                            <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out pull-right"></i> Se déconnecter</a></li>
-                                        </ul>
-                                    </li>
-
-                                    <li role="presentation" class="dropdown">
-                                        <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                                            <i class="fa fa-envelope-o"></i>
-                                            {% if nbUnRead != 0 %}
-                                                <span class="badge bg-green">{{ nbUnRead }}</span>
-                                            {% endif %}
-                                        </a>
-                                        <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                                            <li>
-                                                <a>
-                                                    <span class="image"><img src="{{ asset('bundles/admin/img/img.jpg') }}" alt="Profile Image" /></span>
-                                                    <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                                                    <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a>
-                                                    <span class="image"><img src="{{ asset('bundles/admin/img/img.jpg') }}" alt="Profile Image" /></span>
-                                                    <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                                                    <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a>
-                                                    <span class="image"><img src="{{ asset('bundles/admin/img/img.jpg') }}" alt="Profile Image" /></span>
-                                                    <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                                                    <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a>
-                                                    <span class="image"><img src="{{ asset('bundles/admin/img/img.jpg') }}" alt="Profile Image" /></span>
-                                                    <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                                                    <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <div class="text-center">
-                                                    <a>
-                                                        <strong>See All Alerts</strong>
-                                                        <i class="fa fa-angle-right"></i>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                        </ul>
+                    <div class="profile_info">
+                        <span>Bienvenue,</span>
+                        <h2>{{ utilisateur.prenom }} {{ utilisateur.nom }}</h2>
+                    </div>
+                </div>
+                <br>
+                <!-- /menu profile quick info -->
+                <!-- sidebar menu -->
+                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                    <div class="menu_section">
+                        <h3>General</h3>
+                        <ul class="nav side-menu">
+                            <li><a href="{{ path('admin') }}"><i class="fa fa-home"></i> Tableau de bord <span class="fa fa-chevron-down"></span></a>
+                            </li>
+                            <li><a href="{{ path('messagerie') }}"><i class="fa fa-envelope-o"></i> Messagerie <span class="fa fa-chevron-down"></span></a>
+                            </li>
+                            <li><a href="{{ path('documents') }}"><i class="fa fa-file-text-o"></i> Mes documents<span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
                                     </li>
                                 </ul>
-                            </nav>
-                        </div>
+                            <li class="active"><a href="{{ path('code') }}"><i class="fa fa-credit-card"></i> Code | Paiement <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    </li>
+                                </ul>
                     </div>
-                    <!-- /top navigation -->
+                </div>
 
-                    <!-- page content -->
-                    <div class="right_col" role="main">
+                {% if (js is defined) %}{{ js|raw }}{% endif %}
+                <!-- /sidebar menu -->
 
+                <!-- /menu footer buttons -->
 
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                <div class="dashboard_graph">
+                <!-- /menu footer buttons -->
+            </div>
+        </div>
 
-                                    <div class="row x_title">
-                                        <div class="col-md-6">
-                                            <h3>Validation du code</h3>
-                                        </div>
+        <!-- top navigation -->
+        <div class="top_nav">
+            <div class="nav_menu">
+                <nav>
+                    <div class="nav toggle">
+                        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                    </div>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="">
+                            <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <img src="{{ asset('bundles/admin/img/img.jpg') }}" alt="">{{ utilisateur.prenom }} {{ utilisateur.nom }}
+                                <span class=" fa fa-angle-down"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                <li><a href="javascript:;"> Mon profil</a></li>
+                                <li>
+                                    <a href="javascript:;">
+                                        <span class="badge bg-red pull-right">50%</span>
+                                        <span>Réglages</span>
+                                    </a>
+                                </li>
+                                <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out pull-right"></i> Se déconnecter</a></li>
+                            </ul>
+                        </li>
+
+                        <li role="presentation" class="dropdown">
+                            <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-envelope-o"></i>
+                                {% if nbUnRead != 0 %}
+                                    <span class="badge bg-green">{{ nbUnRead }}</span>
+                                {% endif %}
+                            </a>
+                            <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                                <li>
+                                    <a>
+                                        <span class="image"><img src="{{ asset('bundles/admin/img/img.jpg') }}" alt="Profile Image" /></span>
+                                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="image"><img src="{{ asset('bundles/admin/img/img.jpg') }}" alt="Profile Image" /></span>
+                                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="image"><img src="{{ asset('bundles/admin/img/img.jpg') }}" alt="Profile Image" /></span>
+                                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="image"><img src="{{ asset('bundles/admin/img/img.jpg') }}" alt="Profile Image" /></span>
+                                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="text-center">
+                                        <a>
+                                            <strong>See All Alerts</strong>
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
                                     </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
 
 
-                                    <div class="">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="dashboard_graph">
 
-                                        <br><br><br><br><br><br><br><br>
-
-                                    </div>
-
-                                </div>
+                        <div class="row x_title">
+                            <div class="col-md-6">
+                                <h3>Validation du code</h3>
                             </div>
                         </div>
-                    </div>
-                    <!-- /page content -->
-                    <!-- footer content -->
-                    <footer>
-                        <div class="pull-right">
-                            HopJob974 - All rights reserved
+
+
+                        <div class="">
+
+                            {% for repAnnonce in reponseAnnonce %}
+                            <div class="login-container">
+                                <div id="output"></div>
+                                <div class="avatar"><img src="{{ asset('bundles/admin/img/img.jpg') }}" alt="..." class=" "></div>
+                                {{ repAnnonce.annonce.titre }}
+                                <br>Prix:
+                                {{ repAnnonce.prix }}€
+                                <br><br>
+                                <div class="form-box">
+                                    <form action="" method="post">
+                                        <input name="code" type="text" placeholder="code">
+                                        <input name="id" value="{{ repAnnonce.id }}" type="hidden">
+                                        <br>
+                                        <button class="btn btn-info btn-block" type="submit">Valider</button>
+                                    </form>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+
+
                         </div>
-                        <div class="clearfix"></div>
-                    </footer>
-                    <!-- /footer content -->
+
+                    </div>
+
                 </div>
             </div>
-        {% endblock %}
-        {% block javascripts %}
-            <script type="text/javascript" src="{{ asset('bundles/admin/jquery/dist/jquery.min.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('bundles/admin/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('bundles/admin/js/custom.min.js') }}"></script>
-        {% endblock %}
-    </body>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+            <div class="pull-right">
+                HopJob974 - All rights reserved
+            </div>
+            <div class="clearfix"></div>
+        </footer>
+    {% endfor %}
+    <!-- /footer content -->
+    </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/admin/jquery/dist/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/admin/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/admin/js/custom.min.js') }}"></script>
+{% endblock %}
+</body>
 </html>
