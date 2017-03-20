@@ -19,6 +19,7 @@ class Ville
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\OneToMany(targetEntity="Hopjob\FrontBundle\Entity\Annonce", mappedBy="ville")
+     * @ORM\OneToMany(targetEntity="Hopjob\FrontBundle\Entity\Adresse", mappedBy="ville")
      */
     private $id;
 

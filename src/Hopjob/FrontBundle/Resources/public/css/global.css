@@ -1,13 +1,15 @@
 @font-face {
   font-family: "Somatic-Rounded";
-  src: "../font/Somatic-Rounded.otf";
+  src: "../fonts/Somatic-Rounded.otf";
 }
 @font-face {
   font-family: "Quicksand-Regular";
-  src: "../font/Quicksand-Regular.otf";
+  src: "../fonts/Quicksand-Regular.otf";
 }
-html{font-family: "Somatic-Rounded";font-weight: 300}
-body{margin:0 auto;}
+/*basic reset*/
+* {margin: 0; padding: 0;font-family: "Quicksand-Regular"!important;font-weight: 500;}
+html{height: 100%}
+body{margin:0 auto}
 .spacer{margin-top: 20px}
 
 .title-heading{text-align: center;margin: 20px auto}
