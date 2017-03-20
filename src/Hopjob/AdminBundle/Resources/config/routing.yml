@@ -6,6 +6,10 @@ messagerie:
     path:     /messagerie
     defaults: { _controller: AdminBundle:Default:messagerie }
 
+message:
+    path:     /message/{id}
+    defaults: { _controller: AdminBundle:Default:message }
+
 code:
     path:     /code
     defaults: { _controller: AdminBundle:Default:code }

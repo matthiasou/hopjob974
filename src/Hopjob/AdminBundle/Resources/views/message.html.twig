@@ -16,6 +16,7 @@
     <link href="{{ asset('bundles/admin/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="{{ asset('bundles/admin/css/custom.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/admin/css/custom.css') }}" rel="stylesheet">
 </head>
 <body class="nav-md">
 {% block body %}
@@ -50,9 +51,9 @@
                                     <ul class="nav side-menu">
                                         <li><a href="{{ path('admin') }}"><i class="fa fa-home"></i> Tableau de bord <span class="fa fa-chevron-down"></span></a>
                                         </li>
-                                        <li><a href="{{ path('messagerie') }}"><i class="fa fa-envelope-o"></i> Messagerie <span class="fa fa-chevron-down"></span></a>
+                                        <li class="active"><a href="{{ path('messagerie') }}"><i class="fa fa-envelope-o"></i> Messagerie <span class="fa fa-chevron-down"></span></a>
                                         </li>
-                                        <li class="active"><a href="{{ path('documents') }}"><i class="fa fa-file-text-o"></i> Mes documents<span class="fa fa-chevron-down"></span></a>
+                                        <li><a href="{{ path('documents') }}"><i class="fa fa-file-text-o"></i> Mes documents<span class="fa fa-chevron-down"></span></a>
                                             <ul class="nav child_menu">
                                                 </li>
                                             </ul>
@@ -102,6 +103,7 @@
                                             {% if nbUnRead != 0 %}
                                                 <span class="badge bg-green">{{ nbUnRead }}</span>
                                             {% endif %}
+
                                         </a>
                                         <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                                             <li>
@@ -166,142 +168,110 @@
                             </nav>
                         </div>
                     </div>
-                    <!-- /top navigation -->
+            <!-- /top navigation -->
 
-                    <!-- page content -->
-                    <div class="right_col" role="main">
-
-
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                <div class="dashboard_graph">
-
-                                    <div class="row x_title">
-                                        <div class="col-md-6">
-                                            <h3>Mes documents</h3>
-                                        </div>
-                                    </div>
+            <!-- page content -->
+            <div class="right_col" role="main">
 
 
-                                    <div class="">
-                                        <div class="x_panel">
-                                            <div class="x_title">
-                                                <h2>Factures</h2>
-                                                <ul class="nav navbar-right panel_toolbox">
-                                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                                    </li>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="dashboard_graph">
 
-                                                    </li>
-                                                </ul>
-                                                <div class="clearfix"></div>
-                                            </div>
-                                            <div class="x_content">
-
-                                                <table class="table table-striped">
-                                                    <thead>
-                                                    <tr>
-                                                        <th>N°</th>
-                                                        <th>Date</th>
-                                                        <th>Mission</th>
-                                                        <th>Par</th>
-                                                        <th>Prix</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    {% for facture in factures %}
-                                                    <tr>
-                                                        <th scope="row">{{ facture.id }}</th>
-                                                        <td>{{ facture.date|date("d/m/y") }}</td>
-                                                        <td>{{ facture.reponseannonce.annonce.titre }}</td>
-                                                        <td>{{ facture.reponseannonce.utilisateur1.nom }} {{ facture.reponseannonce.utilisateur1.prenom  }}</td>
-
-                                                        <td>{{ facture.reponseannonce.prix }} €</td>
-                                                        <td> &nbsp &nbsp  <a href="{{ asset('bundles/admin/img/img.jpg') }}" <i class="fa fa-download"></i></a>  </td>
-                                                    </tr>
-                                                    {% endfor %}
-                                                    </tbody>
-                                                </table>
-
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-
-                                </div>
-                                <div class="dashboard_graph">
-
-
-
-                                    <div class="">
-                                        <div class="x_panel">
-                                            <div class="x_title">
-                                                <h2>Bulletin de paie</h2>
-                                                <ul class="nav navbar-right panel_toolbox">
-                                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                                    </li>
-
-                                                    </li>
-                                                </ul>
-                                                <div class="clearfix"></div>
-                                            </div>
-                                            <div class="x_content">
-
-                                                <table class="table table-striped">
-                                                    <thead>
-                                                    <tr>
-                                                        <th>N°</th>
-                                                        <th>Date</th>
-                                                        <th>Mission</th>
-                                                        <th>Pour</th>
-                                                        <th>Prix</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    {% for bulletin in bulletins %}
-                                                        <tr>
-                                                            <th scope="row">{{ bulletin.id }}</th>
-                                                            <td>{{ bulletin.date|date("d/m/y") }}</td>
-                                                            <td>{{ bulletin.reponseannonce.annonce.titre }}</td>
-                                                            <td>{{ bulletin.reponseannonce.utilisateur.nom }} {{ bulletin.reponseannonce.utilisateur.prenom  }}</td>
-
-                                                            <td>{{ bulletin.reponseannonce.prix }} €</td>
-                                                            <td> &nbsp &nbsp  <a href="{{ asset('bundles/admin/img/img.jpg') }}" <i class="fa fa-download"></i></a>  </td>
-                                                        </tr>
-                                                    {% endfor %}
-                                                    </tbody>
-                                                </table>
-
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-
+                            <div class="row x_title">
+                                <div class="col-md-6">
+                                    <h3>Message</h3>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <!-- /page content -->
 
-                    <!-- footer content -->
-                    <footer>
-                        <div class="pull-right">
-                            HopJob974 - All rights reserved
+
+                            <div class="">
+                                Message pour: {{ contact.nom }}
+
+                                <div class="container">
+                                    <div class="row form-group">
+                                        <div class="col-xs-12 col-md-offset-2 col-md-8 col-lg-8 col-lg-offset-2">
+                                            <div class="panel panel-primary">
+                                                <div class="panel-body body-panel">
+                                                    <ul class="chat">
+                                                        {% for message in messages %}
+                                                            {% if  utilisateur.id == message.utilisateur.id  %}
+
+                                                        <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
+                        </span>
+                                                            <div class="chat-body clearfix">
+                                                                <div class="header">
+                                                                    <strong class="primary-font">{{ message.utilisateur.nom }} {{ message.utilisateur.prenom }}</strong> <small class="pull-right text-muted">
+                                                                        <span class="glyphicon glyphicon-time"></span>{{ message.date|date("d/m/y H:i") }}</small>
+                                                                </div>
+                                                                <p>
+                                                                    {{ message.contenu }}
+                                                                </p>
+                                                            </div>
+                                                        </li>
+                                                            {% else %}
+                                                                <li class="right clearfix"><span class="chat-img pull-right">
+                            <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
+                        </span>
+                                                                    <div class="chat-body clearfix">
+                                                                        <div class="header">
+                                                                            <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>{{ message.date|date("d/m/y H:i") }}</small>
+                                                                            <strong class="pull-right primary-font">{{ message.utilisateur.nom }} {{ message.utilisateur.prenom }}</strong>
+                                                                        </div>
+                                                                        <p>
+                                                                            {{ message.contenu }}
+                                                                        </p>
+                                                                    </div>
+                                                                </li>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </ul>
+                                                </div>
+                                                <form method="post">
+                                                <div class="panel-footer clearfix">
+                                                    <textarea name="message"  class="form-control" rows="3"></textarea>
+                                                    <span class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-xs-12" style="margin-top: 10px">
+                        <input type="submit" value="Envoyer" class="btn btn-warning btn-lg btn-block" id="envoyer">
+
+                    </span>
+                                                </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+
                         </div>
-                        <div class="clearfix"></div>
-                    </footer>
-                    {% endfor %}
-                    <!-- /footer content -->
+                        <br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+                    </div>
                 </div>
             </div>
-        {% endblock %}
-        {% block javascripts %}
-            <script type="text/javascript" src="{{ asset('bundles/admin/jquery/dist/jquery.min.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('bundles/admin/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('bundles/admin/js/custom.min.js') }}"></script>
-        {% endblock %}
-    </body>
+            <!-- /page content -->
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right">
+                    HopJob974 - All rights reserved
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+    {% endfor %}
+            <!-- /footer content -->
+        </div>
+        </div>
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/admin/jquery/dist/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/admin/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/admin/js/custom.min.js') }}"></script>
+    <!-- Bootstrap -->
+{% endblock %}
+</body>
 </html>

@@ -1,16 +1,3 @@
-{% for reponse in reponses %}
-
-    {{ reponse.utilisateur }}
-
-{% endfor %}
-{% for reponse in reponses1 %}
-
-    {{ reponse.utilisateur }}
-
-{% endfor %}
-
-
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -28,9 +15,11 @@
         <link href="{{ asset('bundles/admin/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
         <!-- Custom Theme Style -->
         <link href="{{ asset('bundles/admin/css/custom.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('bundles/admin/css/custom.css') }}" rel="stylesheet">
     </head>
     <body class="nav-md">
         {% block body %}
+        {% for utilisateur in utilisateurs %}
             <div class="container body">
                 <div class="main_container">
                     <div class="col-md-3 left_col">
@@ -48,7 +37,7 @@
                                 </div>
                                 <div class="profile_info">
                                     <span>Bienvenue,</span>
-                                    <h2>Alexandra Pottier</h2>
+                                    <h2>{{ utilisateur.prenom }} {{ utilisateur.nom }}</h2>
                                 </div>
                             </div>
                             <!-- /menu profile quick info -->
@@ -93,7 +82,7 @@
                                 <ul class="nav navbar-nav navbar-right">
                                     <li class="">
                                         <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                            <img src="{{ asset('bundles/admin/img/img.jpg') }}" alt="">Alexandra Pottier
+                                            <img src="{{ asset('bundles/admin/img/img.jpg') }}" alt="">{{ utilisateur.prenom }} {{ utilisateur.nom }}
                                             <span class=" fa fa-angle-down"></span>
                                         </a>
                                         <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -111,8 +100,8 @@
                                     <li role="presentation" class="dropdown">
                                         <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                                             <i class="fa fa-envelope-o"></i>
-                                            {% if fos_message_nb_unread()>0 %}
-                                                <span class="badge bg-green">{{ fos_message_nb_unread() }}</span>
+                                            {% if nbUnRead != 0 %}
+                                                <span class="badge bg-green">{{ nbUnRead }}</span>
                                             {% endif %}
                                         </a>
                                         <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
@@ -196,7 +185,73 @@
 
 
                                     <div class="">
-                                        <br><br><br><br><br><br><br><br>
+
+
+                                                <div class="panel panel-default">
+                                                    <div class="panel-body">
+
+                                                        <div class="table-container">
+                                                            <table class="table table-filter">
+                                                                <tbody>
+                                                                {% for reponse in reponses %}
+                                                                    <tr onclick="location.href='{{ path('message', {'id': reponse.utilisateur.id}) }}' ;" data-status="pagado">
+                                                                    <td>
+                                                                        <a class="pull-left">
+                                                                            <img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+                                                                        </a>
+                                                                    </td>
+                                                                    <td>
+                                                                        {{ reponse.utilisateur.nom }}
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="media">
+                                                                            <a href="#" class="pull-left">
+                                                                                <img  class="media-photo">
+                                                                            </a>
+                                                                            <div class="media-body">
+                                                                                <span class="media-meta pull-right">{{ reponse.annonce.dateCreation|date("d/m/y") }}</span>
+                                                                                <h4 class="title">
+                                                                                    {{ reponse.annonce.demandeService.activite.sousDomaine.domaine.libelle }}
+                                                                                </h4>
+                                                                                <p class="summary">{{ reponse.annonce.titre }} ...</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                {% endfor %}
+                                                                {% for reponse in reponses1 %}
+                                                                    <tr onclick="location.href='{{ path('message', {'id': reponse.utilisateur1.id}) }}' ;" data-status="pagado">
+                                                                        <td>
+                                                                            <a class="pull-left">
+                                                                                <img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+                                                                            </a>
+                                                                        </td>
+                                                                        <td>
+                                                                            {{ reponse.utilisateur1.nom }}
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="media">
+                                                                                <a href="#" class="pull-left">
+                                                                                    <img  class="media-photo">
+                                                                                </a>
+                                                                                <div class="media-body">
+                                                                                    <span class="media-meta pull-right">{{ reponse.annonce.dateCreation|date("d/m/y") }}</span>
+                                                                                    <h4 class="title">
+                                                                                        {{ reponse.annonce.demandeService.activite.sousDomaine.domaine.libelle }}
+                                                                                    </h4>
+                                                                                    <p class="summary">{{ reponse.annonce.titre }} ...</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                {% endfor %}
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
                                     </div>
 
                                 </div>
@@ -211,16 +266,15 @@
                         </div>
                         <div class="clearfix"></div>
                     </footer>
+        {% endfor %}
                     <!-- /footer content -->
                 </div>
             </div>
         {% endblock %}
         {% block javascripts %}
-            <script src="../../../vendor/espaceAdmin/jquery/dist/jquery.min.js"></script>
-            <!-- Bootstrap -->
-            <script src="../../../vendor/espaceAdmin/bootstrap/dist/js/bootstrap.min.js"></script>
-            <!-- Custom Theme Scripts -->
-            <script src="../../../vendor/espaceAdmin/js/custom.min.js"></script>
+            <script type="text/javascript" src="{{ asset('bundles/admin/jquery/dist/jquery.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('bundles/admin/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('bundles/admin/js/custom.min.js') }}"></script>
         {% endblock %}
     </body>
 </html>
