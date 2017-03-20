@@ -49,6 +49,11 @@ class User extends BaseUser implements ParticipantInterface
     private $prenom;
 
 
+    /**
+     * @ORM\OneToOne(targetEntity="Hopjob\FrontBundle\Entity\Adresse",cascade={"persist", "remove"})
+     *
+     */
+    private $adresse;
 
 
     /**
@@ -61,13 +66,6 @@ class User extends BaseUser implements ParticipantInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="adresse", type="string", length=255)
-     */
-    private $adresse;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="description", type="text")
      */
     private $description;
@@ -75,7 +73,7 @@ class User extends BaseUser implements ParticipantInterface
     /**
      * @var float
      *
-     * @ORM\Column(name="moyenne_notation", type="float")
+     * @ORM\Column(name="moyenne_notation", type="float",  nullable=true)
      */
     private $moyenneNotation;
 
@@ -84,7 +82,7 @@ class User extends BaseUser implements ParticipantInterface
     /**
      * @var float
      *
-     * @ORM\Column(name="revenu", type="float")
+     * @ORM\Column(name="revenu", type="float",  nullable=true)
      */
     private $revenu;
 
@@ -93,13 +91,13 @@ class User extends BaseUser implements ParticipantInterface
     /**
      * @var int
      *
-     * @ORM\Column(name="nb_job", type="integer")
+     * @ORM\Column(name="nb_job", type="integer",  nullable=true)
      */
     private $nbJob;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\Civilite")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToOne(targetEntity="Hopjob\FrontBundle\Entity\Civilite")
+     *
      */
     private $civilite;
 
@@ -112,28 +110,9 @@ class User extends BaseUser implements ParticipantInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="metier", type="string", length=255)
+     * @ORM\Column(name="metier", type="string", length=255,  nullable=true)
      */
     private $metier;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\TypeUtilisateur")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $typeUtilisateur;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\Ville")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $ville;
-
-
-    public function __construct()
-    {
-        parent::__construct();
-        // your own logic
-    }
 
 
     /**
@@ -304,54 +283,6 @@ class User extends BaseUser implements ParticipantInterface
     public function getCivilite()
     {
         return $this->civilite;
-    }
-
-    /**
-     * Set typeUtilisateur
-     *
-     * @param \Hopjob\FrontBundle\Entity\TypeUtilisateur $typeUtilisateur
-     *
-     * @return User
-     */
-    public function setTypeUtilisateur(\Hopjob\FrontBundle\Entity\TypeUtilisateur $typeUtilisateur)
-    {
-        $this->typeUtilisateur = $typeUtilisateur;
-
-        return $this;
-    }
-
-    /**
-     * Get typeUtilisateur
-     *
-     * @return \Hopjob\FrontBundle\Entity\TypeUtilisateur
-     */
-    public function getTypeUtilisateur()
-    {
-        return $this->typeUtilisateur;
-    }
-
-    /**
-     * Set ville
-     *
-     * @param \Hopjob\FrontBundle\Entity\Ville $ville
-     *
-     * @return User
-     */
-    public function setVille(\Hopjob\FrontBundle\Entity\Ville $ville)
-    {
-        $this->ville = $ville;
-
-        return $this;
-    }
-
-    /**
-     * Get ville
-     *
-     * @return \Hopjob\FrontBundle\Entity\Ville
-     */
-    public function getVille()
-    {
-        return $this->ville;
     }
 
     /**

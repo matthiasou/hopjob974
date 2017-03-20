@@ -7,44 +7,28 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Hopjob\FrontBundle\Form\AdresseType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 
 class RegistrationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
         $builder->add('nom');
         $builder->add('prenom');
+        $builder->add('description');
         $builder->add('dateNaissance', DateType::class, array(
             'widget' => 'single_text',
         ));        
-        $builder->add('adresse', EntityType::class, array(
-            'class' => 'FrontBundle:Adresse',
-            'choice_label' => 'libelle',
-        ));
-        $builder->add('description');
-        $builder->add('typeUtilisateur', EntityType::class, array(
-            'class' => 'FrontBundle:TypeUtilisateur',
-            'choice_label' => 'libelle',
-        ));
-        $builder->add('domaines', EntityType::class, array(
-            'class' => 'FrontBundle:Domaine',
-            'choice_label' => 'libelle',
-        ));  
-        $builder->add('metier');
-        $builder->add('ville', EntityType::class, array(
-            'class' => 'FrontBundle:Ville',
-            'choice_label' => 'nom',
-        ));    
+        $builder->add('adresse', AdresseType::class);
+
         $builder->add('civilite', EntityType::class, array(
             'class' => 'FrontBundle:Civilite',
             'choice_label' => 'libelle',
-            'multiple' => false,
-            'expanded' => true
         ));   
-        $builder->add('moyenneNotation', HiddenType::class, array(
-            'data' => 0,
-        ));
+
         $builder->add('username', HiddenType::class, array(
             'data' => mt_rand(),
         ));

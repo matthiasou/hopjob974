@@ -1,76 +1,182 @@
-{% extends "layout.html.twig" %}
+{% extends 'FrontBundle::layout.html.twig' %}
 
 {% block body %}
 
 {% trans_default_domain 'FOSUserBundle' %}
+{# 
+<!-- multistep form -->
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register', 'id':'msform'}}) }}
 
-<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <!-- progressbar -->
+  <ul id="progressbar">
+    <li class="active">Informations personnelles</li>
+    <li>Informations de contact</li>
+  </ul>
+  <!-- fieldsets -->
+  <fieldset>
+    <h2 class="fs-title">Créer mon compte</h2>
+    <h3 class="fs-subtitle">Étape 1</h3>
+	{{ form_widget(form.email, {'attr': {'class' : 'form-control', 'placeholder' : 'Email', 'required' : true}}) }}
+	{{ form_widget(form.plainPassword.first, {'attr': {'class' : 'form-control', 'placeholder' : 'Mot de passe', 'required' : true}}) }}
+	{{ form_widget(form.plainPassword.second, {'attr': {'class' : 'form-control', 'placeholder' : 'Confirmation du mot de passe', 'required' : true}}) }}
+    <input type="button" name="next" class="next action-button" value="Suivant" />
+  </fieldset>
+  <fieldset>
+    <h2 class="fs-title">Créer mon compte</h2>
+    <h3 class="fs-subtitle">Étape 2</h3>
+	{{ form_widget(form.civilite, {'attr': {'class' : 'form-control'}}) }} <br>
+	{{ form_widget(form.prenom, {'attr': {'class' : 'form-control', 'placeholder' : 'Prénom', 'required' : true}}) }}
+	{{ form_widget(form.nom, {'attr': {'class' : 'form-control', 'placeholder' : 'Nom', 'required' : true}}) }}
+	{{ form_widget(form.dateNaissance, {'attr': {'class' : 'form-control', 'placeholder' : 'Nom', 'required' : true}}) }}
+	{{ form_widget(form.adresse.adresse1, {'attr': {'placeholder' : 'Adresse 1', 'required' : true}}) }}
+	{{ form_widget(form.adresse.adresse2, {'attr': {'placeholder' : 'Adresse 2', 'required' : false}}) }}
+	{{ form_widget(form.adresse.codePostal, {'attr': {'placeholder' : 'Code Postal', 'required' : true}}) }}
+	{{ form_widget(form.adresse.ville, {'attr': {'class' : 'form-control'}}) }}
 
-<div class="container">
-    <div class="omb_login">
-    	<h3 class="omb_authTitle">S'inscrire</h3>
+    <input type="button" name="previous" class="previous action-button" value="Précédent" />
+    <input type="submit" class="next action-button" value="Valider" />
+  </fieldset>
 
-		<div class="row omb_row-sm-offset-3">
-			<div class="col-xs-12 col-sm-6">	
-				{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-				    
-		    		<div class="input_form_register form-group col-sm-6">
-						<label for="prenom">{{ form_label(form.prenom) }}</label>
-						{{ form_widget(form.prenom, {'attr': {'class' : 'form-control'}}) }}
-						{{ form_errors(form.prenom) }}
-					</div>
+{{ form_end(form)}}
+<script type="text/javascript" src="{{ asset('bundles/front/js/register.js') }}"></script> #}
 
-		    		<div class="input_form_register form-group col-sm-6">
-						<label for="nom">{{ form_label(form.nom) }}</label>
-						{{ form_widget(form.nom, {'attr': {'class' : 'form-control'}}) }}
-						{{ form_errors(form.nom) }}
-					</div>
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="{{ asset('bundles/front/assets/bootstrap/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/front/assets/font-awesome/css/font-awesome.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('bundles/front/assets/css/form-elements.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/front/assets/css/style.css') }}">
 
-		    		<div class="input_form_register form-group col-sm-6">
-						<label for="dateNaissance">{{ form_label(form.dateNaissance) }}</label>
-						{{ form_widget(form.dateNaissance, {'attr': {'class' : 'form-control'}}) }}
-						{{ form_errors(form.dateNaissance) }}
-					</div>
-					
-		    		<div class="input_form_register form-group col-sm-6">
-						<label for="adresse">{{ form_label(form.adresse) }}</label>
-						{{ form_widget(form.adresse, {'attr': {'class' : 'form-control'}}) }}
-						{{ form_errors(form.adresse) }}
-					</div>
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="assets/ico/favicon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('bundles/front/assets/ico/apple-touch-icon-144-precomposed.png') }}">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('bundles/front/assets/ico/apple-touch-icon-114-precomposed.png') }}">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('bundles/front/assets/ico/apple-touch-icon-72-precomposed.png') }}">
+        <link rel="apple-touch-icon-precomposed" href="{{ asset('bundles/front/assets/ico/apple-touch-icon-57-precomposed.png') }}">
 
-		    		<div class="input_form_register form-group col-sm-12">
-						<label for="description">{{ form_label(form.description) }}</label>
-						{{ form_widget(form.description, {'attr': {'class' : 'form-control'}}) }}
-						{{ form_errors(form.description) }}
-					</div>
+        <!-- Top content -->
+        <div class="top-content">
+        	
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box">
+                        	
+                        	
+                        	{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register registration-form'}}) }}
+                        		<fieldset>
+		                        	<div class="form-top">
+		                        		<div class="form-top-left">
+		                        			<h3>Étape 1 / 3</h3>
+		                            		<p>Vos identifiants</p>
+		                        		</div>
+		                        		<div class="form-top-right">
+		                        			<i class="fa fa-user"></i>
+		                        		</div>
+		                            </div>
+		                            <div class="form-bottom">
+				                    	<div class="form-group">
+				                        	{{ form_widget(form.email, {'attr': {'class' : 'form-first-name form-control', 'placeholder' : 'Email', 'id': "form-email"}}) }}
 
-		    		<div class="input_form_register form-group col-sm-6">
-						<label for="typeUtilisateur">{{ form_label(form.typeUtilisateur) }}</label>
-						{{ form_widget(form.typeUtilisateur, {'attr': {'class' : 'form-control'}}) }}
-						{{ form_errors(form.typeUtilisateur) }}
-					</div>
+				                        </div>
+				                    	<div class="form-group">
+				                        	{{ form_widget(form.plainPassword.first, {'attr': {'class' : 'form-control', 'placeholder' : 'Mot de passe', 'required' : true}}) }}
+				                        </div>
+				                    	<div class="form-group">
+				                        	{{ form_widget(form.plainPassword.second, {'attr': {'class' : 'form-control', 'placeholder' : 'Confirmation du mot de passe', 'required' : true}}) }}
+				                        </div>
+				                        <button type="button" class="btn btn-next">Suivant</button>
+				                    </div>
+			                    </fieldset>
+			                    
+			                    <fieldset>
+		                        	<div class="form-top">
+		                        		<div class="form-top-left">
+		                        			<h3>Étape 2 / 3</h3>
+		                            		<p>Qui êtes-vous ?</p>
+		                        		</div>
+		                        		<div class="form-top-right">
+		                        			<i class="fa fa-key"></i>
+		                        		</div>
+		                            </div>
+		                            <div class="form-bottom">
+				                        <div class="form-group">
+				                        	<label class="sr-only" for="form-civilite">Civilité</label>
+				                        	{{ form_widget(form.civilite, {'attr': {'class' : 'form-last-name form-control'}}) }}
+				                        	
+				                        </div>
+				                    	<div class="form-group">
+				                    		<label class="sr-only" for="form-first-name">Prénom</label>
+				                        	{{ form_widget(form.prenom, {'attr': {'class' : 'form-first-name form-control', 'placeholder' : 'Prénom', 'id': "form-first-name"}}) }}
 
-		    		<div class="input_form_register form-group col-sm-6">
-						<label for="domaines">{{ form_label(form.domaines) }}</label>
-						{{ form_widget(form.domaines, {'attr': {'class' : 'form-control'}}) }}
-						{{ form_errors(form.domaines) }}
-					</div>
+				                        </div>
+				                        <div class="form-group">
+				                        	<label class="sr-only" for="form-last-name">Nom</label>
+				                        	{{ form_widget(form.nom, {'attr': {'class' : 'form-last-name form-control', 'placeholder' : 'Nom', 'id': "form-last-name"}}) }}
 
-		    		<div class="input_form_register form-group col-sm-6">
-						<label for="metier">{{ form_label(form.metier) }}</label>
-						{{ form_widget(form.metier, {'attr': {'class' : 'form-control'}}) }}
-						{{ form_errors(form.metier) }}
-					</div>
+				                        </div>
+				                        <div class="form-group">
+				                    		<label class="sr-only" for="form-date-naissance">Date de naissance</label>
+				                        	{{ form_widget(form.dateNaissance, {'attr': {'class' : 'form-control'}}) }}
+				                        </div>
+				                        <div class="form-group">
+				                        	<label class="sr-only" for="form-about-yourself">À propos de vous</label>
+				                        	{{ form_widget(form.description, {'attr': {'class' : 'form-control form-about-yourself', 'placeholder' : 'Parlez nous de vous...', 'id': "form-about-yourself"}}) }}
+				                        	
+				                        </div>
+
+				                        <button type="button" class="btn btn-previous">Précédant</button>
+				                        <button type="button" class="btn btn-next">Suivant</button>
+				                    </div>
+			                    </fieldset>
+			                    <fieldset>
+		                        	<div class="form-top">
+		                        		<div class="form-top-left">
+		                        			<h3>Étape 3 / 3</h3>
+		                            		<p>Votre adresse</p>
+		                        		</div>
+		                        		<div class="form-top-right">
+		                        			<i class="fa fa-key"></i>
+		                        		</div>
+		                            </div>
+		                            <div class="form-bottom">
+				                        <div class="form-group">
+				                        	{{ form_widget(form.adresse.adresse1, {'attr': {'class' : 'form-control', 'placeholder' : 'Votre adresse'}}) }}
+				                        </div>
+				                        <div class="form-group">
+				                        	{{ form_widget(form.adresse.adresse2, {'attr': {'class' : 'form-control', 'placeholder' : 'Informations complémentaires'}}) }}
+				                        </div>
+				                        <div class="form-group">
+				                        	{{ form_widget(form.adresse.codePostal, {'attr': {'class' : 'form-control', 'placeholder' : 'Votre code postal'}}) }}
+				                        </div>
+				                        <div class="form-group">
+				                        	{{ form_widget(form.adresse.ville, {'attr': {'class' : 'form-last-name form-control'}}) }}
+				                        </div>
+
+				                        <button type="button" class="btn btn-previous">Précédant</button>
+				                        <button type="submit" class="btn">Valider</button>
+				                    </div>
+			                    </fieldset>
+		                    
+		                    {{ form_end(form)}}
+		                    
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
 
 
-				    <div>
-				        <input type="submit" class="login login-submit btn btn-lg btn-primary btn-block" value="Valider" />
-				    </div>
-				{{ form_end(form)}}
-			</div>
-    	</div>
-	</div>
-</div>
+        <!-- Javascript -->
+        <script src="{{ asset('bundles/front/assets/js/jquery.backstretch.min.js') }}"></script>
+        <script src="{{ asset('bundles/front/assets/js/retina-1.1.0.min.js') }}"></script>
+        <script src="{{ asset('bundles/front/assets/js/scripts.js') }}"></script>
+        
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+
 
 {% endblock %}
 

@@ -16,7 +16,7 @@ class Adresse
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
-     * @ORM\id
+     * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
@@ -38,15 +38,24 @@ class Adresse
     /**
      * @var string
      *
-     * @ORM\Column(name="code_postal", type="string", length=255)
+     * @ORM\Column(name="codePostal", type="string", length=255)
      */
     private $codePostal;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\Ville")
-    * @ORM\JoinColumn(nullable=false)
-    */
+     * @var string
+     *
+     * @ORM\Column(name="ville", type="string", length=255)
+     */
     private $ville;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pays", type="string", length=255)
+     */
+    private $pays;
+
 
     /**
      * Get id
@@ -154,4 +163,28 @@ class Adresse
         return $this->ville;
     }
 
+    /**
+     * Set pays
+     *
+     * @param string $pays
+     *
+     * @return Adresse
+     */
+    public function setPays($pays)
+    {
+        $this->pays = $pays;
+
+        return $this;
+    }
+
+    /**
+     * Get pays
+     *
+     * @return string
+     */
+    public function getPays()
+    {
+        return $this->pays;
+    }
 }
+
