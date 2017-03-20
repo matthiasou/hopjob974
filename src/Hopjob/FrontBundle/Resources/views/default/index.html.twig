@@ -2,11 +2,30 @@
 
 {% block body %}
 
+{% if confirmationRegistration is defined and confirmationRegistration == true %}
+    <div class="container modal-register-success">
+        <div class="row">
+                <div class="modalbox success col-sm-8 col-md-6 col-lg-5 center animate">
+                        <div class="icon">
+                                <span class="glyphicon glyphicon-ok"></span>
+                        </div>
+                        <!--/.icon-->
+                        <h1>Inscription validée</h1>
+                        <p>Merci de vous être inscrit sur HopJob.</p>
+                        <button type="button" class="hide-black-background redo btn">Ok</button>
+                </div>
+                <!--/.success-->
+        </div>
+    </div>
+    <!--/.container-->
+    <div class="black-background"></div>
+{% endif %}
+
     <div id="wrapper">
         <div id="header" style="background-image: url({{ asset('bundles/front/img/header-bkg.jpg') }});">
             <div>
                 <div class="col-xs-12 col-md-2 col-sm-4 text-xs-center spacer">
-                    <a href="#" class="col-xs-8 col-xs-offset-2 col-sm-12 col-sm-offset-0">
+                    <a href="{{ path('index') }}" class="col-xs-8 col-xs-offset-2 col-sm-12 col-sm-offset-0">
                         <img src="{{ asset("bundles/front/img/logo.png") }}" alt="hopjob" class="img-responsive" id="logo">
                     </a> 
                 </div>
@@ -89,7 +108,7 @@
                                 </div> #}
                                 {# END LOGIN BOX #}
                             <span>•</span>
-                            <a id="sign-up" class="link" href="#">Inscription</a><br>
+                            <a id="sign-up" class="link" href="{{ path('fos_user_registration_register') }}">Inscription</a><br>
                             <a id="service-btn" href="#">Proposer mes services</a>
                         {% endif %}
                     </div>
