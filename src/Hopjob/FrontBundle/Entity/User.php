@@ -96,7 +96,7 @@ class User extends BaseUser implements ParticipantInterface
     private $nbJob;
 
     /**
-     * @ORM\OneToOne(targetEntity="Hopjob\FrontBundle\Entity\Civilite")
+     * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\Civilite")
      *
      */
     private $civilite;
