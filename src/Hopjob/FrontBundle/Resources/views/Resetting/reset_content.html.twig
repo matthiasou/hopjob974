@@ -1,0 +1,38 @@
+{% extends 'FrontBundle::layout.html.twig' %}
+
+{% block body %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="{{ asset('bundles/front/assets/bootstrap/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/front/assets/font-awesome/css/font-awesome.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('bundles/front/assets/css/form-elements.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/front/assets/css/style.css') }}">
+
+        <!-- Top content -->
+        <div class="top-content">
+        	
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box">
+                        	
+						<fieldset>
+							<div class="fom-bottom">
+								{{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'fos_user_resetting_reset' } }) }}
+								    {{ form_widget(form) }}
+									    <div>
+									        <input type="submit" value="{{ 'resetting.reset.submit'|trans }}" />
+									    </div>
+								{{ form_end(form) }}
+							</div>
+						</fieldset>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+{% endblock %}
