@@ -18,8 +18,7 @@
     <link href="{{ asset('bundles/admin/css/custom.min.css') }}" rel="stylesheet">
     <link href="{{ asset('bundles/admin/css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('bundles/admin/css/sweetalert.css') }}" rel="stylesheet">
-    <script type="text/javascript" src="{{ asset('bundles/admin/js/sweetalert.min.js') }}"></script>
-
+    <link href="{{ asset('bundles/admin/css/bars-movie.css') }}" rel="stylesheet">
 
 </head>
 <body class="nav-md">
@@ -61,11 +60,11 @@
                                 <ul class="nav child_menu">
                                     </li>
                                 </ul>
-                            <li class="active"><a href="{{ path('code') }}"><i class="fa fa-credit-card"></i> Code | Paiement <span class="fa fa-chevron-down"></span></a>
+                            <li><a href="{{ path('code') }}"><i class="fa fa-credit-card"></i> Code | Paiement <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     </li>
                                 </ul>
-                            <li><a href="{{ path('avis') }}"><i class="fa fa-star-o"></i> Avis <span class="fa fa-chevron-down"></span></a>
+                            <li class="active"><a href="{{ path('avis') }}"><i class="fa fa-star-o"></i> Avis <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     </li>
                                 </ul>
@@ -189,34 +188,135 @@
 
                         <div class="row x_title">
                             <div class="col-md-6">
-                                <h3>Validation du code</h3>
+                                <h3>Notation</h3>
                             </div>
                         </div>
 
 
-                        <div class="">
 
-                            {% for repAnnonce in reponseAnnonce %}
-                            <div class="login-container">
-                                <div id="output"></div>
-                                <div class="avatar"><img src="{{ asset('bundles/admin/img/img.jpg') }}" alt="..." class=" "></div>
-                                {{ repAnnonce.annonce.titre }}
-                                <br>Prix:
-                                {{ repAnnonce.prix }}€
-                                <br><br>
-                                <div class="form-box">
-                                    <form action="" method="post">
-                                        <input name="code" type="text" placeholder="code">
-                                        <input name="id" value="{{ repAnnonce.id }}" type="hidden">
-                                        <br>
-                                        <button class="btn btn-info btn-block" type="submit">Valider</button>
-                                    </form>
+
+                            {% if (reponseAnnonce) %}
+
+
+                            <div class="col-lg-5 col-md-5 col-sm-8 col-xs-9 bhoechie-tab-container">
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu">
+                                    <div class="list-group">
+                                        <a href="#" class="list-group-item active text-center">
+                                            <h4 class="glyphicon glyphicon-thumbs-up"></h4><br/>Sérieux
+                                        </a>
+                                        <a href="#" class="list-group-item text-center">
+                                            <h4 class="glyphicon glyphicon-screenshot"></h4><br/>Compétences
+                                        </a>
+                                        <a href="#" class="list-group-item text-center">
+                                            <h4 class="glyphicon glyphicon-hourglass"></h4><br/>Ponctualité
+                                        </a>
+                                        <a href="#" class="list-group-item text-center">
+                                            <h4 class="glyphicon glyphicon-user"></h4><br/>Feeling
+                                        </a>
+                                        <a href="#" class="list-group-item text-center">
+                                            <h4 class="glyphicon glyphicon-ok"></h4><br/>Recommandation
+                                        </a>
+                                        <a href="#" class="list-group-item text-center">
+                                            <h4 class="glyphicon glyphicon-pencil"></h4><br/>Commentaire
+                                        </a>
+                                    </div>
                                 </div>
+                                <form method="post">
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
+                                    <!-- flight section -->
+                                    <div class="bhoechie-tab-content active">
+                                        <center>
+                                            <br><br>
+                                            <h1 class="glyphicon glyphicon-thumbs-up" style="font-size:6em;color:#1A9EE0"></h1>
+                                            <h2 style="margin-top: 0;color:#2A3F54">L'intervenant a-t-il été sérieux ?</h2>
+
+                                            <div class="styled-select slate">
+                                            <select id="1">
+                                                <option value="1">Pas du tout</option>
+                                                <option value="2">Moyennement</option>
+                                                <option value="3">Sérieux</option>
+                                                <option value="4">Très sérieux</option>
+                                            </select>
+                                            </div>
+
+
+                                        </center>
+                                    </div>
+                                    <!-- train section -->
+                                    <div class="bhoechie-tab-content">
+                                        <center>
+                                            <br><br>
+                                            <h1 class="glyphicon glyphicon-screenshot" style="font-size:6em;color:#1A9EE0"></h1>
+                                            <h2 style="margin-top: 0;color:#2A3F54">Que pensez vous de la compétence de l'intervenant ?</h2>
+                                            <div class="styled-select slate">
+                                            <select id="2">
+                                                <option value="5">Pas bonne</option>
+                                                <option value="6">Moyennement</option>
+                                                <option value="7">Bonne</option>
+                                                <option value="8">Excellente</option>
+                                            </select>
+                                            </div>
+                                        </center>
+                                    </div>
+
+                                    <!-- hotel search -->
+                                    <div class="bhoechie-tab-content">
+                                        <center>
+                                            <br><br>
+                                            <h1 class="glyphicon glyphicon-hourglass" style="font-size:6em;color:#1A9EE0"></h1>
+                                            <h2 style="margin-top: 0;color:#2A3F54">L'intervenant a-t-il été ponctuel ?</h2>
+                                            <div class="styled-select slate">
+                                            <select id="3">
+                                                <option value="9">Non</option>
+                                                <option value="10">Oui</option>
+                                            </select>
+                                            </div>
+                                        </center>
+                                    </div>
+                                    <div class="bhoechie-tab-content">
+                                        <center>
+                                            <br><br>
+                                            <h1 class="glyphicon glyphicon-user" style="font-size:6em;color:#1A9EE0"></h1>
+                                            <h2 style="margin-top: 0;color:#2A3F54">Qu'avez vous pensé de votre intervenant ?</h2>
+                                            <div class="styled-select slate">
+                                            <select id="4">
+                                                <option value="11">Pas agréable</option>
+                                                <option value="12">Peu agréable</option>
+                                                <option value="13">Plutôt sympathique</option>
+                                                <option value="14">Irréprochable</option>
+                                            </select>
+                                            </div>
+                                        </center>
+                                    </div>
+                                    <div class="bhoechie-tab-content">
+                                        <center>
+                                            <br><br>
+                                            <h1 class="glyphicon glyphicon-ok" style="font-size:6em;color:#1A9EE0"></h1>
+                                            <h2 style="margin-top: 0;color:#2A3F54">Recommanderiez-vous cet intervenant à d'autres clients ?</h2>
+                                            <div class="styled-select slate">
+                                            <select id="5">
+                                                <option value="15">Oui</option>
+                                                <option value="16">Non</option>
+                                            </select>
+                                            </div>
+                                        </center>
+                                    </div>
+                                    <div class="bhoechie-tab-content">
+                                        <center>
+                                            <br><br>
+                                            <h1 class="glyphicon glyphicon-pencil" style="font-size:6em;color:#1A9EE0"></h1>
+                                            <h2 style="margin-top: 0;color:#2A3F54">Laisser un commentaire</h2>
+                                            <textarea name="commentaire"></textarea>
+                                        </center>
+                                    </div>
+                                </div>
+                        <input type="submit" value="Envoyer" class="btn btn-info btn-lg btn-block">
+
+
                             </div>
-                            {% endfor %}
+                        </form>
 
-
-
+                            {% endif %}
                         </div>
 
                     </div>
@@ -242,6 +342,9 @@
     <script type="text/javascript" src="{{ asset('bundles/admin/jquery/dist/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/admin/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/admin/js/custom.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/admin/js/custom.js') }}"></script>
+
 {% endblock %}
 </body>
 </html>
+

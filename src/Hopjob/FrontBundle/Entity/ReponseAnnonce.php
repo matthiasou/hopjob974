@@ -134,6 +134,13 @@ class ReponseAnnonce
      */
     private $validation;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="avis_posted", type="boolean")
+     */
+    private $avisPosted;
+
 
     /**
      * Set statutPaiement
@@ -293,5 +300,29 @@ class ReponseAnnonce
     public function setPrix($prix)
     {
         $this->prix = $prix;
+    }
+
+    /**
+     * Set avisPosted
+     *
+     * @param boolean $avisPosted
+     *
+     * @return ReponseAnnonce
+     */
+    public function setAvisPosted($avisPosted)
+    {
+        $this->avisPosted = $avisPosted;
+
+        return $this;
+    }
+
+    /**
+     * Get avisPosted
+     *
+     * @return boolean
+     */
+    public function getAvisPosted()
+    {
+        return $this->avisPosted;
     }
 }

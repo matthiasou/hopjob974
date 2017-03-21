@@ -390,7 +390,7 @@ class DefaultController extends Controller
 
         $utilisateurs = $em->getRepository("FrontBundle:User")->findAll();
         $annonces = $em->getRepository("FrontBundle:Annonce")->findBy(array());
-        $reponseAnnonce = $em->getRepository("FrontBundle:ReponseAnnonce")->findBy(array('annonce'=>$annonces, 'utilisateur1'=>$utilisateurs, 'utilisateur' => $user, 'validation' => 1, 'statutPaiement' => false ));
+        $reponseAnnonce = $em->getRepository("FrontBundle:ReponseAnnonce")->findBy(array('annonce'=>$annonces, 'utilisateur1'=>$user, 'utilisateur' => $utilisateurs, 'validation' => 1, 'statutPaiement' => false ));
 
 
 
@@ -521,5 +521,173 @@ class DefaultController extends Controller
 
 
         return $this->render('AdminBundle::documents.html.twig', $params);
+    }
+
+
+
+
+    /**
+     * @Route("/avis")
+     */
+    public function avisAction()
+    {
+
+        $em5 = $this->getDoctrine()->getManager();
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        // Récupération des informations de l'utilisateur qui est connecté
+
+        if (empty($user)) {
+            $params['utilisateurs'] = null;
+        }
+
+        // Affichage des informations de l'utilisateur connecté
+        $formatted[] = [
+            'id' => $user->getId(),
+            'nom' => $user->getNom(),
+            'prenom' => $user->getPrenom(),
+            'moyenne_notation' => $user->getMoyenneNotation(),
+            'revenu' => $user->getRevenu(),
+            'nb_job' => $user->getNbJob(),
+        ];
+
+
+        $conversation2 = $em5->getRepository("AdminBundle:Conversation")->findBy(array('utilisateur' => $user ));
+        // $messages2= $em->getRepository("AdminBundle:Message")->findBy(array('conversation' => $conversation2,'utilisateur' => $user, 'isRead' => false  ));
+
+        $messages2= $em5->createQuery('SELECT m FROM AdminBundle:Conversation c
+                  JOIN AdminBundle:Message m
+                  WHERE
+                    m.conversation=:conversation
+                  AND m.utilisateur!=:utili
+                  AND m.isRead=FALSE ')
+            ->setParameter('conversation', $conversation2)
+            ->setParameter('utili', $user)
+            ->getResult();
+
+
+        $conversation3 = $em5->getRepository("AdminBundle:Conversation")->findBy(array('utilisateur1' => $user ));
+        //$messages3= $em->getRepository("AdminBundle:Message")->findBy(array('conversation' => $conversation3, 'utilisateur' => $user, 'isRead' => false ));
+        $messages3= $em5->createQuery('SELECT m FROM AdminBundle:Conversation c
+                  JOIN AdminBundle:Message m
+                  WHERE
+                    m.conversation=:conversation
+                  AND m.utilisateur!=:utili
+                  AND m.isRead=FALSE ')
+            ->setParameter('conversation', $conversation3)
+            ->setParameter('utili', $user)
+            ->getResult();
+
+        $nbUnread = count($messages3) + count($messages2);
+
+
+
+
+        $utilisateurs = $em5->getRepository("FrontBundle:User")->findAll();
+        $annonces = $em5->getRepository("FrontBundle:Annonce")->findBy(array());
+        $reponseAnnonce = $em5->getRepository("FrontBundle:ReponseAnnonce")->findBy(array('annonce'=>$annonces, 'utilisateur1'=>$utilisateurs, 'utilisateur' => $user, 'validation' => 1, 'statutPaiement' => 1,'avisPosted' => 0 ));
+
+
+        $questions = $em5->getRepository("FrontBundle:Question")->findAll();
+        $reponseQuestions = $em5->getRepository("FrontBundle:ReponseQuestion")->findBy(array('question'=>$questions));
+
+
+
+
+
+        $params['nbUnRead'] = $nbUnread;
+        $params['utilisateurs'] = $formatted;
+        $params['reponseQuestions'] = $reponseQuestions;
+        $params['questions'] = $questions;
+        $params['reponseAnnonce'] = $reponseAnnonce;
+
+
+
+        return $this->render('AdminBundle::avis.html.twig', $params);
+    }
+
+
+    /**
+     * @Route("/notation")
+     */
+    public function notationAction($id)
+    {
+
+        $em5 = $this->getDoctrine()->getManager();
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        // Récupération des informations de l'utilisateur qui est connecté
+
+        if (empty($user)) {
+            $params['utilisateurs'] = null;
+        }
+
+        // Affichage des informations de l'utilisateur connecté
+        $formatted[] = [
+            'id' => $user->getId(),
+            'nom' => $user->getNom(),
+            'prenom' => $user->getPrenom(),
+            'moyenne_notation' => $user->getMoyenneNotation(),
+            'revenu' => $user->getRevenu(),
+            'nb_job' => $user->getNbJob(),
+        ];
+
+
+        $conversation2 = $em5->getRepository("AdminBundle:Conversation")->findBy(array('utilisateur' => $user ));
+        // $messages2= $em->getRepository("AdminBundle:Message")->findBy(array('conversation' => $conversation2,'utilisateur' => $user, 'isRead' => false  ));
+
+        $messages2= $em5->createQuery('SELECT m FROM AdminBundle:Conversation c
+                  JOIN AdminBundle:Message m
+                  WHERE
+                    m.conversation=:conversation
+                  AND m.utilisateur!=:utili
+                  AND m.isRead=FALSE ')
+            ->setParameter('conversation', $conversation2)
+            ->setParameter('utili', $user)
+            ->getResult();
+
+
+        $conversation3 = $em5->getRepository("AdminBundle:Conversation")->findBy(array('utilisateur1' => $user ));
+        //$messages3= $em->getRepository("AdminBundle:Message")->findBy(array('conversation' => $conversation3, 'utilisateur' => $user, 'isRead' => false ));
+        $messages3= $em5->createQuery('SELECT m FROM AdminBundle:Conversation c
+                  JOIN AdminBundle:Message m
+                  WHERE
+                    m.conversation=:conversation
+                  AND m.utilisateur!=:utili
+                  AND m.isRead=FALSE ')
+            ->setParameter('conversation', $conversation3)
+            ->setParameter('utili', $user)
+            ->getResult();
+
+        $nbUnread = count($messages3) + count($messages2);
+
+
+
+
+        $utilisateurs = $em5->getRepository("FrontBundle:User")->findOneBy(array('id'=>$id));
+        $annonces = $em5->getRepository("FrontBundle:Annonce")->findBy(array());
+        $reponseAnnonce = $em5->getRepository("FrontBundle:ReponseAnnonce")->findBy(array('annonce'=>$annonces, 'utilisateur1'=>$utilisateurs, 'utilisateur' => $user, 'validation' => 1, 'statutPaiement' => 1,'avisPosted' => 0 ));
+
+
+        $questions = $em5->getRepository("FrontBundle:Question")->findAll();
+        $reponseQuestions = $em5->getRepository("FrontBundle:ReponseQuestion")->findBy(array('question'=>$questions));
+
+
+
+
+        if(isset($_POST['commentaire'])){
+            echo 'coucou';
+        }
+
+
+
+
+        $params['nbUnRead'] = $nbUnread;
+        $params['utilisateurs'] = $formatted;
+        $params['reponseQuestions'] = $reponseQuestions;
+        $params['questions'] = $questions;
+        $params['reponseAnnonce'] = $reponseAnnonce;
+
+
+
+        return $this->render('AdminBundle::notation.html.twig', $params);
     }
 }
