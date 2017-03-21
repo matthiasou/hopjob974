@@ -24,16 +24,10 @@ class Notation
     /**
      * @var string
      *
-     * @ORM\Column(name="commentaire", type="text")
+     * @ORM\Column(name="commentaire", type="text", nullable=true)
      */
     private $commentaire;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="note", type="integer")
-     */
-    private $note;
 
     /**
     * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\User", inversedBy="id")
@@ -41,11 +35,32 @@ class Notation
     */
     private $utilisateur;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\User", inversedBy="id")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $utilisateur1;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\Question", inversedBy="id")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $question;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\ReponseQuestion", inversedBy="id")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $reponseQuestion;
+
+
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -77,30 +92,6 @@ class Notation
     }
 
     /**
-     * Set note
-     *
-     * @param integer $note
-     *
-     * @return Notation
-     */
-    public function setNote($note)
-    {
-        $this->note = $note;
-
-        return $this;
-    }
-
-    /**
-     * Get note
-     *
-     * @return int
-     */
-    public function getNote()
-    {
-        return $this->note;
-    }
-
-    /**
      * Set utilisateur
      *
      * @param \Hopjob\FrontBundle\Entity\User $utilisateur
@@ -122,5 +113,77 @@ class Notation
     public function getUtilisateur()
     {
         return $this->utilisateur;
+    }
+
+    /**
+     * Set utilisateur1
+     *
+     * @param \Hopjob\FrontBundle\Entity\User $utilisateur1
+     *
+     * @return Notation
+     */
+    public function setUtilisateur1(\Hopjob\FrontBundle\Entity\User $utilisateur1)
+    {
+        $this->utilisateur1 = $utilisateur1;
+
+        return $this;
+    }
+
+    /**
+     * Get utilisateur1
+     *
+     * @return \Hopjob\FrontBundle\Entity\User
+     */
+    public function getUtilisateur1()
+    {
+        return $this->utilisateur1;
+    }
+
+    /**
+     * Set question
+     *
+     * @param \Hopjob\FrontBundle\Entity\Question $question
+     *
+     * @return Notation
+     */
+    public function setQuestion(\Hopjob\FrontBundle\Entity\Question $question)
+    {
+        $this->question = $question;
+
+        return $this;
+    }
+
+    /**
+     * Get question
+     *
+     * @return \Hopjob\FrontBundle\Entity\Question
+     */
+    public function getQuestion()
+    {
+        return $this->question;
+    }
+
+    /**
+     * Set reponseQuestion
+     *
+     * @param \Hopjob\FrontBundle\Entity\ReponseQuestion $reponseQuestion
+     *
+     * @return Notation
+     */
+    public function setReponseQuestion(\Hopjob\FrontBundle\Entity\ReponseQuestion $reponseQuestion)
+    {
+        $this->reponseQuestion = $reponseQuestion;
+
+        return $this;
+    }
+
+    /**
+     * Get reponseQuestion
+     *
+     * @return \Hopjob\FrontBundle\Entity\ReponseQuestion
+     */
+    public function getReponseQuestion()
+    {
+        return $this->reponseQuestion;
     }
 }

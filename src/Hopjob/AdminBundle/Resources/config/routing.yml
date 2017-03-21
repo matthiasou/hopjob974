@@ -14,6 +14,13 @@ code:
     path:     /code
     defaults: { _controller: AdminBundle:Default:code }
 
+avis:
+    path:     /avis
+    defaults: { _controller: AdminBundle:Default:avis }
+
+notation:
+    path:     /notation/{id}
+    defaults: { _controller: AdminBundle:Default:notation }
 
 documents:
     path:     /documents
