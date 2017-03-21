@@ -8,12 +8,13 @@ use Doctrine\ORM\Mapping as ORM;
 use FOS\MessageBundle\Model\ParticipantInterface;
 
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="utilisateur")
- */
-class User extends BaseUser implements ParticipantInterface
-{
+    /**
+     * @ORM\Entity
+     * @ORM\Table(name="utilisateur")
+     */
+    class User extends BaseUser implements ParticipantInterface
+    {
+
     /**
      * @var int
      *
@@ -391,4 +392,10 @@ class User extends BaseUser implements ParticipantInterface
     {
         return $this->domaines;
     }
+
+    public function setEmail($email){
+        parent::setEmail($email);
+        $this->setUsername($email);
+    }
+    
 }

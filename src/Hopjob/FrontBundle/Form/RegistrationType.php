@@ -29,9 +29,7 @@ class RegistrationType extends AbstractType
             'choice_label' => 'libelle',
         ));   
 
-        $builder->add('username', HiddenType::class, array(
-            'data' => mt_rand(),
-        ));
+        $builder->remove('username');
 
     }
 
