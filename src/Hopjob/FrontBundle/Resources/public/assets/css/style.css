@@ -1,6 +1,7 @@
 
 body {
-	background-image: url('../img/backgrounds/1.jpg');
+	background-image: url('../img/backgrounds/registration-bkg.jpg');
+	background-size: cover;
 }
 
 strong { font-weight: 500; }
@@ -31,7 +32,9 @@ img { max-width: 100%; }
 ::-moz-selection { background: #19b9e7; color: #fff; text-shadow: none; }
 ::selection { background: #19b9e7; color: #fff; text-shadow: none; }
 
-
+.errors li{
+	list-style-type: none; 
+}
 .btn-link-1 {
 	display: inline-block;
 	height: 50px;

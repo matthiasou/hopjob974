@@ -6,6 +6,11 @@ $(document).ready(function(){
 
 // ENDHOMEPAGE
 
+$('.hide-black-background').click(function(){
+	$('.black-background').fadeOut();
+	$('.modal-register-success').fadeOut();
+});
+
 });
 
 function loadSlider(){
