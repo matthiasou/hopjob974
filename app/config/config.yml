@@ -87,8 +87,3 @@ fos_user:
         form:
             type: Hopjob\FrontBundle\Form\RegistrationType
 
-
-fos_message:
-    db_driver: orm
-    thread_class: Hopjob\AdminBundle\Entity\Thread
-    message_class: Hopjob\AdminBundle\Entity\Message

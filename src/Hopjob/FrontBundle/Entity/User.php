@@ -12,7 +12,7 @@ use FOS\MessageBundle\Model\ParticipantInterface;
      * @ORM\Entity
      * @ORM\Table(name="utilisateur")
      */
-    class User extends BaseUser implements ParticipantInterface
+    class User extends BaseUser
     {
 
     /**
