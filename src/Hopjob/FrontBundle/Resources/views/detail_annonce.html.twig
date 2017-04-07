@@ -1,14 +1,69 @@
-{{ annonce.titre }}
-{{ annonce.nbPersonnes }}
-{{ annonce.vehicule }}
-{{ annonce.dateFixe }}
-{{ annonce.dateLimite | date('Y-m-d') }} 
-{{ annonce.prixTotal }}
-{{ annonce.telephone }}
-{{ annonce.description }}
-{{ annonce.horaire.libelle }}
-{{ annonce.typeVehicule.libelle }}
-{{ annonce.utilisateur.nom}}
-{{ annonce.ville.nom }}
-	<input type="button" name ="{{annonce.id}}"value="Proposer mes services"
-           class="btn btn-default pull-right" onclick="" />
+{% extends 'FrontBundle::layout.html.twig' %}
+
+{% block body %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+    	 <div class="well profile">
+    	 			<div class="pull-left">
+                    <h2>{{ annonce.titre }}</h2>
+                    </div>
+                    <div class="pull-right">
+                   	<div style="background-image: url({{ asset('bundles/front/img/homepage/1.jpg') }})"></div>
+                    <p>{{ annonce.user.nom}}</p>
+                    </div>
+                    <div class="clearfix"></div>
+                    <p>{{ annonce.description }}</p>
+                    <p><strong>Prix: </strong> {{ annonce.prixTotal }} €</p>
+                    <p><span class="glyphicon glyphicon-user"></span> Personnes nécessaires : {{ annonce.nbPersonnes }}</p>
+                    {% if annonce.vehicule == 1 %}
+                    <p><i class="fa fa-car"></i> {{ annonce.typeVehicule.libelle }}</p>
+                    {% endif %}
+                    {% if annonce.dateFixe == 1 %}
+                    <p><span class="glyphicon glyphicon-calendar"></span> A réaliser avant le : {{ annonce.dateLimite | date('d-m-Y') }}</p>
+                    {% endif %}
+					<p><span class="glyphicon glyphicon-time"></span> Horaire : {{ annonce.horaire.libelle }}</p>				
+					<p><span class="glyphicon glyphicon-map-marker"></span> {{ annonce.ville.libelle }}</p>
+					<input type="button" name ="{{annonce.id}}"value="Proposer mes services"
+           			class="btn btn-default pull-right" onclick="" />
+           			<div class="clearfix"></div>
+                </div>    
+
+		</div>
+	</div>
+</div>
+<div class="container">
+  <div class="row">
+      <h2 class="page-header">Réponses</h2>
+	{% for reponse in reponse_annonce %}
+
+        <section class="comment-list">
+          <!-- First Comment -->
+          <article class="row">
+            <div class="col-md-2 col-sm-2 hidden-xs">
+              <figure class="thumbnail">
+                <img class="img-responsive" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg" />
+                <figcaption class="text-center">{{ reponse.utilisateur1 }}</figcaption>
+              </figure>
+            </div>
+            <div class="col-md-10 col-sm-10">
+              <div class="panel panel-default arrow left">
+                <div class="panel-body">
+                  <header class="text-left">
+                    <div class="comment-user"><strong>Prix: </strong> {{ reponse.prix }}€</div>
+                    <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> {{ reponse.dateReponse | date('d-m-Y')  }}</time>
+                  </header>
+                  <div class="comment-post">
+                    <p>
+{{ reponse.commentaire }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>		
+	{% endfor %}
+	  </div>
+</div>
+{% endblock %}

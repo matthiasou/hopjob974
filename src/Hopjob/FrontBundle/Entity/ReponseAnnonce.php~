@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace Hopjob\FrontBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -20,15 +20,15 @@ class ReponseAnnonce
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    
+
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Utilisateur")
+     * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\User")
      * @ORM\JoinColumn(nullable=false)
      */
     private $utilisateur;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Utilisateur")
+     * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\User")
      * @ORM\JoinColumn(nullable=false)
      */
     private $utilisateur1;
@@ -40,6 +40,15 @@ class ReponseAnnonce
      */
     private $code;
 
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="prix", type="integer")
+     */
+    private $prix;
+
+
     /**
      * @var string
      *
@@ -48,10 +57,17 @@ class ReponseAnnonce
     private $commentaire;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Annonce")
+     * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\Annonce")
      * @ORM\JoinColumn(nullable=false)
      */
     private $annonce;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_reponse", type="datetimetz", nullable=true)
+     */
+    private $dateReponse;
 
 
     /**
@@ -125,6 +141,13 @@ class ReponseAnnonce
      */
     private $validation;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="avis_posted", type="boolean")
+     */
+    private $avisPosted;
+
 
     /**
      * Set statutPaiement
@@ -196,5 +219,117 @@ class ReponseAnnonce
     public function getIdUtilisateur1()
     {
         return $this->idUtilisateur1;
+    }
+
+    /**
+     * Set utilisateur
+     *
+     * @param \Hopjob\FrontBundle\Entity\User $utilisateur
+     *
+     * @return ReponseAnnonce
+     */
+    public function setUtilisateur(\Hopjob\FrontBundle\Entity\User $utilisateur)
+    {
+        $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+
+    /**
+     * Get utilisateur
+     *
+     * @return \Hopjob\FrontBundle\Entity\User
+     */
+    public function getUtilisateur()
+    {
+        return $this->utilisateur;
+    }
+
+    /**
+     * Set utilisateur1
+     *
+     * @param \Hopjob\FrontBundle\Entity\User $utilisateur1
+     *
+     * @return ReponseAnnonce
+     */
+    public function setUtilisateur1(\Hopjob\FrontBundle\Entity\User $utilisateur1)
+    {
+        $this->utilisateur1 = $utilisateur1;
+
+        return $this;
+    }
+
+    /**
+     * Get utilisateur1
+     *
+     * @return \Hopjob\FrontBundle\Entity\User
+     */
+    public function getUtilisateur1()
+    {
+        return $this->utilisateur1;
+    }
+
+    /**
+     * Set annonce
+     *
+     * @param \Hopjob\FrontBundle\Entity\Annonce $annonce
+     *
+     * @return ReponseAnnonce
+     */
+    public function setAnnonce(\Hopjob\FrontBundle\Entity\Annonce $annonce)
+    {
+        $this->annonce = $annonce;
+
+        return $this;
+    }
+
+    /**
+     * Get annonce
+     *
+     * @return \Hopjob\FrontBundle\Entity\Annonce
+     */
+    public function getAnnonce()
+    {
+        return $this->annonce;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPrix()
+    {
+        return $this->prix;
+    }
+
+    /**
+     * @param int $prix
+     */
+    public function setPrix($prix)
+    {
+        $this->prix = $prix;
+    }
+
+    /**
+     * Set avisPosted
+     *
+     * @param boolean $avisPosted
+     *
+     * @return ReponseAnnonce
+     */
+    public function setAvisPosted($avisPosted)
+    {
+        $this->avisPosted = $avisPosted;
+
+        return $this;
+    }
+
+    /**
+     * Get avisPosted
+     *
+     * @return boolean
+     */
+    public function getAvisPosted()
+    {
+        return $this->avisPosted;
     }
 }

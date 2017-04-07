@@ -62,14 +62,11 @@ class DemandeService
     */
     private $activite;
 
-
-
     /**
-    * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\User", inversedBy="id")
+    * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\User")
     * @ORM\JoinColumn(nullable=false)
     */
     private $utilisateur;
-
 
     /**
      * Get id

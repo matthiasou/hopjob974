@@ -397,5 +397,13 @@ use Doctrine\ORM\Mapping as ORM;
         parent::setEmail($email);
         $this->setUsername($email);
     }
+        /**
+ * toString
+ * @return string
+ */
+public function __toString() 
+{
+    return $this->getNom();
+}
     
 }

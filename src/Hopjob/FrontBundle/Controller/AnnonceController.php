@@ -48,15 +48,15 @@ class AnnonceController extends Controller
         return $this->render('FrontBundle::sousdomaines.html.twig', array(
             'domaine' => $domaine,
             'sousdomaines' => $sousdomaines,
-            'activites' => $activites
+            'activites' => $activites,
         ));
       }
 
-      public function createannonceAction(Request $request, $sousdomaines, $domaine, $activites)
+      public function createannonceAction(Request $request, $sousdomaines, $domaine, $activite)
       {
          $em = $this->getDoctrine()->getManager();
-         $activite = $em->getRepository("FrontBundle:Activite")->findBy(array('libelle' => $activites),array('libelle' => "ASC"));
-         $form = $this->createForm("Hopjob\FrontBundle\Form\.$activite.",null,array(
+         $activites = $em->getRepository("FrontBundle:Activite")->findBy(array('libelle' => $activite),array('libelle' => "ASC"));
+         $form = $this->createForm("Hopjob\FrontBundle\Form\AnnonceType",null,array(
             // To set the action use $this->generateUrl('route_identifier')
             'method' => 'POST'
             ));
@@ -78,49 +78,10 @@ class AnnonceController extends Controller
             'domaine' => $domaine,
             'sousdomaines' => $sousdomaines,
             'activites' => $activites,
-            'activite' => $activite
+            
             
         ));
       }
-	 /**
-     * Récupère l'ensemble des annonces
-     * @Route("/annonces", name="annonces_list")
-     * @Method({"GET"})
-     */
-    public function getAnnoncesAction(Request $request)
-    {
-		$annonces = $this->get('doctrine.orm.entity_manager')
-                ->getRepository('AppBundle:Annonce')
-                ->findAll();
-                 $form = $this->createForm("Hopjob\FrontBundle\Form\AnnonceSearchType",null,array(
-            // To set the action use $this->generateUrl('route_identifier')
-            'method' => 'POST'
-            ));
-
-        if (empty($annonces)) {
-            return new JsonResponse(['message' => 'Annonces not found'], Response::HTTP_NOT_FOUND);
-        }
-/*
-        $formatted = [];
-        foreach ($annonces as $annonce) {
-            $formatted[] = [
-               'id' => $annonce->getId(),
-               'titre' => $annonce->getTitre(),
-               'nbPersonnes' => $annonce->getNbPersonnes(),
-               'vehicule' => $annonce->getVehicule(),
-               'dateFixe' => $annonce->getDateFixe(),
-               'dateLimite' => $annonce->getDateLimite(),
-               'prixTotal' => $annonce->getPrixTotal(),
-               'telephone' => $annonce->getTelephone(),
-               'ville' => $annonce->getVille()->getId(),
-               'utilisateur' => $annonce->getUtilisateur()->getNom(),
-               'typeVehicule' => $annonce->getTypeVehicule()->getId(),
-               'horaire' => $annonce->getHoraire()->getId(),        
-            ];
-        }
-        return new JsonResponse($formatted);
-        */
-    }
 
      /**
      * Récupère une annonce par son id

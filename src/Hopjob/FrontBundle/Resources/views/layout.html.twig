@@ -22,6 +22,8 @@
             <script type="text/javascript" src="{{ asset('bundles/front/bxslider/jquery.bxslider.min.js') }}"></script>
             <script type="text/javascript" src="{{ asset('bundles/front/fancyBox/jquery.fancybox.js') }}"></script>
             <script type="text/javascript" src="{{ asset('bundles/front/js/global.js') }}"></script>
+            <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+            <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
         {% endblock %}
 
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">

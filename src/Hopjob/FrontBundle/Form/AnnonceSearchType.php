@@ -28,7 +28,7 @@ $builder
 ->add('ville', EntityType::class, array(
             'class' => 'FrontBundle:Ville',
             'query_builder' => function(EntityRepository $repository) {
-            return $repository->createQueryBuilder('ville')->orderBy('ville.nom', 'ASC');
+            return $repository->createQueryBuilder('ville')->orderBy('ville.libelle', 'ASC');
              }))
 ->add('rechercher', ButtonType::class, array(
                                             'attr' => array('class' => 'save')));
