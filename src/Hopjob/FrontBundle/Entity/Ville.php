@@ -157,4 +157,12 @@ class Ville
     {
         return $this->longitude;
     }
+    /**
+ * toString
+ * @return string
+ */
+public function __toString() 
+{
+    return $this->getLibelle();
+}
 }

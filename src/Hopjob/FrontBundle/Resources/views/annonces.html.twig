@@ -1,34 +1,81 @@
 {% extends 'FrontBundle::layout.html.twig' %}
 
 {% block body %}
-<div class="container-fluid">
-	<div class="row-fluid">
-		<div class="col-md-4 col-md-push-8">
-			<div class="bloc-recherche">
-				{{ form_start(form) }}
-				{{ form_end(form) }}
+<div id="annonces">
+		<div class="bloc-recherche">
+			<select class="form-control domaines">
+			<option selected disabled>Sélectionner un domaine</option>
+			{% for domaine in domaines %}
+				<option id='domaine{{domaine.id}}'>{{domaine.libelle}}</option>
+			{% endfor %}
+			</select>
+			<select class="form-control villes">
+			<option selected disabled>Sélectionner une ville</option>
+			{% for ville in villes %}
+				<option id='ville{{ville.id}}'>{{ville.libelle}}</option>
+			{% endfor %}
+			</select>
+		</div>
+	{% for annonce in annonces %}
+		<div class="well">
+			<div class="media">
+				<div class="media-body">
+				<h4 class="media-heading"><a href="{{app.request.getUri}}/detail_annonce/{{annonce.id}}">{{ annonce.titre }}</a></h4>
+				<p class="text-right">Posté par {{ annonce.user }}</p>
+				<p>{{ annonce.description }}</p>
+				<p>{{ annonce.ville.libelle }}</p>
+				<p>{{ annonce.prixTotal }}€</p>
+				<ul class="list-inline list-unstyled">
+					<li><span><i class="glyphicon glyphicon-calendar"></i>{{annonce.dateCreation | date('d-m-y')}}</span></li>
+					<li>|</li>
+						<span><i class="glyphicon glyphicon-comment"></i> 2 comments</span>
+					<li>|</li>
+					<li>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star-empty"></span>
+					</li>
+					<li>|</li>
+					<li>
+				</ul>
+				</div> 
 			</div>
-			<div class="bloc-divers">AJOUTER ICI BLOC DIVERS</div>
 		</div>
-		<div class="col-md-8 col-md-pull-4">    
-
-			{% for annonce in annonces %}
-				<div class="row">
-					<span class="annonce-title"><a href="{{app.request.getUri}}/detail_annonce/{{annonce.id}}">{{ annonce.titre }}</a></span>
-					<span class="annonce-prix">    {{ annonce.prixTotal }}€</span>
-					<span class="annonce-description"> {{ annonce.description }}</span>
-					<span class="annonce-ville">{{ annonce.ville }}</span>
-					<span class="annonce-demandeur">  Posté par :   {{ annonce.utilisateur }}</span>
-				</div>
-		    {% endfor %}
-		    {% if liste_annonces %}
-			    {% for lannonce in liste_annonces %}
-					test
-				{% else %}
-					<p>Désolé il n'y a, pour le moment, aucune annonce correspondant à votre recherche.</p>
-				{% endfor %}
-		    {% endif %}
-		</div>
-	</div>
+	{% endfor %}
+</div>
+{% if liste_annonces is defined %}
+	{% for lannonce in liste_annonces %}
+		<div class="well">
+			<div class="media">
+				<div class="media-body">
+					<h4 class="media-heading"><a href="{{app.request.getUri}}/detail_annonce/{{lannonce.id}}">{{ lannonce.titre }}</a></h4>
+					<p class="text-right">Posté par {{ lannonce.user }}</p>
+					<p>{{ lannonce.description }}</p>
+					<p>{{ lannonce.ville }}</p>
+					<p>{{ lannonce.prixTotal }}€</p>
+					<ul class="list-inline list-unstyled">
+						<li><span><i class="glyphicon glyphicon-calendar"></i>{{ lannonce.dateCreation | date('d-m-y')}}</span></li>
+						<li>|</li>
+							<span><i class="glyphicon glyphicon-comment"></i> 2 comments</span>
+						<li>|</li>
+						<li>
+							<span class="glyphicon glyphicon-star"></span>
+							<span class="glyphicon glyphicon-star"></span>
+							<span class="glyphicon glyphicon-star"></span>
+							<span class="glyphicon glyphicon-star"></span>
+							<span class="glyphicon glyphicon-star-empty"></span>
+						</li>
+						<li>|</li>
+						<li>
+					</ul>
+				</div> 
+			</div>
+		
+	{% endfor %}
+	{% else %}
+	<p>Désolé il n'y a, pour le moment, aucune annonce correspondant à votre recherche.</p>
+{% endif %}
 </div>
 {% endblock %}

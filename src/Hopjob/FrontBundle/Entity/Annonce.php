@@ -19,7 +19,6 @@ class Annonce
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\OneToMany(targetEntity="Hopjob\FrontBundle\Entity\DemandeService", mappedBy="annonce")
-     * @ORM\OneToMany(targetEntity="Hopjob\FrontBundle\Entity\ReponseAnnonce", mappedBy="annonce")
      */
     private $id;
 
@@ -94,25 +93,25 @@ class Annonce
     private $description;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\Horaire", inversedBy="id")
+    * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\Horaire")
     * @ORM\JoinColumn(nullable=false)
     */
     private $horaire;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\TypeVehicule", inversedBy="id")
+    * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\TypeVehicule")
     * @ORM\JoinColumn(nullable=false)
     */
     private $typeVehicule;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\User", inversedBy="id")
+    * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\User")
     * @ORM\JoinColumn(nullable=false)
     */
     private $utilisateur;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\Ville", inversedBy="id")
+    * @ORM\ManyToOne(targetEntity="Hopjob\FrontBundle\Entity\Ville")
     * @ORM\JoinColumn(nullable=false)
     */
     private $ville;

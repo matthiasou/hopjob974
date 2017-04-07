@@ -18,7 +18,8 @@ class AnnonceType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('titre')
+        $builder
+        ->add('titre')
         ->add('nbPersonnes')
         ->add('vehicule')
         ->add('dateFixe')
@@ -51,7 +52,7 @@ class AnnonceType extends AbstractType
             'choice_label' => 'libelle'
         ))
         ->add('utilisateur', EntityType::class, array(
-            'class' => 'FrontBundle:Utilisateur',
+            'class' => 'FrontBundle:User',
             'query_builder' => function(EntityRepository $repository) {
             return $repository->createQueryBuilder('utilisateur')->orderBy('utilisateur.nom', 'ASC');
              },
@@ -65,14 +66,14 @@ class AnnonceType extends AbstractType
         ->add('ville', EntityType::class, array(
             'class' => 'FrontBundle:Ville',
             'query_builder' => function(EntityRepository $repository) {
-            return $repository->createQueryBuilder('ville')->orderBy('ville.nom', 'ASC');
+            return $repository->createQueryBuilder('ville')->orderBy('ville.libelle', 'ASC');
              },
             'placeholder' => 'Choisir la ville',
             'expanded' => false,
             'multiple' => false,
             'label' => 'Ville',
             'required' => false,
-            'choice_label' => 'nom'
+            'choice_label' => 'libelle'
         ))
         ->add('publier', ButtonType::class, array(
                                             'attr' => array('class' => 'save')))

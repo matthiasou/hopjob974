@@ -9,6 +9,8 @@ contact:
 annonces:
     path:     /annonces
     defaults: { _controller: FrontBundle:Default:annonces }
+    options:
+        expose: true
 
 pdf:
     path:     /pdf

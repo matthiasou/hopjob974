@@ -67,51 +67,63 @@ class DefaultController extends Controller
      * @Route("/annonces", name="annonces")
      */
     public function annoncesAction(Request $request){
-        $annonces = $this->get('doctrine.orm.entity_manager')
-                ->getRepository('FrontBundle:Annonce')
-                ->findAll();
+        $em = $this->getDoctrine()->getManager();
+        $domaines = $em->getRepository("FrontBundle:Domaine")->findAll();
+        $villes = $em->getRepository("FrontBundle:Ville")->findAll();
+        $utilisateurs = $em->getRepository("FrontBundle:User")->findAll();
+        $horaires = $em->getRepository("FrontBundle:Horaire")->findAll();
+        $villes = $em->getRepository("FrontBundle:Ville")->findAll();
+        $type_vehicules = $em->getRepository("FrontBundle:TypeVehicule")->findAll();
+        $annonces = $em->getRepository("FrontBundle:Annonce")->findAll();
+        $btn = $request->get('btn');
                  $form = $this->createForm("Hopjob\FrontBundle\Form\AnnonceSearchType",null,array('method' => 'POST'));
         if (empty($annonces)) {
             $params['annonces'] = null;
-            $params['liste_annonces'] = null;
         }
-        $formatted = [];
-        foreach ($annonces as $annonce) {
-            $formatted[] = [
-               'id' => $annonce->getId(),
-               'titre' => $annonce->getTitre(),
-               'nbPersonnes' => $annonce->getNbPersonnes(),
-               'vehicule' => $annonce->getVehicule(),
-               'dateFixe' => $annonce->getDateFixe(),
-               'dateLimite' => $annonce->getDateLimite(),
-               'prixTotal' => $annonce->getPrixTotal(),
-               'telephone' => $annonce->getTelephone(),
-               'description' => $annonce->getDescription(),
-               'ville' => $annonce->getVille()->getNom(),
-               'utilisateur' => $annonce->getUtilisateur()->getNom(),
-               'typeVehicule' => $annonce->getTypeVehicule()->getLibelle(),
-               'horaire' => $annonce->getHoraire()->getLibelle(),        
-            ];
-        }
+       
         if ($request->isMethod('POST')) {
-            // Refill the fields in case the form is not valid.
-            $form->handleRequest($request);
-            if($form->isValid())
+            if ($btn == 'nomDomaineChange')
             {
-              //On récupère les données entrées dans le formulaire par l'utilisateur
-              $data = $this->getRequest()->request->get('Hopjob_frontbundle_rechercheannonces');
-              //On va récupérer la méthode dans le repository afin de trouver toutes les annonces filtrées par les paramètres du formulaire
-              $liste_annonces = $em->getRepository('hopjob:Annonce')->findAnnonceByParametres($data);
-              //Puis on redirige vers la page de visualisation de cette liste d'annonces
-              return $this->render('FrontBundle::annonces.html.twig', array('liste_annonces' => $liste_annonces));
-              $params['liste_annonces'] = $liste_annonces;
+                $val = $request->get('val');
+                $sous_domaine = $em->getRepository("FrontBundle:SousDomaine")->findBy(array('domaine' => $val));
+                $activite = $em->getRepository("FrontBundle:Activite")->findBy(array('sousDomaine' => $sous_domaine));
+                $demande_service = $em->getRepository("FrontBundle:DemandeService")->findBy(array('activite' => $activite));
+                if (isset($villeSelected))
+                {
+                    $liste_annonces = $em->getRepository("FrontBundle:Annonce")->findBy(array('demandeService' => $demande_service, 'ville' => $villeSelected));
+                }
+                else 
+                {
+                    $liste_annonces = $em->getRepository("FrontBundle:Annonce")->findBy(array('demandeService' => $demande_service));
+                }
+                $domaineSelected = $val;
+                return $this->render('FrontBundle::annonces.html.twig', array('domaineSelect' => $domaineSelected ,'annonces' =>$annonces, 'domaines' => $domaines, 'villes' => $villes, 'liste_annonces' => $liste_annonces) );
             }
+            if($btn == 'nomVilleChange')
+            {
+                $val = $request->get('val');
+                $domaineId = $request->get('domaineId');
+                $villeSelected = $val;
+                if (isset($domaineId))
+                {
+                    $sous_domaine = $em->getRepository("FrontBundle:SousDomaine")->findBy(array('domaine' => $domaineId));
+                    $activite = $em->getRepository("FrontBundle:Activite")->findBy(array('sousDomaine' => $sous_domaine));
+                    $demande_service = $em->getRepository("FrontBundle:DemandeService")->findBy(array('activite' => $activite));
+                    $liste_annonces = $em->getRepository("FrontBundle:Annonce")->findBy(array('ville' => $val, 'demandeService' => $demande_service));
+                }
+                else
+                {
+                    $liste_annonces = $em->getRepository("FrontBundle:Annonce")->findBy(array('ville' => $val));
+                }
+                return $this->render('FrontBundle::annonces.html.twig', array('villeSelected' => $villeSelected ,'annonces' =>$annonces, 'domaines' => $domaines, 'villes' => $villes, 'liste_annonces' => $liste_annonces) );
+            }
+              
+
         }
-
-        $params['annonces'] = $formatted;
-        $params['form'] = $form->createView();
+        $params['domaines'] = $domaines;
+        $params['villes'] = $villes;        
+        $params['annonces'] = $annonces;
         $params['base_dir'] = 'toto'.realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR;
-
         return $this->render('FrontBundle::annonces.html.twig', $params);
     }
     /**
@@ -120,9 +132,13 @@ class DefaultController extends Controller
     public function detailannonceAction(Request $request, $id){
 
     $em = $this->getDoctrine()->getManager();
+    $users = $em->getRepository("FrontBundle:User")->findAll();
     $annonce =  $em->getRepository("FrontBundle:Annonce")->findOneBy(array('id' => $id));
+    $reponse_annonce = $em->getRepository("FrontBundle:ReponseAnnonce")->findBy(array('annonce' => $id));
+
     return $this->render('FrontBundle::detail_annonce.html.twig', array(
-            'annonce' => $annonce
+            'annonce' => $annonce,
+            'reponse_annonce' => $reponse_annonce,
             ));
 
     }

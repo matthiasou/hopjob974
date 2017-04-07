@@ -62,6 +62,13 @@ class ReponseAnnonce
      */
     private $annonce;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_reponse", type="datetimetz", nullable=true)
+     */
+    private $dateReponse;
+
 
     /**
      * Get id
@@ -324,5 +331,29 @@ class ReponseAnnonce
     public function getAvisPosted()
     {
         return $this->avisPosted;
+    }
+
+    /**
+     * Set dateReponse
+     *
+     * @param \DateTime $dateReponse
+     *
+     * @return ReponseAnnonce
+     */
+    public function setDateReponse($dateReponse)
+    {
+        $this->dateReponse = $dateReponse;
+
+        return $this;
+    }
+
+    /**
+     * Get dateReponse
+     *
+     * @return \DateTime
+     */
+    public function getDateReponse()
+    {
+        return $this->dateReponse;
     }
 }
