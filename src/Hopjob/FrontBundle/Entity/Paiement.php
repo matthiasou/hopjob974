@@ -34,6 +34,19 @@ class Paiement
     */
     private $utilisateur;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_fin_abonnement", type="date")
+     */
+    private $dateFinAbonnement;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nb_job", type="integer",  nullable=true)
+     */
+    private $nbJob;
 
     /**
      * Get id
@@ -91,5 +104,53 @@ class Paiement
     public function getUtilisateur()
     {
         return $this->utilisateur;
+    }
+
+    /**
+     * Set dateFinAbonnement
+     *
+     * @param \DateTime $dateFinAbonnement
+     *
+     * @return Paiement
+     */
+    public function setDateFinAbonnement($dateFinAbonnement)
+    {
+        $this->dateFinAbonnement = $dateFinAbonnement;
+
+        return $this;
+    }
+
+    /**
+     * Get dateFinAbonnement
+     *
+     * @return \DateTime
+     */
+    public function getDateFinAbonnement()
+    {
+        return $this->dateFinAbonnement;
+    }
+
+    /**
+     * Set nbJob
+     *
+     * @param integer $nbJob
+     *
+     * @return Paiement
+     */
+    public function setNbJob($nbJob)
+    {
+        $this->nbJob = $nbJob;
+
+        return $this;
+    }
+
+    /**
+     * Get nbJob
+     *
+     * @return integer
+     */
+    public function getNbJob()
+    {
+        return $this->nbJob;
     }
 }

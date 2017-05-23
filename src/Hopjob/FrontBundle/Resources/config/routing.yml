@@ -31,3 +31,11 @@ createannonce:
 detail_annonce:
     path:     /annonces/detail_annonce/{id}
     defaults: { _controller: FrontBundle:Default:detailannonce }
+
+souscription:
+    path:     /souscription
+    defaults: { _controller: FrontBundle:Souscription:index }
+
+paiement:
+    path:     /paiement
+    defaults: { _controller: FrontBundle:Souscription:paiement }
