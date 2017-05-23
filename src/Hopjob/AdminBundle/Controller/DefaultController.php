@@ -4,6 +4,7 @@ namespace Hopjob\AdminBundle\Controller;
 
 use Hopjob\AdminBundle\Entity\Conversation;
 use Hopjob\AdminBundle\Entity\Message;
+use Hopjob\FrontBundle\Entity\Notation;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -408,10 +409,10 @@ class DefaultController extends Controller
             if($code == $codedecrypt){
                 $repAnn->setStatutPaiement(true);
                 $em->flush();
-                $js = '<script  type="text/javascript">'.'swal({ 
+                $js = '<script  type="text/javascript">'.'swal({
   title: "Code Validé !",
    text: "Le travailleur va reçevoir son paiement",
-    type: "success" 
+    type: "success"
   },
   function(){
     window.location.href = "code";
@@ -664,7 +665,7 @@ class DefaultController extends Controller
 
         $utilisateurs = $em5->getRepository("FrontBundle:User")->findOneBy(array('id'=>$id));
         $annonces = $em5->getRepository("FrontBundle:Annonce")->findBy(array());
-        $reponseAnnonce = $em5->getRepository("FrontBundle:ReponseAnnonce")->findBy(array('annonce'=>$annonces, 'utilisateur1'=>$utilisateurs, 'utilisateur' => $user, 'validation' => 1, 'statutPaiement' => 1,'avisPosted' => 0 ));
+        $reponseAnnonce = $em5->getRepository("FrontBundle:ReponseAnnonce")->findOneBy(array('annonce'=>$annonces, 'utilisateur1'=>$utilisateurs, 'utilisateur' => $user, 'validation' => 1, 'statutPaiement' => 1,'avisPosted' => 0 ));
 
 
         $questions = $em5->getRepository("FrontBundle:Question")->findAll();
@@ -673,8 +674,33 @@ class DefaultController extends Controller
 
 
 
-        if(isset($_POST['commentaire'])){
-            echo 'coucou';
+        if(isset($_POST['commentaire']) || isset($_POST['1']) || isset($_POST['2']) || isset($_POST['3']) || isset($_POST['4']) || isset($_POST['5']) ){
+            if ($_POST['1'] == 100 || $_POST['2'] == 101 || $_POST['3'] == 102 || $_POST['4'] == 103 || $_POST['5'] == 104|| $_POST['commentaire'] == "" ){
+                echo 'tu as pas rempli ma gueule';
+                $js = '<script  type="text/javascript">'.'swal("Oops!", "Veuillez rensigner tous les champs !", "error");'.
+                    '</script>';
+                $params['js'] = $js;
+            }
+            else{
+                $em = $this->getDoctrine()->getManager();
+                $user1 = $em5->getRepository("FrontBundle:User")->findOneBy(array('id'=>$id));
+
+
+                $reponseAnnonce->setAvisPosted(true);
+                $em->flush();
+                $js = '<script  type="text/javascript">'.'swal({ 
+  title: "Avis laissé !",
+   text: "Votre avis vient d être publié",
+    type: "success" 
+  },
+  function(){
+    window.location.href = "avis";
+});'.
+                    '</script>';
+                $params['js'] = $js;
+
+            }
+
         }
 
 
