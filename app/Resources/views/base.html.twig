@@ -1,17 +1,48 @@
-<!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset_url }}" />
+        <meta charset="UTF-8">
+        <title>{% block title %} Hopjob {% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />       
+
+        {% block stylesheet %}   
+                <link rel="stylesheet" href="{{ asset('bundles/front/bootstrap/css/bootstrap.css') }}" type="text/css" media="screen" />  
+                <link rel="stylesheet" href="{{ asset('bundles/front/bootstrap/css/bootstrap-theme.min.css') }}" type="text/css" media="screen" />  
+                <link rel="stylesheet" href="{{ asset('bundles/front/bxslider/jquery.bxslider.css') }}" type="text/css" media="screen" />  
+                <link rel="stylesheet" href="{{ asset('bundles/front/fancyBox/jquery.fancybox.css') }}" type="text/css" media="screen" />  
+                <link rel="stylesheet" href="{{ asset('bundles/front/font-awesome/css/font-awesome.css') }}" type="text/css" media="screen" />  
+                <link rel="stylesheet" href="{{ asset('bundles/front/css/global.css') }}" type="text/css" media="screen" />  
+                <link rel="stylesheet" href="{{ asset('bundles/front/css/header-basic-light.css') }}" type="text/css" media="screen" />  
+        {% endblock %}        
+
+        {% block javascripts %}
+            <script type="text/javascript" src="{{ asset('bundles/front/js/jquery.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('bundles/front/bootstrap/js/bootstrap.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('bundles/front/bxslider/jquery.bxslider.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('bundles/front/fancyBox/jquery.fancybox.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('bundles/front/js/global.js') }}"></script>
         {% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     </head>
     <body>
+        <header class="header-basic-light">
+
+            <div class="header-limiter">
+
+                <h1><a href="#">{{ asset('bundles/front/img/logo.png') }}</a></h1>
+
+                <nav>
+                    <a href="#">Home</a>
+                    <a href="#" class="selected">Blog</a>
+                    <a href="#">Pricing</a>
+                    <a href="#">About</a>
+                    <a href="#">Faq</a>
+                    <a href="#">Contact</a>
+                </nav>
+            </div>
+
+        </header>
         {% block body %}{% endblock %}
-        {% block javascripts %}
-        
-        {% endblock %}
+
     </body>
 </html>
