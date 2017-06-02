@@ -1,0 +1,30 @@
+{% extends '::layout.html.twig' %}
+
+
+{% block body %}
+	<div class="container">
+		<div class="col-sm-6 col-sm-offset-3">
+			<h1 class="page-heading text-center">{{ user.prenom|capitalize ~ ' ' ~ user.nom|capitalize }} {% if user.civilite.id == 1 %}<i class="fa fa-mars" aria-hidden="true"></i>{% else %}<i class="fa fa-venus" aria-hidden="true"></i>{% endif %}<span class="pull-right">{{ user.moyenneNotation }} /10</span></h1>
+			{# {{ dump(user) }} #}
+			<p class="text-center"><em>"{{ user.description }}"</em></p>
+			<p class="text-right col-sm-4"><strong>Date de naissance :</strong></p>
+			<p class="text-left col-sm-8">
+				{{ user.dateNaissance|date('d/m/Y') }}
+			</p>
+
+			<p class="text-right col-sm-4"><strong>Adresse :</strong></p>
+			<p class="text-left col-sm-8">
+				{{ user.adresse.adresse1 ~ ' ' ~ user.adresse.adresse2 ~ ' ' ~ user.adresse.codePostal ~ ' ' ~ user.adresse.ville }}
+			</p>
+
+			<p class="text-right col-sm-4"><strong>Domaines :</strong></p>
+			{% for domaines in user.domaines %}
+			<p>
+				{{ domaine.libelle }}
+			</p>
+			{% endfor %}
+			
+
+		</div>
+	</div>
+{% endblock %}

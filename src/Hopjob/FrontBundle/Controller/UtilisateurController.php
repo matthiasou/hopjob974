@@ -383,4 +383,70 @@ public function deleteAction($id)
         return new JsonResponse($formatted);
     }
 
+    /**
+     * @Route("/user/{id}", name="profil")
+     */
+    public function profilAction($id){
+
+      $em = $this->getDoctrine()->getManager();
+      $user = $em->getRepository("FrontBundle:User")->find($id);
+        
+      return $this->render('FrontBundle::profil.html.twig', array('user' => $user));
+        
+    }
+
+    /**
+     * @Route("/parametres", name="parametres")
+     */
+    public function parametresAction(Request $request){
+
+      $em = $this->getDoctrine()->getManager();
+      $civilite = $em->getRepository('FrontBundle:Civilite')->findAll();
+      $ville = $em->getRepository('FrontBundle:Ville')->findAll();
+      $user = $this->getUser();
+      $adresse = $user->getAdresse();
+
+// die(dump($ville));
+
+      if ($request->isMethod('POST'))
+      {
+        if ($request->get('prenom'))
+          $user->setPrenom($request->get('prenom'));
+
+        if ($request->get('nom'))
+          $user->setNom($request->get('nom'));
+
+        if ($request->get('dateNaissance'))
+        {
+          $date = new \DateTime($request->get('dateNaissance'));
+          $user->setDateNaissance($date);
+        }
+
+        if ($request->get('adresse1'))
+          $adresse->setAdresse1($request->get('adresse1'));
+        
+        if ($request->get('adresse2'))
+          $adresse->setAdresse2($request->get('adresse2'));
+        
+        if ($request->get('codePostal'))
+          $adresse->setCodePostal($request->get('codePostal'));
+        
+        if ($request->get('ville'))
+        {
+          $userVille = $em->getRepository('FrontBundle:Ville')->find($request->get('ville'));
+          $adresse->setVille($userVille);
+        }
+
+        $user->setAdresse($adresse);
+
+        $em->persist($user);
+        $em->flush();
+  
+
+      }
+
+      return $this->render('FrontBundle::parametres.html.twig', array('user' => $user, 'civilite' => $civilite, 'ville' => $ville));
+        
+    }
+
 }

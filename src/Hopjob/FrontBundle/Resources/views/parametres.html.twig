@@ -1,0 +1,82 @@
+{% extends '::layout.html.twig' %}
+
+
+{% block body %}
+	<div class="container">
+		<div class="col-sm-6 col-sm-offset-3">
+			<h1 class="page-heading text-center">Mes informations</h1>
+						  <div class="row">
+			      <form class="form-horizontal" method="post" action="{{ path('parametres') }}" role="form">
+			        <fieldset>
+
+			          <div class="form-group">
+			            <label class="col-sm-3 control-label" for="textinput">Civilité</label>
+			            <div class="col-sm-9">
+			              	{% for c in civilite %}
+			              		<label for="">
+									<input name="civilite" type="radio" {% if c.id == user.civilite.id %}checked{% endif %} value="{{ c.id }}">&nbsp;{{ c.libelle }}
+								</label>
+			              	{% endfor %}
+			            </div>
+			          </div>
+
+			          <div class="form-group">
+			            <label class="col-sm-3 control-label" for="textinput">Prénom</label>
+			            <div class="col-sm-9">
+			              <input type="text" name="prenom" placeholder="{{ user.prenom }}" class="form-control">
+			            </div>
+			          </div>
+
+			          <div class="form-group">
+			            <label class="col-sm-3 control-label" for="textinput">Nom</label>
+			            <div class="col-sm-9">
+			              <input type="text" name="nom" placeholder="{{ user.nom }}" class="form-control">
+			            </div>
+			          </div>
+
+			          <div class="form-group">
+			            <label class="col-sm-3 control-label" for="textinput">Date Naissance</label>
+			            <div class="col-sm-9">
+			              <input type="date" name="dateNaissance" value="{{ user.dateNaissance|date('d-m-Y') }}" class="form-control">
+			            </div>
+			          </div>
+
+			          <div class="form-group">
+			            <label class="col-sm-3 control-label" for="textinput">Adresse 1</label>
+			            <div class="col-sm-9">
+			              <input type="text" name="adresse1" placeholder="{{ user.adresse.adresse1 }}" class="form-control">
+			            </div>
+			          </div>
+
+			          <div class="form-group">
+			            <label class="col-sm-3 control-label" for="textinput">Adresse 2</label>
+			            <div class="col-sm-9">
+			              <input type="text" name="adresse2" placeholder="{{ user.adresse.adresse1 }}" class="form-control">
+			            </div>
+			          </div>
+
+			          <!-- Text input-->
+			          <div class="form-group">
+			            <label class="col-sm-3 control-label" for="textinput">Ville</label>
+			            <div class="col-sm-9">
+			              <select name="ville" class="form-control">
+			              	{% for v in ville %}
+								<option {% if user.adresse.ville == v.libelle %}selected{% endif %} value="{{ v.id }}">{{ v.libelle }}</option>
+			              	{% endfor %}
+			              </select>
+			            </div>
+			          </div>
+
+
+			          <div class="form-group">
+			            <div class="col-sm-9 col-sm-offset-3">
+			                <button type="submit" class="btn btn-primary form-control">Valider</button>
+			            </div>
+			          </div>
+
+			        </fieldset>
+			      </form>
+			</div><!-- /.row -->
+		</div>
+	</div>
+{% endblock %}

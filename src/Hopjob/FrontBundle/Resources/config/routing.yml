@@ -39,3 +39,12 @@ souscription:
 paiement:
     path:     /paiement
     defaults: { _controller: FrontBundle:Souscription:paiement }
+
+
+profil:
+    path:     /user/{id}
+    defaults: { _controller: FrontBundle:Utilisateur:Profil }
+
+parametres:
+    path:     /parametres
+    defaults: { _controller: FrontBundle:Utilisateur:Parametres }
