@@ -421,6 +421,9 @@ public function deleteAction($id)
           $date = new \DateTime($request->get('dateNaissance'));
           $user->setDateNaissance($date);
         }
+                
+        if ($request->get('description'))
+          $user->setDescription($request->get('description'));
 
         if ($request->get('adresse1'))
           $adresse->setAdresse1($request->get('adresse1'));

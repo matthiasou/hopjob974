@@ -13,7 +13,7 @@
 /*basic reset*/
 * {margin: 0; padding: 0;}
 html{height: 100%}
-body{margin:0 auto}
+body{margin:0 auto;background:#F9F9F9;}
 .spacer{margin-top: 20px}
 
 .title-heading{text-align: center;margin: 20px auto}
