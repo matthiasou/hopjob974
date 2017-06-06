@@ -35,3 +35,21 @@ detail_annonce:
 modif_annonce:
     path:    /annonces/modif_annonce/{id}
     defaults: { _controller: FrontBundle:Default:modifannonce }
+
+souscription:
+    path:     /souscription
+    defaults: { _controller: FrontBundle:Souscription:index }
+
+paiement:
+    path:     /paiement
+    defaults: { _controller: FrontBundle:Souscription:paiement }
+
+
+profil:
+    path:     /user/{id}
+    defaults: { _controller: FrontBundle:Utilisateur:Profil }
+
+parametres:
+    path:     /parametres
+    defaults: { _controller: FrontBundle:Utilisateur:Parametres }
+

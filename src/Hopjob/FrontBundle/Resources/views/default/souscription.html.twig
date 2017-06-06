@@ -1,0 +1,132 @@
+{% extends 'FrontBundle::layout.html.twig' %}
+
+{% block body %}
+<link href="{{ asset('bundles/admin/css/sweetalert.css') }}" rel="stylesheet">
+<script type="text/javascript" src="{{ asset('bundles/admin/js/sweetalert.min.js') }}"></script>
+
+<form method="post">
+    <div class="container content">
+        <div class="row">
+            <!-- Pricing -->
+            <div class="col-md-3">
+                <div class="pricing hover-effect">
+                    <div class="pricing-head">
+                        <h3>1 semaine <span></span>
+                        </h3>
+                        <h4>10<i>€</i>
+					<span>
+                    </span>
+                        </h4>
+                    </div>
+                    <ul class="pricing-content list-unstyled">
+                        <li>
+                            5 acceptations
+                        </li>
+                        <li>
+                            Support
+                        </li>
+                        <li>
+                            Mise en relation directement
+                        </li>
+                    </ul>
+                    <div class="pricing-footer">
+                        <input type="submit" name="1semaine" value="Valider" class="btn yellow-crusta">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="pricing hover-effect">
+                    <div class="pricing-head">
+                        <h3>1 mois <span></span>
+                        </h3>
+                        <h4>25<i>€</i>
+					<span>
+                    </span>
+                        </h4>
+                    </div>
+                    <ul class="pricing-content list-unstyled">
+                        <li>
+                            6 acceptations / mois
+                        </li>
+                        <li>
+                            Support
+                        </li>
+                        <li>
+                            Mise en relation directement
+                        </li>
+                    </ul>
+                    <div class="pricing-footer">
+                        <input type="submit" name="1mois" value="Valider" class="btn yellow-crusta">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="pricing hover-effect">
+                    <div class="pricing-head">
+                        <h3>1 trimestre <span></span>
+                        </h3>
+                        <h4>50<i>€</i>
+					<span>
+                    </span>
+                        </h4>
+                    </div>
+                    <ul class="pricing-content list-unstyled">
+                        <li>
+                            7 acceptations / mois
+                        </li>
+                        <li>
+                            Support
+                        </li>
+                        <li>
+                            Mise en relation directement
+                        </li>
+                    </ul>
+                    <div class="pricing-footer">
+                        <input type="submit" name="1trim" value="Valider" class="btn yellow-crusta">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="pricing hover-effect">
+                    <div class="pricing-head">
+                        <h3>1 an <span></span>
+                        </h3>
+                        <h4>120<i>€</i>
+					<span>
+                    </span>
+                        </h4>
+                    </div>
+                    <ul class="pricing-content list-unstyled">
+                        <li>
+                            8 acceptations / mois
+                        </li>
+                        <li>
+                            Support
+                        </li>
+                        <li>
+                            Mise en relation directement
+                        </li>
+                    </ul>
+                    {% if (js is defined) %}{{ js|raw }}{% endif %}
+                    <div class="pricing-footer">
+                        <input type="submit" name="1an" value="Valider" class="btn yellow-crusta">
+                    </div>
+                </div>
+            </div>
+            <!--//End Pricing -->
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+</form>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/admin/jquery/dist/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/admin/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/admin/js/custom.min.js') }}"></script>
+{% endblock %}
+

@@ -4,27 +4,56 @@
         <title>{% block title %} Hopjob {% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />       
 
-        {% block stylesheet %}   
+       {% block stylesheet %}   
                 <link rel="stylesheet" href="{{ asset('bundles/front/bootstrap/css/bootstrap.css') }}" type="text/css" media="screen" />  
+                <link rel="stylesheet" href="{{ asset('bundles/front/css/jquery-ui.css') }}" type="text/css" media="screen" />  
                 <link rel="stylesheet" href="{{ asset('bundles/front/bootstrap/css/bootstrap-theme.min.css') }}" type="text/css" media="screen" />  
                 <link rel="stylesheet" href="{{ asset('bundles/front/bxslider/jquery.bxslider.css') }}" type="text/css" media="screen" />  
                 <link rel="stylesheet" href="{{ asset('bundles/front/fancyBox/jquery.fancybox.css') }}" type="text/css" media="screen" />  
                 <link rel="stylesheet" href="{{ asset('bundles/front/font-awesome/css/font-awesome.css') }}" type="text/css" media="screen" />  
-                <link rel="stylesheet" href="{{ asset('bundles/front/css/global.css') }}" type="text/css" media="screen" />  
+                <link rel="stylesheet" href="{{ asset('bundles/front/css/global.css') }}" type="text/css" media="screen" /> 
+                <link rel="stylesheet" href="{{ asset('bundles/front/css/register.css') }}" type="text/css" media="screen" />   
+                <link rel="stylesheet" href="{{ asset('bundles/front/css/header-fixed.css') }}" type="text/css" media="screen" />   
         {% endblock %}        
 
         {% block javascripts %}
             <script type="text/javascript" src="{{ asset('bundles/front/js/jquery.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('bundles/front/js/jquery-ui.js') }}"></script>
             <script type="text/javascript" src="{{ asset('bundles/front/bootstrap/js/bootstrap.min.js') }}"></script>
             <script type="text/javascript" src="{{ asset('bundles/front/bxslider/jquery.bxslider.min.js') }}"></script>
             <script type="text/javascript" src="{{ asset('bundles/front/fancyBox/jquery.fancybox.js') }}"></script>
             <script type="text/javascript" src="{{ asset('bundles/front/js/global.js') }}"></script>
+            <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+            <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         {% endblock %}
 
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     </head>
     <body>
 
+    {% if app.request.attributes.get('_route')  != 'index' and app.request.attributes.get('_route')  != 'dashboard' %}
+    <header class="header-fixed">
+
+        <div class="header-limiter">
+
+            <a href="{{ path('index') }}" class="pull-left"><img style="width:160px" src="{{ asset('bundles/front/img/logo-color.png') }}" alt=""></a>
+
+            <nav>
+                <a href="{{ path('index') }}" {% if app.request.attributes.get('_route')  == 'index' %}class="selected"{% endif %}>Accueil</a>
+                <a href="{{ path('admin') }}" {% if app.request.attributes.get('_route')  == 'admin' %}class="selected"{% endif %}>Dashboard</a>
+                <a href="{{ path('profil', {'id' : app.user.id}) }}" {% if app.request.attributes.get('_route')  == 'profil' %}class="selected"{% endif %}>Profil</a>
+                <a href="{{ path('parametres') }}" {% if app.request.attributes.get('_route')  == 'parametres' %}class="selected"{% endif %}>Parametres</a>
+            </nav>
+
+        </div>
+    
+    </header>
+    {% endif %}
+
+        {% if app.user %}
+            {% include('FrontBundle::nav.html.twig') %}
+        {% endif %}
         {% block body %}{% endblock %}
 
     </body>

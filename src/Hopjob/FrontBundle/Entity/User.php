@@ -130,8 +130,6 @@ use Doctrine\ORM\Mapping as ORM;
         return $this;
     }
 
-
-
     /**
      * Get nom
      *
@@ -191,30 +189,6 @@ use Doctrine\ORM\Mapping as ORM;
     }
 
     /**
-     * Set adresse
-     *
-     * @param string $adresse
-     *
-     * @return User
-     */
-    public function setAdresse($adresse)
-    {
-        $this->adresse = $adresse;
-
-        return $this;
-    }
-
-    /**
-     * Get adresse
-     *
-     * @return string
-     */
-    public function getAdresse()
-    {
-        return $this->adresse;
-    }
-
-    /**
      * Set description
      *
      * @param string $description
@@ -263,27 +237,51 @@ use Doctrine\ORM\Mapping as ORM;
     }
 
     /**
-     * Set civilite
+     * Set revenu
      *
-     * @param \Hopjob\FrontBundle\Entity\Civilite $civilite
+     * @param float $revenu
      *
      * @return User
      */
-    public function setCivilite(\Hopjob\FrontBundle\Entity\Civilite $civilite)
+    public function setRevenu($revenu)
     {
-        $this->civilite = $civilite;
+        $this->revenu = $revenu;
 
         return $this;
     }
 
     /**
-     * Get civilite
+     * Get revenu
      *
-     * @return \Hopjob\FrontBundle\Entity\Civilite
+     * @return float
      */
-    public function getCivilite()
+    public function getRevenu()
     {
-        return $this->civilite;
+        return $this->revenu;
+    }
+
+    /**
+     * Set nbJob
+     *
+     * @param integer $nbJob
+     *
+     * @return User
+     */
+    public function setNbJob($nbJob)
+    {
+        $this->nbJob = $nbJob;
+
+        return $this;
+    }
+
+    /**
+     * Get nbJob
+     *
+     * @return integer
+     */
+    public function getNbJob()
+    {
+        return $this->nbJob;
     }
 
     /**
@@ -311,52 +309,51 @@ use Doctrine\ORM\Mapping as ORM;
     }
 
     /**
-     * @return mixed
+     * Set adresse
+     *
+     * @param \Hopjob\FrontBundle\Entity\Adresse $adresse
+     *
+     * @return User
      */
-    public function getNbJob()
+    public function setAdresse(\Hopjob\FrontBundle\Entity\Adresse $adresse = null)
     {
-        return $this->nbJob;
+        $this->adresse = $adresse;
+
+        return $this;
     }
 
     /**
-     * @param mixed $nbJob
+     * Get adresse
+     *
+     * @return \Hopjob\FrontBundle\Entity\Adresse
      */
-    public function setNbJob($nbJob)
+    public function getAdresse()
     {
-        $this->nbJob = $nbJob;
-    }
-
-
-    /**
-     * @return float
-     */
-    public function getRevenu()
-    {
-        return $this->revenu;
+        return $this->adresse;
     }
 
     /**
-     * @param float $revenu
+     * Set civilite
+     *
+     * @param \Hopjob\FrontBundle\Entity\Civilite $civilite
+     *
+     * @return User
      */
-    public function setRevenu($revenu)
+    public function setCivilite(\Hopjob\FrontBundle\Entity\Civilite $civilite = null)
     {
-        $this->revenu = $revenu;
+        $this->civilite = $civilite;
+
+        return $this;
     }
 
     /**
-     * @return int
+     * Get civilite
+     *
+     * @return \Hopjob\FrontBundle\Entity\Civilite
      */
-    public function getId()
+    public function getCivilite()
     {
-        return $this->id;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
+        return $this->civilite;
     }
 
     /**
@@ -392,18 +389,4 @@ use Doctrine\ORM\Mapping as ORM;
     {
         return $this->domaines;
     }
-
-    public function setEmail($email){
-        parent::setEmail($email);
-        $this->setUsername($email);
-    }
-        /**
- * toString
- * @return string
- */
-public function __toString() 
-{
-    return $this->getNom();
-}
-    
 }
