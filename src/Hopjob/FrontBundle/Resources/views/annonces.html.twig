@@ -3,7 +3,7 @@
 {% block body %}
 <div id="annonces">
 		<div class="bloc-recherche">
-			<select class="form-control domaines">
+			<select class="form-control doms">
 			<option selected disabled>Sélectionner un domaine</option>
 			{% for domaine in domaines %}
 				<option id='domaine{{domaine.id}}'>{{domaine.libelle}}</option>
@@ -74,8 +74,7 @@
 			</div>
 		
 	{% endfor %}
-	{% else %}
-	<p>Désolé il n'y a, pour le moment, aucune annonce correspondant à votre recherche.</p>
 {% endif %}
+
 </div>
 {% endblock %}

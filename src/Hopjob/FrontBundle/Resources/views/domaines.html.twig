@@ -1,5 +1,23 @@
-    Domaine : {{domaines}}
+{% extends 'FrontBundle::layout.html.twig' %}
+
+{% block body %}
+	<div class="container">
+		<center><h3>{{domaines}}</h3>
+		Choisissez le sous-domaine qui vous intéresse</center>
+		<hr />
+	<div class="row">
     {% for sousdomaine in sousdomaines %}
-        Sous-domaines : <a href="{{app.request.getUri}}/{{sousdomaine.libelle}}">{{ sousdomaine.libelle }} </a>
+    	<div class="col-md-4 text-center">
+    			<div class="panel">
+						<div class="panel-body text-center">
+							<a href="{{app.request.getUri}}/{{sousdomaine.libelle}}"><p class="lead" style="font-size:40px"><strong>{{sousdomaine.libelle}}</strong></p></a>
+						</div>
+				</div>
+    	</div>
     {% endfor %}
+</div>
+</div>
+{% endblock %}
+
+
 

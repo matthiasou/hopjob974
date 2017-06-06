@@ -51,10 +51,10 @@ class AnnonceType extends AbstractType
             'required' => false,
             'choice_label' => 'libelle'
         ))
-        ->add('utilisateur', EntityType::class, array(
+        ->add('user', EntityType::class, array(
             'class' => 'FrontBundle:User',
             'query_builder' => function(EntityRepository $repository) {
-            return $repository->createQueryBuilder('utilisateur')->orderBy('utilisateur.nom', 'ASC');
+            return $repository->createQueryBuilder('user')->orderBy('user.nom', 'ASC');
              },
             'placeholder' => 'Choisir l utilisateur',
             'expanded' => false,

@@ -24,8 +24,54 @@
                     {% endif %}
 					<p><span class="glyphicon glyphicon-time"></span> Horaire : {{ annonce.horaire.libelle }}</p>				
 					<p><span class="glyphicon glyphicon-map-marker"></span> {{ annonce.ville.libelle }}</p>
-					<input type="button" name ="{{annonce.id}}"value="Proposer mes services"
-           			class="btn btn-default pull-right" onclick="" />
+          {% if reponseWithValidation is empty %}
+          <p><span class="glyphicon glyphicon-flag"></span> En cours</p>
+          {% endif %}
+          {% if reponseWithValidation is not empty %}
+          <p><span class="glyphicon glyphicon-flag"></span> Validée</p>
+          {% endif %}
+					{% if annonce.user.id != user.id and reponseWithValidation is empty %}
+          <button type="button" class="btn btn-info btn-lg" name ="proposer" data-toggle="modal" value="{{annonce.id}}" data-target="#myModal">Proposer mes services</button>
+          {% endif %}
+          {% if annonce.user.id == user.id %}
+            <a href="http://localhost:8888/hopjob974/web/app_dev.php/annonces/modif_annonce/{{annonce.id}}">Modifier mon annonce</a>
+          {% endif %}
+          <!-- Modal -->
+          <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+              
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Proposer ses services</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="row centered-form">
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <form  method="POST" role="form">
+                <div class="row">
+                    <div class="form-group col-md-3">
+                      Prix : <input type="number" name="prix"  min="0" id="prix" class="form-control" placeholder="Prix">
+                    </div>
+                    <div class="form-group col-md-6">
+                      Commentaire : 
+                      <input type="textarea" width="70%" name="commentaire" id="commentaire" class="form-control" placeholder="Votre commentaire...">
+                    </div>
+                </div>
+                <input type="submit" name="Envoyer" value="Envoyer" class="btn btn-info btn-block">
+              
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+                </div>
+              </div>
+            </div>
+          </div>
            			<div class="clearfix"></div>
                 </div>    
 
@@ -36,7 +82,7 @@
   <div class="row">
       <h2 class="page-header">Réponses</h2>
 	{% for reponse in reponse_annonce %}
-
+<form method ="POST">
         <section class="comment-list">
           <!-- First Comment -->
           <article class="row">
@@ -55,15 +101,24 @@
                   </header>
                   <div class="comment-post">
                     <p>
-{{ reponse.commentaire }}
+                      {{ reponse.commentaire }}
                     </p>
                   </div>
+                  {% if reponse.validation == 1 %}
+                    <b>Validée</b>
+                  {% endif %}
+                  <input type="hidden" value="{{reponse.id}}" name="id_reponse">
+                  {% if annonce.user.id == user.id and reponseWithValidation is empty%}
+                    {% if reponse.validation == 0 %}
+                    <input type="submit" name="reponseok" class="btn btn-xs ">
+                    {% endif %}
+                  {% endif %}
                 </div>
               </div>
             </div>
           </article>
         </section>		
+      </form>
 	{% endfor %}
-	  </div>
 </div>
 {% endblock %}

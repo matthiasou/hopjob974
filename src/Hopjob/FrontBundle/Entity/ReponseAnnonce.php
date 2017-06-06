@@ -36,7 +36,7 @@ class ReponseAnnonce
     /**
      * @var string
      *
-     * @ORM\Column(name="code", type="string", length=255)
+     * @ORM\Column(name="code", type="string", length=255,nullable=true)
      */
     private $code;
 

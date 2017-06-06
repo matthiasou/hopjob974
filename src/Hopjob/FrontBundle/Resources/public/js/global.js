@@ -66,10 +66,9 @@ function loadSlider(){
 		}
 	});
 
-	$('body').on('change', ".domaines", function() {
-		var id = $(".domaines option:selected").attr("id");
+	$('body').on('change', ".doms", function() {
+		var id = $(".doms option:selected").attr("id");
 		id = id.replace( "domaine", '');
-		console.log(id);
 		var btn = "nomDomaineChange";
 
 		var request = $.ajax({
@@ -93,7 +92,6 @@ function loadSlider(){
 		}
 		
 		id = id.replace( "ville", '');
-		console.log(id);
 		var btn = "nomVilleChange";
 
 		if (domaineSelected) {

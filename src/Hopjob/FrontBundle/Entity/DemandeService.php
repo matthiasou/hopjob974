@@ -45,14 +45,14 @@ class DemandeService
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_debut", type="date")
+     * @ORM\Column(name="date_debut", type="datetime")
      */
     private $dateDebut;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_fin", type="date")
+     * @ORM\Column(name="date_fin", type="datetime")
      */
     private $dateFin;
 

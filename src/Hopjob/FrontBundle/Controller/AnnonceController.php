@@ -9,10 +9,12 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Hopjob\FrontBundle\Entity\Annonce;
 use Hopjob\FrontBundle\Entity\Ville;
-use Hopjob\FrontBundle\Entity\Utilisateur;
+use Hopjob\FrontBundle\Entity\User;
 use Hopjob\FrontBundle\Entity\TypeVehicule;
 use Hopjob\FrontBundle\Entity\Horaire;
+use Hopjob\FrontBundle\Entity\DemandeService;
 use Symfony\Component\HttpFoundation\Response;
+use Hopjob\FrontBundle\Form\AnnonceType;
 
 class AnnonceController extends Controller
 {
@@ -54,32 +56,61 @@ class AnnonceController extends Controller
 
       public function createannonceAction(Request $request, $sousdomaines, $domaine, $activite)
       {
-         $em = $this->getDoctrine()->getManager();
-         $activites = $em->getRepository("FrontBundle:Activite")->findBy(array('libelle' => $activite),array('libelle' => "ASC"));
-         $form = $this->createForm("Hopjob\FrontBundle\Form\AnnonceType",null,array(
-            // To set the action use $this->generateUrl('route_identifier')
-            'method' => 'POST'
-            ));
-         if ($request->isMethod('POST')) {
-            // Refill the fields in case the form is not valid.
-            $form->handleRequest($request);
-            if($form->isValid())
-            {
-              //On récupère les données entrées dans le formulaire par l'utilisateur
-              $data = $this->getRequest()->request->get('Hopjob_frontbundle_rechercheannonces');
-              //On va récupérer la méthode dans le repository afin de trouver toutes les annonces filtrées par les paramètres du formulaire
-              $liste_annonces = $em->getRepository('hopjob:Annonce')->findAnnonceByParametres($data);
-              //Puis on redirige vers la page de visualisation de cette liste d'annonces
-              return $this->render('Hopjpb:Annonce:annonces.html.twig', array('liste_annonces' => $liste_annonces));
-            }
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $util = $em->getRepository("FrontBundle:User")->findOneBy(array('nom' => 'Lecomte'));
+        $activites = $em->getRepository("FrontBundle:Activite")->findBy(array('libelle' => $activite));
+        $act = $em->getRepository("FrontBundle:Activite")->findOneBy(array('libelle' => $activite));
+        
+        $horaires = $em->getRepository("FrontBundle:Horaire")->findAll();
+        $typevehicules = $em->getRepository("FrontBundle:TypeVehicule")->findAll();
+        $villes = $em->getRepository("FrontBundle:Ville")->findAll();
+        $demandeService = new DemandeService();
+        $annonce = new Annonce();
+        
+        if (isset($_POST['envoyer'])){
+          $demandeService->setActivite($act);
+          $demandeService->setUtilisateur($util);
+          $demandeService->setDuree(1);
+          $demandeService->setTauxhoraire(10);
+          $demandeService->setTotal(100);
+          $demandeService->setDateDebut(new \DateTime("now"));
+          $demandeService->setDateFin(new \DateTime($_POST['datelimite']));
+          $em->persist($demandeService);
+          $em->flush();
+          $ville = $em->getRepository("FrontBundle:Ville")->findOneBy(array('libelle'=> $_POST['ville']));
+          $horaire = $em->getRepository("FrontBundle:Horaire")->findOneBy(array('libelle'=> $_POST['horaire']));
+          $typevehicule = $em->getRepository("FrontBundle:TypeVehicule")->findOneBy(array('libelle'=> $_POST['typevehicule']));
+          $last = $em->getRepository("FrontBundle:DemandeService")->findOneBy(array(),array('id' => 'DESC'));
+          $annonce->setTitre($_POST['titre']);
+          $annonce->setNbPersonnes($_POST['nbpersonnes']);
+          if(isset($_POST['datefixe'])){
+            $annonce->setDateFixe(1);
+            $annonce->setDateLimite(new \DateTime("now"));
+          }
+          if(isset($_POST['vehicule'])){
+            $annonce->setVehicule(1);
+            $typevehicule->setLibelle($_POST['typevehicule']);
+            $annonce->setTypeVehicule($typevehicule);
+          }
+          $annonce->setPrixTotal($_POST['prix']);
+          $annonce->setTelephone($_POST['telephone']);
+          $annonce->setDescription($_POST['description']);
+          $annonce->setHoraire($horaire);
+          $annonce->setVille($ville);
+          $annonce->setDemandeService($last);
+          $annonce->setUser($util);
+          $em->persist($annonce);
+          $em->flush();
+          return $this->redirectToRoute('annonces');
         }
         return $this->render('FrontBundle::createannonce.html.twig', array(
-            'form' => $form->createView(),
             'domaine' => $domaine,
             'sousdomaines' => $sousdomaines,
             'activites' => $activites,
-            
-            
+            'horaires' => $horaires,
+            'typevehicules' => $typevehicules,
+            'villes' => $villes
         ));
       }
 
@@ -114,6 +145,7 @@ class AnnonceController extends Controller
             ];
 
         return new JsonResponse($formatted);
+        
     }
 
   /**

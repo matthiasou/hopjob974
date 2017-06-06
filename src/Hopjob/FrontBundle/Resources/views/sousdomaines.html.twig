@@ -1,9 +1,24 @@
-    Sous Domaine : {{ sousdomaines }}
+{% extends 'FrontBundle::layout.html.twig' %}
+
+{% block body %}    
+<div class="container">
+		<center><h3>{{sousdomaines}}</h3>
+		Choisissez l'activité qui vous intéresse</center>
+		<hr />
+	<div class="row">
         {% for activite in activites %}
+        	<div class="col-md-4 text-center">
+    			<div class="panel">
+						<div class="panel-body text-center">
+        	<form method="POST" action ="{{app.request.getUri}}/createannonce/{{activite.libelle}}">
             {{ activite.libelle }}
-           	<input type="button" name ="{{activite.id}}" 
-           	value="Poster une annonce" 
-           	class="btn btn-default pull-right" 
-           	onclick="{{app.request.getUri}}/createannonce/{{activite.libelle}}"
-           	/>
+           	<input type="submit" name ="{{activite.id}}" value="Poster une annonce" class="btn btn-default pull-right" />
+           </form>
+           </div>
+				</div>
+    	</div>
         {% endfor %}
+</div>
+</div>
+{% endblock %}
+           
