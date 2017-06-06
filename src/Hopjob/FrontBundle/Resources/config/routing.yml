@@ -31,3 +31,7 @@ createannonce:
 detail_annonce:
     path:     /annonces/detail_annonce/{id}
     defaults: { _controller: FrontBundle:Default:detailannonce }
+
+modif_annonce:
+    path:    /annonces/modif_annonce/{id}
+    defaults: { _controller: FrontBundle:Default:modifannonce }

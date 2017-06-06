@@ -4,33 +4,33 @@
 <body>
 <div class="container text-center text-center">
             <form class="form-horizontal" method="POST">
-              <center>  <h2>Déposer une annonce - {{sousdomaines}}</h2>  </center>
+              <center>  <h2>Modifier mon annonce</h2>  </center>
                 <div class="form-group">
                     <label for="titre" class="col-sm-3 control-label">Titre</label>
                     <div class="col-sm-4">
-                        <input type="text" id="titre" name="titre" placeholder="Titre" class="form-control" autofocus>
+                        <input type="text" id="titre" name="titre" value="{{annonce.titre}}" placeholder="Titre" class="form-control" autofocus>
                     </div>
                 </div>
-				<div class="form-group">
+        <div class="form-group">
                     <label for="nbpersonnes" class="col-sm-3 control-label">Nombre de personnes</label>
                     <div class="col-sm-4">
-                        <input type="number" id="nbpersonnes" name="nbpersonnes" min="0" class="form-control" autofocus>
+                        <input type="number" id="nbpersonnes" value="{{annonce.nbPersonnes}}" name="nbpersonnes" min="0" class="form-control" autofocus>
                        
                     </div>
                 </div>
-				<div class="form-group">
+        <div class="form-group">
                     <label for="vehicule" class="col-sm-3 control-label">Véhicule</label>
                     <div class="col-sm-4">
-                        <input type="checkbox" id="vehicule" name="vehicule" class="form-control" autofocus>
+                        <input type="checkbox" id="vehicule" value="{{annonce.vehicule}}" name="vehicule" class="form-control" autofocus>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="type" class="col-sm-3 control-label">Type véhicule</label>
                     <div class="col-sm-4">
-                        <select id="typevehicule" name="typevehicule" class="form-control">
+                        <select id="typevehicule" name="typevehicule" value="{{annonce.typevehicule.libelle}}" class="form-control">
                             {% for typevehicule in typevehicules %}
-                            	<option>{{typevehicule.libelle}}</option>
-                        	{% endfor %}
+                              <option>{{typevehicule.libelle}}</option>
+                          {% endfor %}
                         </select>
                     </div>
                 </div> 
@@ -38,7 +38,7 @@
                 <div class="form-group">
                     <label for="datefixe" class="col-sm-3 control-label">Date fixe</label>
                     <div class="col-sm-4">
-                        <input type="checkbox" id="datefixe" name="datefixe" class="form-control" autofocus>
+                        <input type="checkbox" id="datefixe" value="{{annonce.datefixe}}" name="datefixe" class="form-control" autofocus>
                        
                     </div>
                 </div>
@@ -46,58 +46,58 @@
                 <div class="form-group">
                     <label for="datelimite" class="col-sm-3 control-label">Date limite</label>
                     <div class="col-sm-4">
-                        <input type="date" id="datelimite" name="datelimite" class="form-control">
+                        <input type="date" id="datelimite" value="{{annonce.datelimite|date("m/d/Y")}}" name="datelimite" class="form-control">
                     </div>
                 </div>
 
-				<div class="form-group">
+        <div class="form-group">
                     <label for="prix" class="col-sm-3 control-label">Prix</label>
                     <div class="col-sm-4">
-                        <input type="prix" id="prix" name="prix" placeholder="Prix" class="form-control">
+                        <input type="prix" id="prix" name="prix" value="{{annonce.prixTotal}}"  class="form-control">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="telephone" class="col-sm-3 control-label">Téléphone</label>
                     <div class="col-sm-4">
-                        <input type="telehone" id="telehone" name="telephone" placeholder="Téléphone" class="form-control">
+                        <input type="telehone" id="telehone" name="telephone" value="{{annonce.telephone}}"  class="form-control">
                     </div>
                 </div>
                
                 <div class="form-group">
                     <label for="description" class="col-sm-3 control-label">Description</label>
                     <div class="col-sm-4">
-                        <textarea placeholder="Décrire votre besoin" name="description" class="form-control"></textarea>
+                        <textarea   name="description" class="form-control">{{annonce.description}}</textarea>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="type" class="col-sm-3 control-label">Horaire</label>
                     <div class="col-sm-4">
-                        <select id="horaire" name="horaire" class="form-control">
+                        <select id="horaire" value="{{annonce.horaire.libelle}}" name="horaire" class="form-control">
                             {% for horaire in horaires %}
-                            	<option>{{horaire.libelle}}</option>
-                        	{% endfor %}
+                              <option>{{horaire.libelle}}</option>
+                          {% endfor %}
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="type" class="col-sm-3 control-label">Choisir la ville</label>
                     <div class="col-sm-4">
-                        <select id="ville" name="ville" class="form-control">
-                        	{% for ville in villes %}
-                            	<option>{{ville.libelle}}</option>
-                        	{% endfor %}
+                        <select id="ville" name="ville" value="{{annonce.ville.libelle}}" class="form-control">
+                          {% for ville in villes %}
+                              <option>{{ville.libelle}}</option>
+                          {% endfor %}
                         </select>
                     </div>
                 </div> 
-				
+        
                 <div class="form-group">
                     <div class="col-md-2 col-sm-offset-3">
-                        <button type="submit" name="envoyer" class="btn btn-info">Déposer l'annonce</button>
+                        <button type="submit" name="modifier" class="btn btn-info">Modifier l'annonce</button>
                     </div>
                 </div>
             </form> 
         </div>
-		</body>
+    </body>
 {% endblock %}
