@@ -26,7 +26,7 @@
         <div class="col-md-3 left_col">
             <div class="left_col scroll-view">
                 <div class="navbar nav_title" style="border: 0;">
-                    <a href="{{ path('admin') }}" class="site_title"><i class="fa fa-home"></i> <span><img height="55px" src="{{ asset('bundles/admin/img/logo.png') }}"></span></a>
+                    <a href="{{ path('index') }}" class="site_title"><i class="fa fa-home"></i> <span href="{{ path('index') }}"><img height="55px" src="{{ asset('bundles/admin/img/logo.png') }}"></span></a>
                 </div>
 
                 <div class="clearfix"></div>
@@ -91,9 +91,9 @@
                                 <span class=" fa fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                <li><a href="javascript:;"> Mon profil</a></li>
+                                <li><a href="{{ path('profil', {'id': utilisateur.id }) }}"> Mon profil</a></li>
                                 <li>
-                                    <a href="javascript:;">
+                                    <a href="{{ path('parametres') }}">
                                         <span class="badge bg-red pull-right">50%</span>
                                         <span>Réglages</span>
                                     </a>
@@ -291,7 +291,7 @@
                                     <p class="day">{{ reponse.annonce.dateLimite|date("d") }}</p>
                                 </a>
                                 <div class="media-body">
-                                    <a class="title" href="#">{{ reponse.annonce.titre }}</a>
+                                    <a class="title" href="{{ path('detail_annonce', {'id': reponse.annonce.id }) }}">{{ reponse.annonce.titre }}</a>
                                     <p>{{ reponse.annonce.description }}</p>
                                 </div>
                             </article>
@@ -331,9 +331,9 @@
                                                 <i class="fa fa-user green"></i>
                                             </a>
                                             <div class="media-body">
-                                                <a class="title" href="#">  {{ demande.annonce.user.civilite.libelle }}. {{ demande.annonce.user.nom }}</a>
+                                                <a class="title" href="{{ path('profil', {'id': demande.annonce.user.id }) }}">  {{ demande.annonce.user.civilite.libelle }}. {{ demande.annonce.user.nom }}</a>
                                                 <p><strong>{{ demande.annonce.prixTotal }} € </strong> {{ demande.annonce.titre }} </p>
-                                                <a href=""<p> <small>plus...</small>
+                                                <a href="{{ path('detail_annonce', {'id': demande.annonce.id }) }}"<p> <small>plus...</small>
                                                 </p></a>
                                             </div>
                                         </li>
@@ -370,12 +370,12 @@
                                                 </div>
                                                 <div class="block_content">
                                                     <h2 class="title">
-                                                        <a href="#">{{ annoncesSucc.titre }}</a>
+                                                        <a href="{{ path('detail_annonce', {'id': annoncesSucc.id }) }}">{{ annoncesSucc.titre }}</a>
                                                     </h2>
                                                     <div class="byline">
                                                         Le <span>{{ annoncesSucc.dateCreation|date("d/m/y") }}</span> par <a>{{ annoncesSucc.user.prenom }}</a>
                                                     </div>
-                                                    <p class="excerpt">{{ annoncesSucc.description }}<a href="#"> Lire plus</a>
+                                                    <p class="excerpt">{{ annoncesSucc.description }}<a href="{{ path('detail_annonce', {'id': annoncesSucc.id }) }}"> Lire plus</a>
                                                     </p>
                                                 </div>
                                             </div>
