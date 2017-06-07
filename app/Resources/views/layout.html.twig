@@ -30,7 +30,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     </head>
     <body>
-        {% if app.request.attributes.get('_route')  != 'index' and app.request.attributes.get('_route')  != 'login' and app.request.attributes.get('_route')  != 'dashboard' and app.request.attributes.get('_route')  != 'register' and app.request.attributes.get('_route')  != 'confirmed' %}
+        {% if app.user and app.request.attributes.get('_route')  != 'login' and app.request.attributes.get('_route')  != 'dashboard' and app.request.attributes.get('_route')  != 'register' and app.request.attributes.get('_route')  != 'confirmed' %}
 
         <header class="header-fixed">
                 <div class="header-limiter">
@@ -38,24 +38,17 @@
                 <a href="{{ path('index') }}" class="pull-left"><img style="max-width:100px" src="{{ asset('bundles/front/img/logo-color.png') }}" alt=""></a>
             
                 <nav>
-                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                         <a href="{{ path('index') }}" {% if app.request.attributes.get('_route')  == 'index' %}class="selected"{% endif %}>Accueil</a>
                         <a href="{{ path('admin') }}" {% if app.request.attributes.get('_route')  == 'admin' %}class="selected"{% endif %}>Dashboard</a>
                         <a href="{{ path('profil', {'id' : app.user.id}) }}" {% if app.request.attributes.get('_route')  == 'profil' %}class="selected"{% endif %}>Profil</a>
                         <a href="{{ path('parametres') }}" {% if app.request.attributes.get('_route')  == 'parametres' %}class="selected"{% endif %}>Parametres</a>
                         <a href="{{ path('fos_user_security_logout') }}" class="link"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
-                    {% else %}
-                        <a href="{{ path('fos_user_security_login') }}"></a>
-                    {% endif %}
                 </nav>
             
             </div>
         </header>
     {% endif %}
 
-        {% if app.user %}
-            {% include('FrontBundle::nav.html.twig') %}
-        {% endif %}
         {% block body %}{% endblock %}
         
         <div class="footer">
