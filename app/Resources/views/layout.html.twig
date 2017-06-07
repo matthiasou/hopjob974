@@ -35,7 +35,7 @@
         <header class="header-fixed">
                 <div class="header-limiter">
 
-                <a href="{{ path('index') }}" class="pull-left"><img style="width:160px" src="{{ asset('bundles/front/img/logo-color.png') }}" alt=""></a>
+                <a href="{{ path('index') }}" class="pull-left"><img style="max-width:100px" src="{{ asset('bundles/front/img/logo-color.png') }}" alt=""></a>
             
                 <nav>
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -43,6 +43,7 @@
                         <a href="{{ path('admin') }}" {% if app.request.attributes.get('_route')  == 'admin' %}class="selected"{% endif %}>Dashboard</a>
                         <a href="{{ path('profil', {'id' : app.user.id}) }}" {% if app.request.attributes.get('_route')  == 'profil' %}class="selected"{% endif %}>Profil</a>
                         <a href="{{ path('parametres') }}" {% if app.request.attributes.get('_route')  == 'parametres' %}class="selected"{% endif %}>Parametres</a>
+                        <a href="{{ path('fos_user_security_logout') }}" class="link"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
                     {% else %}
                         <a href="{{ path('fos_user_security_login') }}"></a>
                     {% endif %}
@@ -56,6 +57,14 @@
             {% include('FrontBundle::nav.html.twig') %}
         {% endif %}
         {% block body %}{% endblock %}
-
+        
+        <div class="footer">
+            <ul>
+                <li><a href="{{ path('contact') }}">Contact</a></li>
+                <li><a href="#">CCM</a></li>
+                <li><a href="#">FAQ</a></li>
+            </ul>
+        </div>
+        
     </body>
 </html>
