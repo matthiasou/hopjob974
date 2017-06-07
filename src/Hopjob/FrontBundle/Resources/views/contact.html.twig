@@ -1,30 +1,36 @@
-{{ form_start(form) }}
-<div>
-    {{ form_widget(form.theme) }}
+{% extends 'FrontBundle::layout.html.twig' %}
+{% block body %}
+<br><br><br>
+    <h1 style="text-align: center"> Formulaire de contact</h1>
+    <br>
+{{ form_start(form, {'attr': {'class': 'fos_user_registration_register form col-sm-4 col-sm-offset-4 col-xs-12'}}) }}
+
+    <div class="form-group">
+    {{ form_widget(form.theme, { 'attr': {'class': 'form-control'} }) }}
     {{ form_errors(form.theme) }}
 </div>
-<div>
-    {{ form_widget(form.subject) }}
+<div class="form-group">
+    {{ form_widget(form.subject, { 'attr': {'class': 'form-control'} }) }}
     {{ form_errors(form.subject) }}
 </div>
-<div>
-    {{ form_widget(form.nom) }}
+<div class="form-group">
+    {{ form_widget(form.nom, { 'attr': {'class': 'form-control'} }) }}
     {{ form_errors(form.nom) }}
 </div>
-<div>
-    {{ form_widget(form.prenom) }}
+<div class="form-group">
+    {{ form_widget(form.prenom, { 'attr': {'class': 'form-control'} }) }}
     {{ form_errors(form.prenom) }}
 </div>
-<div>
-    {{ form_widget(form.phone) }}
+<div class="form-group">
+    {{ form_widget(form.phone, { 'attr': {'class': 'form-control'} }) }}
     {{ form_errors(form.phone) }}
 </div>
-<div>
-    {{ form_widget(form.email) }}
+<div class="form-group">
+    {{ form_widget(form.email, { 'attr': {'class': 'form-control'} }) }}
     {{ form_errors(form.email) }}
 </div>
-<div>
-    {{ form_widget(form.message) }}
+<div class="form-group">
+    {{ form_widget(form.message, { 'attr': {'class': 'form-control'} }) }}
     {{ form_errors(form.message) }}
 </div>
 
@@ -33,6 +39,8 @@
     {{ form_rest(form) }}
 </div>
 
-<input type="submit" value="Envoyer">
+<input class="btn btn-info col-sm-4 col-sm-offset-4 col-xs-12" type="submit" value="Envoyer">
 
 {{ form_end(form) }}
+
+{% endblock %}
