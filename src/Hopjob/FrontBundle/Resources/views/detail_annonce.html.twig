@@ -34,7 +34,7 @@
           <button type="button" class="btn btn-info btn-lg" name ="proposer" data-toggle="modal" value="{{annonce.id}}" data-target="#myModal">Proposer mes services</button>
           {% endif %}
           {% if annonce.user.id == user.id %}
-            <a href="http://localhost:8888/hopjob974/web/app_dev.php/annonces/modif_annonce/{{annonce.id}}">Modifier mon annonce</a>
+            <a href="{{ path('modif_annonce', {'id': annonce.id }) }}">Modifier mon annonce</a>
           {% endif %}
           <!-- Modal -->
           <div id="myModal" class="modal fade" role="dialog">
