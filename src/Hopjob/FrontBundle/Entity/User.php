@@ -115,6 +115,10 @@ use Doctrine\ORM\Mapping as ORM;
      */
     private $metier;
 
+    public function setEmail($email){
+        parent::setEmail($email);
+        $this->setUsername($email);
+    }
 
     /**
      * Set nom
