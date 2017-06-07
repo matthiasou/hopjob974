@@ -248,7 +248,7 @@ class DefaultController extends Controller
 
                     // Everything OK, redirect to wherever you want ! :
 
-                    return $this->redirectToRoute('redirect_to_somewhere_now');
+                    return $this->redirectToRoute('index');
                 }else{
                     // An error ocurred, handle
                     var_dump("Errooooor :(");
