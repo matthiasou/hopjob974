@@ -132,7 +132,7 @@
         <div id="services">
             <form>
             <h1 class="title-heading">• nos services •</h1>
-            <ul id="bxslider-desktop">
+            <ul id="bxslider-desktop" class="hidden-xs hidden-sm ">
 
                     {% for domaine in domaines %}
                         {% if loop.first or (loop.index - 1) % 5 == 0 %}
@@ -148,7 +148,7 @@
             </form>
             </ul>
 
-           <ul id="bxslider-tablette">
+           <ul id="bxslider-tablette" class="hidden-xs hidden-md hidden-lg">
 
                     {% for domaine in domaines %}
                         {% if loop.first or (loop.index - 1) % 2 == 0 %}
@@ -164,7 +164,7 @@
 
             </ul>
 
-           <ul id="bxslider-mobile">
+           <ul id="bxslider-mobile" class="hidden-sm hidden-md hidden-lg">
                 {% for domaine in domaines %}
                     <li>
                         <div class="col-xs-12 domaines" style="background-image: url({{ asset('bundles/front/img/homepage/' ~ domaine.id ~ '.jpg') }})">
