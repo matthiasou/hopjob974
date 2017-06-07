@@ -7,7 +7,6 @@
        {% block stylesheet %}   
                 <link rel="stylesheet" href="{{ asset('bundles/front/bootstrap/css/bootstrap.css') }}" type="text/css" media="screen" />  
                 <link rel="stylesheet" href="{{ asset('bundles/front/css/jquery-ui.css') }}" type="text/css" media="screen" />  
-                <link rel="stylesheet" href="{{ asset('bundles/front/bootstrap/css/bootstrap-theme.min.css') }}" type="text/css" media="screen" />  
                 <link rel="stylesheet" href="{{ asset('bundles/front/bxslider/jquery.bxslider.css') }}" type="text/css" media="screen" />  
                 <link rel="stylesheet" href="{{ asset('bundles/front/fancyBox/jquery.fancybox.css') }}" type="text/css" media="screen" />  
                 <link rel="stylesheet" href="{{ asset('bundles/front/font-awesome/css/font-awesome.css') }}" type="text/css" media="screen" />  
@@ -17,15 +16,15 @@
         {% endblock %}        
 
         {% block javascripts %}
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
             <script type="text/javascript" src="{{ asset('bundles/front/js/jquery.js') }}"></script>
             <script type="text/javascript" src="{{ asset('bundles/front/js/jquery-ui.js') }}"></script>
             <script type="text/javascript" src="{{ asset('bundles/front/bootstrap/js/bootstrap.min.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('bundles/front/bxslider/jquery.bxslider.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('bundles/front/bxslider/jquery.bxslider.js') }}"></script>
             <script type="text/javascript" src="{{ asset('bundles/front/fancyBox/jquery.fancybox.js') }}"></script>
             <script type="text/javascript" src="{{ asset('bundles/front/js/global.js') }}"></script>
             <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
             <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
-            <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         {% endblock %}
 
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
