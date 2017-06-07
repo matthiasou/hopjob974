@@ -416,6 +416,9 @@ public function deleteAction($id)
         if ($request->get('nom'))
           $user->setNom($request->get('nom'));
 
+        if ($request->get('civilite'))
+          $user->setCivilite($request->get('civilite'));
+
         if ($request->get('dateNaissance'))
         {
           $date = new \DateTime($request->get('dateNaissance'));
